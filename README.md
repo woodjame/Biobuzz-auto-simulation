@@ -2,18 +2,6 @@
 
 Test your 2026–27 **BIOBUZZ** autonomous before you get to the field. Upload your real robot code and watch it run a full 30-second AUTO: paths, launches, hive tips, flower and garden pickups, servos, parking, the score, and anything that could draw a penalty.
 
-### ▶ AUTO simulator: **https://woodjame.github.io/FTC-Largo-Robotics-Biobuzz-Auto-Simulation/**
-### ▶ TeleOp simulator: **https://woodjame.github.io/FTC-Largo-Robotics-Biobuzz-Auto-Simulation/teleop.html**
-### ▶ Full match simulator: **https://woodjame.github.io/FTC-Largo-Robotics-Biobuzz-Auto-Simulation/match.html**
-
-The three pages link to each other at the top. **AUTO** runs your autonomous by itself. **TeleOp** is 2:00 of driver control, starting from a typical end-of-AUTO field. **Full match** runs everyone's AUTO code, the transition, then TeleOp. The TeleOp and full match pages share their robot cards, controllers and settings in your browser.
-
-It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to install and no account needed. The 3-D view needs an internet connection.
-
-> **Your code stays private.** The simulator runs entirely in your browser. Your code is never uploaded to a server, never saved, and cleared when you close or reload the page. Other teams using the simulator can't see it.
-
----
-
 ## Step-by-step
 
 ### Step 1 – Choose your robot card
