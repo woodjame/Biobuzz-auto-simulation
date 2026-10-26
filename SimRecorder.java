@@ -22,7 +22,10 @@ import java.util.Locale;
  *     SimRecorder rec = new SimRecorder("RedAudience");          // in init: a short name for this auto, no spaces
  *     rec.start();                                                // when the match starts (start() / after waitForStart())
  *     rec.pose(x, y, headingDegrees);                             // every loop: where your localizer says the robot is
- *     rec.event("shoot");                                         // when a launch starts (also "intake_on", "intake_off", "spinup")
+ *     rec.event("shoot");                                         // when a volley starts: launches everything held
+ *     rec.shot();                                                 // ...or call this for EACH element as it leaves the robot
+ *                                                                 //    (more accurate: the replay launches when your robot did)
+ *     rec.event("intake_on"); rec.event("intake_off"); rec.event("spinup");
  *     rec.save();                                                 // at the end (stop() / end of runOpMode())
  *
  * Positions are in INCHES, heading in DEGREES (counter-clockwise, 0 = +x).
@@ -85,7 +88,12 @@ public class SimRecorder {
         row(t, x, y, headingDegrees, "");
     }
 
-    /** Something the robot did: "shoot", "intake_on", "intake_off" or "spinup". */
+    /** One element launched, right now. Call once per POLLEN/NECTAR as it leaves the robot (e.g. when your
+     *  feeder/kicker fires or your ball sensor goes clear). The replay launches one at exactly these times,
+     *  so it shows whether your shots land before the hive swings too far while it tips. */
+    public void shot() { event("shoot_1"); }
+
+    /** Something the robot did: "shoot" (everything held), "shoot_1" (one element), "intake_on", "intake_off" or "spinup". */
     public void event(String what) {
         if (!started) start();
         String ev = what == null ? "" : what.trim().toLowerCase(Locale.US).replace(' ', '_');

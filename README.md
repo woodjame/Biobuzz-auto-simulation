@@ -371,8 +371,11 @@ If your auto uses `sleep(...)`, the recorder sees nothing during it. Replace eac
 | Your robot… | Add |
 |---|---|
 | Starts a launch (everything it holds) | `rec.event("shoot");` |
+| Launches one element – call it for **each** POLLEN or NECTAR as it leaves (more accurate, see below) | `rec.shot();` |
 | Turns the intake on / off | `rec.event("intake_on");` / `rec.event("intake_off");` |
 | Starts spinning the flywheel | `rec.event("spinup");` |
+
+**`rec.shot()` vs `rec.event("shoot")`:** `shoot` makes the replay fire everything it holds at the robot card's pace. `shot()` fires one element at the exact moment your real robot did, so the replay shows whether your fast shots get into the cell before the hive swings too far while it tips. Use `shot()` if your code knows when each element leaves (a kicker or feeder step, or a ball sensor going clear). Logs from the older SimRecorder still work.
 
 **Optional:** show where the file went on the Driver Hub with `telemetry.addData("Sim log", rec.savedTo());`.
 
