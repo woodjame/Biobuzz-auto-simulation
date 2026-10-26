@@ -2,9 +2,9 @@
 
 Test your 2026–27 **BIOBUZZ** autonomous before you get to the field. Upload your real robot code and watch it run a full 30-second AUTO: paths, launches, hive tips, flower and garden pickups, servos, parking, the score, and anything that could draw a penalty.
 
-### ▶ AUTO simulator: **https://woodjame.github.io/FTC-Biobuzz-Auto-Simulator-/**
-### ▶ TeleOp simulator: **https://woodjame.github.io/FTC-Biobuzz-Auto-Simulator-/teleop.html**
-### ▶ Full match simulator: **https://woodjame.github.io/FTC-Biobuzz-Auto-Simulator-/match.html**
+### ▶ AUTO simulator: **https://woodjame.github.io/FTC-Largo-Robotics-Biobuzz-Auto-Simulation/**
+### ▶ TeleOp simulator: **https://woodjame.github.io/FTC-Largo-Robotics-Biobuzz-Auto-Simulation/teleop.html**
+### ▶ Full match simulator: **https://woodjame.github.io/FTC-Largo-Robotics-Biobuzz-Auto-Simulation/match.html**
 
 The three pages link to each other at the top. **AUTO** runs your autonomous by itself. **TeleOp** is 2:00 of driver control, starting from a typical end-of-AUTO field. **Full match** runs everyone's AUTO code, the transition, then TeleOp. The TeleOp and full match pages share their robot cards, controllers and settings in your browser.
 
@@ -137,7 +137,14 @@ Change your code in your own project, click **Upload** again, check the line und
 
 Open the **Full match simulator** link above for AUTO + TeleOp, or the **TeleOp simulator** for TeleOp alone – everything below works the same on both, except that the TeleOp page has no AUTO and its start button is **Start 2:00 TeleOp**. Up to four teams play a whole match together on one computer – one robot card per team, and up to **8 controllers** (a driver and an operator for each team):
 
-**0:30 AUTO** (each robot runs its uploaded code) → **8 s transition** (no driving) → **2:00 TeleOp** (drivers take over) → **results**.
+A **2:30 match**, timed like the real field (manual Table 9-1):
+
+- **2:30 → 2:00 AUTO:** each robot runs its uploaded code.
+- **0:08 → 0:01 transition:** "Drivers, pick up your controllers… 3, 2, 1". No powered movement (G403); TeleOp code INITs now.
+- **2:00 → 0:00 TeleOp:** drivers take over. At **1:00** FLOWER ownership unlocks and human players may enter all their NECTAR; **0:20** is the final 20 seconds.
+- **Results.**
+
+The cues are spoken aloud when the browser can; the **Sound** button turns that off.
 
 ### Set up each robot card
 
@@ -154,7 +161,12 @@ Open the **Full match simulator** link above for AUTO + TeleOp, or the **TeleOp 
 
 ### Play
 
-- **Start full match** runs everyone's AUTO, then the transition, then TeleOp. **Skip ▸▸** jumps ahead to the next period. **TeleOp only (2:00)** skips AUTO and starts from a typical end-of-AUTO field: every robot parked in its loading zone holding nothing, each alliance's garden-side hive cell already tipped once (so the other cell is up), and that cell's 4 POLLEN and 3 NECTAR scattered on the garden side of the field. Gardens and flowers start as staged, and each human player has the 1 NECTAR for that tip ready to enter. No AUTO points are given for that imagined AUTO, though the Score panel counts the parked robots and garden POLLEN right away, since it shows the score as if the match ended now. **Stop** ends the match early.
+- **Start full match** runs everyone's AUTO, then the transition, then TeleOp. **Skip ▸▸** jumps ahead to the next period. **TeleOp only (2:00)** (and the TeleOp page's **Start 2:00 TeleOp**) skips AUTO and starts as if AUTO went well for both alliances:
+  - **Score:** each alliance has already tipped its hive once (+20), and every robot in the match earned LEAVE (+3) and AUTO PARK (+5). With two robots that's 36 AUTO points per alliance, enough for the SWARM ranking point.
+  - **Robots** start parked in their loading zone, holding nothing.
+  - **Hives:** each alliance's garden-side cell is the one that tipped, so the other cell is up and empty. The tipped cell's 4 POLLEN and 3 NECTAR are spread randomly over the garden-side half of the field.
+  - **NECTAR (G426):** that tip lets each human player enter 1 NECTAR, so 1 is dropped into each loading zone at the start. It bounces off the parked robots and rolls a little, ending up just in front of the zone. The other 4 stay in the alliance area and are entered one at a time once 1:00 is left, along with 1 more for every hive tip in TeleOp.
+  - Gardens and flowers start as staged. **Stop** ends the match early.
 - Before a match the field is in **practice** mode: drive around with the game elements, no clock.
 - **View from** turns the field so your drivers' wall is at the bottom. **Full screen** keeps the clock and both scores in the corner.
 - The **Score** panel shows what each alliance would score if the match ended now. At the end, a **results** window shows every scoring line and the ranking points.
@@ -208,6 +220,7 @@ The **Live controller** panel lights up each button and stick as you press them,
 - **Flowers:** POLLEN or NECTAR go in the top; only POLLEN comes out the bottom (G418). Elements in the scoring part of a flower score **2** each for the alliance whose NECTAR is on top; the alliance with the **bottom** NECTAR gets **5**. NECTAR in a flower before 1:00 is left is a **major foul** (G410, 20 points to the other alliance).
 - **Gardens:** each element in your garden at the end scores **1**. **PARK:** **5** for each robot in its loading zone at the end.
 - **AUTO** points (tips, LEAVE, PARK) carry over from your uploaded code's AUTO.
+- **AUTO shooting zones** stay on each alliance's own side of the field: the zone in front of the up cell stops where the robot would cross the center line, so the red and blue zones never overlap. Contacting an opposing robot on its side in AUTO is a major foul (G402).
 - No powered movement in the transition or after 0:00 (G403, G404). Scoring is counted once everything comes to rest.
 - **Ranking points:** SWARM (LEAVE + PARK ≥ 16), POLLINATOR 1 and 2 (4 and 7 tips), WIN 3 / TIE 1.
 
