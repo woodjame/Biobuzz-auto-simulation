@@ -2,9 +2,9 @@
 
 Test your 2026–27 **BIOBUZZ** autonomous before you get to the field. Upload your real robot code and watch it run a full 30-second AUTO: paths, launches, hive tips, flower and garden pickups, servos, parking, the score, and anything that could draw a penalty.
 
-### ▶ AUTO simulator: **https://woodjame.github.io/FTC-Largo-Robotics-Biobuzz-Auto-Simulation/**
-### ▶ TeleOp simulator: **https://woodjame.github.io/FTC-Largo-Robotics-Biobuzz-Auto-Simulation/teleop.html**
-### ▶ Full match simulator: **https://woodjame.github.io/FTC-Largo-Robotics-Biobuzz-Auto-Simulation/match.html**
+### ▶ AUTO simulator: **https://woodjame.github.io/Biobuzz-auto-simulation/**
+### ▶ TeleOp simulator: **https://woodjame.github.io/Biobuzz-auto-simulation/teleop.html**
+### ▶ Full match simulator: **https://woodjame.github.io/Biobuzz-auto-simulation/match.html**
 
 The three pages link to each other at the top. **AUTO** runs your autonomous by itself. **TeleOp** is 2:00 of driver control, starting from a typical end-of-AUTO field. **Full match** runs everyone's AUTO code, the transition, then TeleOp. The TeleOp and full match pages share their robot cards, controllers and settings in your browser.
 
@@ -13,6 +13,8 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 > **Your code stays private.** The simulator runs entirely in your browser. Your code is never uploaded to a server, never saved, and cleared when you close or reload the page. Other teams using the simulator can't see it.
 
 > **Usage counting.** To see how many teams use the simulator, these pages count visits (with the country and region they come from, using GoatCounter, without cookies) and the team numbers typed onto robot cards, code uploads and match runs. Your code, names and anything personal are never sent.
+
+> **Top AUTO scores.** The AUTO page has a leaderboard. When you play an AUTO through to 0:00, your alliance's AUTO score is posted if every robot on it runs its team's own uploaded code with a team number, the game settings are the standard ones, no rule flags (G402, G408, G417, G418) come up, and the robot cards are realistic. The page tells you after each run whether the score counted, and why not if it didn't; "How a score gets on the board" on the card lists the limits. Only team numbers, the score and a fingerprint of your code are sent – never the code itself.
 
 ---
 
