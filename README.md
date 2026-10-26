@@ -14,7 +14,7 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 > **Usage counting.** To see how many teams use the simulator, these pages count visits (with the country and region they come from, using GoatCounter, without cookies) and the team numbers typed onto robot cards, code uploads and match runs. Your code, names and anything personal are never sent.
 
-> **Top AUTO scores.** The AUTO page has a leaderboard. When you play an AUTO through to 0:00, your alliance's AUTO score is posted if every robot on it runs its team's own uploaded code with a team number, the game settings are the standard ones, no rule flags (G402, G408, G417, G418) come up, and the robot cards are realistic. The page tells you after each run whether the score counted, and why not if it didn't; "How a score gets on the board" on the card lists the limits. Only team numbers, the score and a fingerprint of your code are sent – never the code itself.
+> **Top AUTO scores.** The AUTO page has a leaderboard. When you play an AUTO through to 0:00, your alliance's AUTO score is posted if every robot on it runs its team's own uploaded code with a team number, the game settings are the standard ones, no robot on it crosses onto the other alliance's side (G402, a MAJOR FOUL; warnings like bumping the hive frame don't count), and the robot cards are realistic. The page tells you after each run whether the score counted, and why not if it didn't; "How a score gets on the board" on the card lists the limits. Only team numbers, the score and a fingerprint of your code are sent – never the code itself.
 
 ---
 
