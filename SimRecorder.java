@@ -1,6 +1,3 @@
-// SimRecorder.java – part of the BIOBUZZ Simulator. Copyright (c) 2026 Largo Robotics. All rights reserved.
-// You may use and change this file in your own robot code to record logs for the Simulator. Keep this notice.
-// BIOBUZZ Simulator License: https://github.com/woodjame/Biobuzz-auto-simulation/blob/main/LICENSE.md
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.util.ElapsedTime;
