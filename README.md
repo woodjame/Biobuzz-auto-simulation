@@ -16,6 +16,8 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 > **AUTO scores and Top AUTO.** Every AUTO you play through to 0:00 on the AUTO page is recorded (team numbers, the score, a fingerprint of your code – never the code itself). The best 3 are shown on the field under the Red and Blue scores when you play in full screen, and at the top of the page otherwise. A score counts for Top AUTO if every robot on the alliance runs its team's own uploaded code with a team number, the game settings are the standard ones, no robot crosses onto the other alliance's side (G402, a MAJOR FOUL – warnings like bumping the hive frame don't count), and the robot cards are realistic. After each run the page says whether it counted, and why not if it didn't.
 
+> **Feedback.** Tell us what worked, what didn't and what you'd like next: click **Feedback** at the top of any simulator page, or use https://forms.gle/zr3jQuYYXK26dmqx7. It takes a minute and helps us improve the simulator for every team.
+
 ---
 
 ## Step-by-step
@@ -468,4 +470,4 @@ For more detail on any feature, see **[TEAM_GUIDE.md](TEAM_GUIDE.md)**.
 
 ---
 
-*BIOBUZZ Auto Simulator by Largo Robotics – Largo High School, Largo, FL. Questions or ideas: largoroboticsteam@gmail.com*
+*BIOBUZZ Auto Simulator by Largo Robotics – Largo High School, Largo, FL. Feedback: https://forms.gle/zr3jQuYYXK26dmqx7 · Questions: largoroboticsteam@gmail.com*
