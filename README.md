@@ -485,3 +485,7 @@ For more detail on any feature, see **[TEAM_GUIDE.md](TEAM_GUIDE.md)**.
 ---
 
 *BIOBUZZ Auto Simulator by Largo Robotics – Largo High School, Largo, FL. Feedback: https://forms.gle/zr3jQuYYXK26dmqx7 · Questions: largoroboticsteam@gmail.com*
+
+## License
+
+© 2026 Largo Robotics, Largo High School. All rights reserved. The BIOBUZZ Simulator is **free to use** under the [BIOBUZZ Simulator License](LICENSE.md): use it, share the link, and post screenshots and videos with credit – but please don't copy, re-host, modify or sell it, or try to extract its code. Your robot code stays yours and never leaves your browser. `SimRecorder.java` may be used and changed in your own robot code. The Simulator is a student-built practice tool and isn't affiliated with or endorsed by *FIRST*®; *FIRST*®, FIRST® Tech Challenge and *BIOBUZZ* are trademarks of *FIRST*.
