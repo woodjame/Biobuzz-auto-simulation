@@ -68,7 +68,14 @@ Everything else is under **Advanced customization** on the card (click it to ope
 | **Intake camera** | Tick it if your robot has a camera that finds game elements. |
 | **4 POLLEN** | Where your 4 preloads start: all in the robot, or some on the tiles at your intake. |
 | **Servos** | Your servo model, the mode you programmed it to, and its job. |
-| **Game, field & robot settings (all robots)** | Where your camera is mounted, robot size, accuracy, shooting zones, the random seed, ranking-point thresholds, AprilTag IDs and the parking zones. Most teams never need to change these. |
+| **AprilTag camera mounting** | Lens height, tilt, how far in front of the robot's center, and (for a turret) whether it's on the turret. |
+| **Robot** | Elements it can hold, acceleration, turn rate, real-world drive efficiency, drive power without an intake camera, and servo speed under load. |
+| **Shooter** | Accuracy, closest shot, flywheel wheel diameter, and ball speed compared with the flywheel's rim speed. |
+| **Field layout** (button) | The AprilTag IDs under each cell and the parking zones – they already match the BIOBUZZ field. |
+
+Under the card's second fold-out, **Error**, set how much your robot's position tracking drifts: *odometry pod error* for pods, or *drive-encoder error forward/strafing* and *Control Hub IMU drift* for drive encoders.
+
+Most teams never need to change anything in Advanced customization or Error except the servos – the defaults are typical robots. Changing accuracy, speeds or errors keeps a run off Top AUTO. The match itself (robot size limit, shooting zones, the human player, ranking-point thresholds) runs in the background with the BIOBUZZ manual's values.
 
 The hive's tip rules are under **Tip rules** in the **Hives** panel.
 
@@ -149,7 +156,7 @@ Also watch the right side of the screen: **Hives** (what's in each cell and whic
 
 Change your code in your own project, click **Upload** again, check the line under the card, and press Play at 4×. Change one thing at a time.
 
-**Test your luck:** misses are random. Open **Advanced customization → Game, field & robot settings**, change **Random seed**, and re-run a few times. A plan that only works on one seed isn't reliable.
+**Fair comparisons:** misses are random but repeat the same way every run, so when you change one thing in your code, the difference you see comes from your change.
 
 ---
 
@@ -467,7 +474,7 @@ Upload that whole file – the simulator finds the recorded rows inside it and r
 | A servo spins when it should hold (or the reverse) | Check its **Mode** on the card matches how you programmed the servo, and that your code uses `setPosition` for standard servos and `setPower` for continuous ones. |
 | Robot sits at a flower and pulls nothing | Holding 4 already (the G407 limit), the flower bar isn't down yet, or the intake is off. Check **Match events → Servos**. |
 | 3-D view is blank | It needs internet. School networks sometimes block it; Top view works offline. |
-| Start fresh | **Open code → Clear** on a card, or **Restore defaults** in **Advanced customization → Game, field & robot settings**. |
+| Start fresh | **Open code → Clear** on a card, or **Restore defaults** under **Field layout** in Advanced customization. |
 
 ---
 
