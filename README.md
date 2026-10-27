@@ -44,6 +44,8 @@ On your card:
 1. Type your **team number** and **team name**.
 2. Fill in how your robot is built. Time these on your real robot with a phone stopwatch – the simulator is only as accurate as these numbers.
 
+The card shows the basics:
+
 | Setting | What to enter |
 |---|---|
 | **Handles** | *POLLEN only* if your intake rejects NECTAR, otherwise *POLLEN and NECTAR*. |
@@ -52,6 +54,12 @@ On your card:
 | **Seconds to intake the 4 garden POLLEN** | Time it on your robot. |
 | **Seconds to launch all 4 into the hive** | From the first launch to the last. |
 | **Seconds for the flywheel to reach speed** | Time it from a stopped flywheel to launching speed. Launches wait this long after your code first spins the flywheel up. |
+| **AprilTags** (required) | The camera your robot reads the hive's AprilTags with: **Limelight 3A**, **Logitech C270 webcam**, **Logitech C920 webcam**, or **None**. There's no default – until you choose, the robot has no camera, and its scores don't count for Top AUTO. Each camera sees differently: the Limelight updates fastest; the C270 sees farthest but narrowest; the C920 sees widest but not as far. Webcams run on the Control Hub, so they update about half as often. |
+
+Everything else is under **Advanced customization** on the card (click it to open):
+
+| Setting | What to enter |
+|---|---|
 | **Shooter** | *Turret*, *Fixed – intake side* or *Fixed – opposite intake*. For a turret, also set **Turret rotation, total degrees**. |
 | **Robot weight (lb)** | Heavier robots speed up more slowly. |
 | **Localization** | *Odometry pods + Pinpoint* (then enter both pod offsets) or *Drive encoders + Hub IMU*. |
@@ -59,6 +67,10 @@ On your card:
 | **Flywheel RPM (max)**, **Launch angle** and **Flywheel adjusts its speed for distance** | From your launcher. |
 | **Intake camera** | Tick it if your robot has a camera that finds game elements. |
 | **4 POLLEN** | Where your 4 preloads start: all in the robot, or some on the tiles at your intake. |
+| **Servos** | Your servo model, the mode you programmed it to, and its job. |
+| **Game, field & robot settings (all robots)** | Where your camera is mounted, robot size, accuracy, shooting zones, the random seed, ranking-point thresholds, AprilTag IDs and the parking zones. Most teams never need to change these. |
+
+The hive's tip rules are under **Tip rules** in the **Hives** panel.
 
 These numbers (not your code) are remembered in your browser, so you only enter them once per computer.
 
@@ -131,13 +143,13 @@ Scroll to **Match events** after every run:
 | **Scoring** | Every element into the hive, tips, LEAVE and PARK. |
 | **All** | Everything, with times. Click any event to jump the replay to that moment. |
 
-Also watch the right side of the screen: **Hives** (what's in each cell and which is up), **Limelight view** (what your camera sees), **Servos** (a live dial for each servo on the robot you pick) and **Auto score** (including ranking point progress).
+Also watch the right side of the screen: **Hives** (what's in each cell and which is up), **Camera view** (what your AprilTag camera sees), **Servos** (a live dial for each servo on the robot you pick) and **Auto score** (including ranking point progress).
 
 ### Step 8 – Fix and re-run
 
 Change your code in your own project, click **Upload** again, check the line under the card, and press Play at 4×. Change one thing at a time.
 
-**Test your luck:** misses are random. Open **Game & robot settings**, change **Random seed**, and re-run a few times. A plan that only works on one seed isn't reliable.
+**Test your luck:** misses are random. Open **Advanced customization → Game, field & robot settings**, change **Random seed**, and re-run a few times. A plan that only works on one seed isn't reliable.
 
 ---
 
@@ -277,7 +289,7 @@ Try these in order – each takes a little more effort than the last.
 | `// @sim shoot` | Your launch call has a name it doesn't recognize. |
 | `// @sim intake on` / `// @sim intake off` | Same, for the intake. |
 | `// @sim wait 1.5` | Something takes time but isn't a drive. |
-| `// @sim vision-shoot` | Your robot launches automatically whenever the Limelight sees an up cell. |
+| `// @sim vision-shoot` | Your robot launches automatically whenever its AprilTag camera sees an up cell (choose the camera on the card). |
 | `// @sim fullspeed 55` / `// @sim track 14` | Timed or encoder SDK autos: top speed (in./s) and wheel spacing (in.). |
 
 **3. Use Translate** for code built on your own classes or a command framework (e.g. `robot.driveToGoal()`):
@@ -455,7 +467,7 @@ Upload that whole file – the simulator finds the recorded rows inside it and r
 | A servo spins when it should hold (or the reverse) | Check its **Mode** on the card matches how you programmed the servo, and that your code uses `setPosition` for standard servos and `setPower` for continuous ones. |
 | Robot sits at a flower and pulls nothing | Holding 4 already (the G407 limit), the flower bar isn't down yet, or the intake is off. Check **Match events → Servos**. |
 | 3-D view is blank | It needs internet. School networks sometimes block it; Top view works offline. |
-| Start fresh | **Open code → Clear** on a card, or **Restore defaults** in **Game & robot settings**. |
+| Start fresh | **Open code → Clear** on a card, or **Restore defaults** in **Advanced customization → Game, field & robot settings**. |
 
 ---
 
