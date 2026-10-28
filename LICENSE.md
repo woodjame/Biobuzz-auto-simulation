@@ -31,6 +31,7 @@ GitHub's own Terms of Service let GitHub users view and fork public repositories
 ## 3. Your code and your data
 
 - **Your code stays yours.** The Simulator runs in your web browser. Your robot code is never uploaded to a server and is not saved; it is gone when you close or reload the page. Largo Robotics claims no rights in your code.
+- **Check-in.** The first time you open the Simulator in a browser, it asks two questions: your team number (or "not on a team") and your role (student, mentor, coach, parent or other). Your answers are sent once to a Google Form owned by Largo Robotics, to count new users and the teams they come from. No names or emails are asked. Your answer is remembered in your browser so you aren't asked again.
 - **Usage counting.** The pages count visits (with the visitor's country and region), the team numbers typed onto robot cards, code uploads and match runs, using GoatCounter, without cookies. Nothing personal is collected.
 - **Top AUTO leaderboard.** When an AUTO is played to 0:00, the AUTO page sends the team numbers, the score, a short fingerprint of the code (not the code itself) and whether the run counts, to a Google Form owned by Largo Robotics. Scores may be shown publicly on the Simulator. Largo Robotics may remove any score at any time.
 - **Feedback.** Anything you send through the Feedback form may be used by Largo Robotics to improve the Simulator, without payment or credit.

@@ -14,6 +14,8 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 > **Your language.** Pick a language from the globe menu at the top of any simulator page and the whole page (instructions, robot cards, match events) switches to it. In Chrome on a computer this uses Chrome's built-in translator: it runs on your computer, so nothing is sent anywhere. The first time, Chrome downloads that language (a minute or two). In Safari, Firefox or on a phone, use your browser's own *Translate this page*. The labels drawn on the field itself stay in English. To read this guide in another language, use your browser's translate button on this page.
 
+> **One-time check-in.** The first time you open the simulator on a computer, it asks two questions: your team number and whether you're a student, mentor, coach, parent or other. It's sent once to Largo Robotics so we know which teams use the simulator – no names or emails – and you won't be asked again on that computer.
+
 > **Usage counting.** To see how many teams use the simulator, these pages count visits (with the country and region they come from, using GoatCounter, without cookies) and the team numbers typed onto robot cards, code uploads and match runs. Your code, names and anything personal are never sent.
 
 > **AUTO scores and Top AUTO.** Every AUTO you play through to 0:00 on the AUTO page is recorded (team numbers, the score, a fingerprint of your code – never the code itself). The best 3 are shown on the field under the Red and Blue scores when you play in full screen, and at the top of the page otherwise. A score counts for Top AUTO if every robot on the alliance runs its team's own uploaded code with a team number, the game settings are the standard ones, no robot crosses onto the other alliance's side (G402, a MAJOR FOUL – warnings like bumping the hive frame don't count), and the robot cards are realistic. After each run the page says whether it counted, and why not if it didn't.
@@ -54,21 +56,22 @@ The card shows the basics:
 | **Seconds to intake the 4 garden POLLEN** | Time it on your robot. |
 | **Seconds to launch all 4 into the hive** | From the first launch to the last. |
 | **Seconds for the flywheel to reach speed** | Time it from a stopped flywheel to launching speed. Launches wait this long after your code first spins the flywheel up. |
-| **AprilTags** (required) | The camera your robot reads the hive's AprilTags with: **Limelight 3A**, **Logitech C270 webcam**, **Logitech C920 webcam**, or **None**. There's no default – until you choose, the robot has no camera, and its scores don't count for Top AUTO. Each camera sees differently: the Limelight updates fastest; the C270 sees farthest but narrowest; the C920 sees widest but not as far. Webcams run on the Control Hub, so they update about half as often. |
 
-Everything else is under **Advanced customization** on the card (click it to open):
+Below them the card says which AprilTag camera the robot uses. Everything else is under **Advanced customization** (click it to open), in groups:
 
-| Setting | What to enter |
+| Group | What's in it |
 |---|---|
-| **Shooter** | *Turret*, *Fixed – intake side* or *Fixed – opposite intake*. For a turret, also set **Turret rotation, total degrees**. |
-| **Robot weight (lb)** | Heavier robots speed up more slowly. |
-| **Localization** | *Odometry pods + Pinpoint* (then enter both pod offsets) or *Drive encoders + Hub IMU*. |
-| **Drive motor RPM** and **goBILDA mecanum wheel** | From your drivetrain. |
-| **Flywheel RPM (max)**, **Launch angle** and **Flywheel adjusts its speed for distance** | From your launcher. |
-| **Intake camera** | Tick it if your robot has a camera that finds game elements. |
-| **4 POLLEN** | Where your 4 preloads start: all in the robot, or some on the tiles at your intake. |
+| **AprilTag recognition** (required) | **Camera** – *Limelight 3A*, *Logitech C270 webcam*, *Logitech C920 webcam* or *None*. There's no default: until you choose, the robot has no camera and its scores don't count for Top AUTO (Advanced customization opens by itself until you do). The Limelight updates fastest; the C270 sees farthest but narrowest; the C920 sees widest but not as far; webcams run on the Control Hub, so they update about half as often. Then where the camera is: lens height, tilt, how far in front of the robot's center, and (turret robots) whether it's on the turret. |
+| **Robot size and weight** | Robot footprint (18 in. max) and weight. Heavier robots speed up more slowly. |
+| **Drivetrain and robot** | Localization (*Odometry pods + Pinpoint* with both pod offsets, or *Drive encoders + Hub IMU*), drive motor RPM, mecanum wheel, intake camera, where the 4 preloaded POLLEN start, elements it can hold, acceleration, turn rate, drive efficiency, drive power without an intake camera, and servo speed under load. **Copy Pedro Constants** gives you a Pedro `Constants.java` with these numbers. |
+| **Flywheel shooter** | Turret or fixed shooter (and turret rotation), flywheel RPM, launch angle, whether the flywheel adjusts for distance, accuracy, flywheel wheel diameter, and ball speed compared with the rim speed. |
+| **Shooting position** | Closest shot to the hive, the shooting cone, and how deep and wide the shooting zone is. They start at the BIOBUZZ field's values. |
 | **Servos** | Your servo model, the mode you programmed it to, and its job. |
-| **Game, field & robot settings (all robots)** | Where your camera is mounted, robot size, accuracy, shooting zones, the random seed, ranking-point thresholds, AprilTag IDs and the parking zones. Most teams never need to change these. |
+| **Field layout** (button) | The AprilTag IDs under each cell and the parking zones – they already match the BIOBUZZ field. |
+
+Under the card's second fold-out, **Error**, set how much your robot's position tracking drifts: *odometry pod error* for pods, or *drive-encoder error forward/strafing* and *Control Hub IMU drift* for drive encoders.
+
+Most teams only need the camera and the servos – the other defaults are typical robots. Changing accuracy, speeds, the shooting position or errors keeps a run off Top AUTO (camera position, robot size, flywheel diameter and capacity are fine). The match itself (the human player, ranking-point thresholds and the random seed) runs in the background with the BIOBUZZ manual's values and can't be changed.
 
 The hive's tip rules are under **Tip rules** in the **Hives** panel.
 
@@ -149,7 +152,7 @@ Also watch the right side of the screen: **Hives** (what's in each cell and whic
 
 Change your code in your own project, click **Upload** again, check the line under the card, and press Play at 4×. Change one thing at a time.
 
-**Test your luck:** misses are random. Open **Advanced customization → Game, field & robot settings**, change **Random seed**, and re-run a few times. A plan that only works on one seed isn't reliable.
+**Fair comparisons:** misses are random but repeat the same way every run, so when you change one thing in your code, the difference you see comes from your change.
 
 ---
 
@@ -467,7 +470,7 @@ Upload that whole file – the simulator finds the recorded rows inside it and r
 | A servo spins when it should hold (or the reverse) | Check its **Mode** on the card matches how you programmed the servo, and that your code uses `setPosition` for standard servos and `setPower` for continuous ones. |
 | Robot sits at a flower and pulls nothing | Holding 4 already (the G407 limit), the flower bar isn't down yet, or the intake is off. Check **Match events → Servos**. |
 | 3-D view is blank | It needs internet. School networks sometimes block it; Top view works offline. |
-| Start fresh | **Open code → Clear** on a card, or **Restore defaults** in **Advanced customization → Game, field & robot settings**. |
+| Start fresh | **Open code → Clear** on a card, or **Restore defaults** under **Field layout** in Advanced customization. |
 
 ---
 
@@ -485,3 +488,7 @@ For more detail on any feature, see **[TEAM_GUIDE.md](TEAM_GUIDE.md)**.
 ---
 
 *BIOBUZZ Auto Simulator by Largo Robotics – Largo High School, Largo, FL. Feedback: https://forms.gle/zr3jQuYYXK26dmqx7 · Questions: largoroboticsteam@gmail.com*
+
+## License
+
+© 2026 Largo Robotics, Largo High School. All rights reserved. The BIOBUZZ Simulator is **free to use** under the [BIOBUZZ Simulator License](LICENSE.md): use it, share the link, and post screenshots and videos with credit – but please don't copy, re-host, modify or sell it, or try to extract its code. Your robot code stays yours and never leaves your browser. `SimRecorder.java` may be used and changed in your own robot code. The Simulator is a student-built practice tool and isn't affiliated with or endorsed by *FIRST*®; *FIRST*®, FIRST® Tech Challenge and *BIOBUZZ* are trademarks of *FIRST*.
