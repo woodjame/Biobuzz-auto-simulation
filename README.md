@@ -5,6 +5,7 @@ Test your 2026–27 **BIOBUZZ** autonomous before you get to the field. Upload y
 ### ▶ AUTO simulator: **https://woodjame.github.io/Biobuzz-auto-simulation/**
 ### ▶ TeleOp simulator: **https://woodjame.github.io/Biobuzz-auto-simulation/teleop.html**
 ### ▶ Full match simulator: **https://woodjame.github.io/Biobuzz-auto-simulation/match.html**
+### ▶ Records: **https://woodjame.github.io/Biobuzz-auto-simulation/records.html**
 
 The three pages link to each other at the top. **AUTO** runs your autonomous by itself. **TeleOp** is 2:00 of driver control, starting from a typical end-of-AUTO field. **Full match** runs everyone's AUTO code, the transition, then TeleOp. The TeleOp and full match pages share their robot cards, controllers and settings in your browser.
 
@@ -19,6 +20,8 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 > **Usage counting.** To see how many teams use the simulator, these pages count visits (with the country and region they come from, using GoatCounter, without cookies) and the team numbers typed onto robot cards, code uploads and match runs. Your code, names and anything personal are never sent.
 
 > **AUTO scores and Top AUTO.** Every AUTO you play through to 0:00 on the AUTO page is recorded (team numbers, the score, a fingerprint of your code – never the code itself). The best 3 are shown on the field under the Red and Blue scores when you play in full screen, and at the top of the page otherwise. A score counts for Top AUTO if every robot on the alliance runs its team's own uploaded code with a team number, the game settings are the standard ones, no robot crosses onto the other alliance's side (G402, a MAJOR FOUL – warnings like bumping the hive frame don't count), and the robot cards are realistic. After each run the page says whether it counted, and why not if it didn't.
+
+> **Records.** The [Records page](https://woodjame.github.io/Biobuzz-auto-simulation/records.html) ranks the best scores from every team: **AUTO** or **TeleOp**, **Solo** (one robot) or **Duo** (two robots on one alliance), and by robot (turret, fixed shooter, Limelight, webcam, no camera). Type your team number to see your team's best, average and number of runs in each. AUTO scores are sent when you play an AUTO to 0:00; TeleOp scores when you play **Start 2:00 TeleOp** to the end with one robot, or two on the same alliance, and no opponents.
 
 > **Feedback.** Tell us what worked, what didn't and what you'd like next: click **Feedback** at the top of any simulator page, or use https://forms.gle/zr3jQuYYXK26dmqx7. It takes a minute and helps us improve the simulator for every team.
 
@@ -67,11 +70,10 @@ Below them the card says which AprilTag camera the robot uses. Everything else i
 | **Flywheel shooter** | Turret or fixed shooter (and turret rotation), flywheel RPM, launch angle, whether the flywheel adjusts for distance, accuracy, flywheel wheel diameter, and ball speed compared with the rim speed. |
 | **Shooting position** | Closest shot to the hive, the shooting cone, and how deep and wide the shooting zone is. They start at the BIOBUZZ field's values. |
 | **Servos** | Your servo model, the mode you programmed it to, and its job. |
-| **Field layout** (button) | The AprilTag IDs under each cell and the parking zones – they already match the BIOBUZZ field. |
 
 Under the card's second fold-out, **Error**, set how much your robot's position tracking drifts: *odometry pod error* for pods, or *drive-encoder error forward/strafing* and *Control Hub IMU drift* for drive encoders.
 
-Most teams only need the camera and the servos – the other defaults are typical robots. Changing accuracy, speeds, the shooting position or errors keeps a run off Top AUTO (camera position, robot size, flywheel diameter and capacity are fine). The match itself (the human player, ranking-point thresholds and the random seed) runs in the background with the BIOBUZZ manual's values and can't be changed.
+Most teams only need the camera and the servos – the other defaults are typical robots. Changing accuracy, speeds, the shooting position or errors keeps a run off Top AUTO (camera position, robot size, flywheel diameter and capacity are fine). The match itself (the human player, ranking-point thresholds, the random seed), the field layout (parking zones, flowers, gardens) and the AprilTag IDs under each cell run in the background with the BIOBUZZ manual's values and can't be changed.
 
 The hive's tip rules are under **Tip rules** in the **Hives** panel.
 
@@ -470,7 +472,7 @@ Upload that whole file – the simulator finds the recorded rows inside it and r
 | A servo spins when it should hold (or the reverse) | Check its **Mode** on the card matches how you programmed the servo, and that your code uses `setPosition` for standard servos and `setPower` for continuous ones. |
 | Robot sits at a flower and pulls nothing | Holding 4 already (the G407 limit), the flower bar isn't down yet, or the intake is off. Check **Match events → Servos**. |
 | 3-D view is blank | It needs internet. School networks sometimes block it; Top view works offline. |
-| Start fresh | **Open code → Clear** on a card, or **Restore defaults** under **Field layout** in Advanced customization. |
+| Start fresh | **Open code → Clear** on a card, and set any changed numbers back on the card. |
 
 ---
 

@@ -240,7 +240,7 @@ Agree on the plan with your partner using what the simulator shows, then change 
 - **Ride along** on your robot in the 3-D view to see what its Limelight sees and when.
 - **Coordinates overlay:** turn it on to read positions off the field grid when planning new waypoints.
 - **Your code is not saved.** It lives only in the open page; reloading or closing the page clears it and every robot card goes back to empty (your browser asks first if you have code loaded). Translate answers are cleared too. Keep your code files in your team's project as always, and re-upload them each session. **What is saved, in this browser only:** game settings, the field layout, and each robot card's hardware numbers and team name - so you don't have to re-enter your robot every time. Use **Restore defaults** in Game & robot settings to clear those on a shared computer.
-- **Field pieces:** to compare field layouts, use **Move parking & field pieces**, **Copy field layout** saves the current positions as text, and **Reset layout** returns to the official spots.
+- **Field pieces:** the parking zones, flowers, gardens and AprilTag IDs are fixed to the BIOBUZZ field and can't be moved.
 
 ---
 
