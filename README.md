@@ -172,6 +172,8 @@ The cues are spoken aloud when the browser can; the **Sound** button turns that 
 
 ### Set up each robot card
 
+**Driving mode** sits right under the team number: **Robot-centric** (the default – stick forward drives the way the robot faces) or **Field-centric** (stick forward drives away from your drivers' wall). Tap to switch; the **Create/Back** button also switches during a match.
+
 **Team number and team name are required.** Every robot card starts blank – type your own team number and team name (the boxes stay orange until you do). A match won't start, and you can't create or join an online match, until every robot in it has both.
 
 1. **Connect the controllers.** Plug in each controller (PlayStation, Xbox, REV or Logitech) with USB, or pair it with Bluetooth, then **press any button on it** – browsers only see a controller after a button is pressed. The **Controllers** panel lists them as *Controller 1* to *Controller 8*, in the order they connect, and each keeps its number while it stays connected.
@@ -266,7 +268,7 @@ In between, the percentage slides between those numbers. Change any of these und
 | Aim left / right (hold), Aim farther / shorter, Aim: automatic flywheel speed | See *Aiming your shots* above. |
 | Turret presets / Turret left or right (hold) | Turns the turret at your card's servo swing speed; the presets go where you set them in **Servo controls**. Or set **Turret aiming** to auto-aim at your up cell. |
 | Flower bar down/up | Moves the bar in your card's time. |
-| Field-centric on/off, Reset heading | Field-centric: stick forward drives away from your drivers' wall. **Reset heading** makes "forward" the way the robot faces now, like resetting the IMU. |
+| Field-centric on/off, Reset heading | Driving starts **robot-centric** (change it with **Driving mode** at the top of the card). Field-centric: stick forward drives away from your drivers' wall. **Reset heading** makes "forward" the way the robot faces now, like resetting the IMU. |
 | Slow mode | Drives at the **Slow mode speed** on your card – 0.5 (about half speed) to start. |
 
 The **Live controller** panel lights up each button and stick as you press them, next to what that button does. Button choices are remembered in this browser; code is not.
