@@ -21,7 +21,7 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 > **Leaderboards.** Every AUTO you play to 0:00, and every solo or duo TeleOp you play to the end, can go on the **Top AUTO** board and the **[Records page](https://woodjame.github.io/Biobuzz-auto-simulation/records.html)**. See **[How the leaderboards work](#how-the-leaderboards-work)** below.
 
-> **Feedback.** Tell us what worked, what didn't and what you'd like next: click **Feedback** at the top of any simulator page, or use https://forms.gle/zr3jQuYYXK26dmqx7. It takes a minute and helps us improve the simulator for every team.
+> **Feedback.** Tell us what worked, what didn't and what you'd like next: click **Feedback** at the top of any simulator page, or use https://forms.gle/3GBBndVtxXPdDvw2A. It takes a minute and helps us improve the simulator for every team.
 
 ---
 
@@ -583,7 +583,7 @@ For more detail on any feature, see **[TEAM_GUIDE.md](TEAM_GUIDE.md)**.
 
 ---
 
-*BIOBUZZ Auto Simulator by Largo Robotics – Largo High School, Largo, FL. Feedback: https://forms.gle/zr3jQuYYXK26dmqx7 · Questions: largoroboticsteam@gmail.com*
+*BIOBUZZ Auto Simulator by Largo Robotics – Largo High School, Largo, FL. Feedback: https://forms.gle/3GBBndVtxXPdDvw2A · Questions: largoroboticsteam@gmail.com*
 
 ## License
 
