@@ -182,8 +182,29 @@ The cues are spoken aloud when the browser can; the **Sound** button turns that 
 2. **Turn on the card** for each robot in the match (the slot where it starts).
 3. **Upload code** – select your **AUTO and TeleOp files together**, with every helper file they use (like `Shooter.java`, `Intake.java`, Pedro's `Constants.java`), or drag them onto the card. Files with `@Autonomous` run in AUTO, files with `@TeleOp` run in TeleOp, and helper files go to both. The card shows what was read, like *Pedro Pathing: 10 paths, 3 launches*. No AUTO code? The robot sits still in AUTO. No TeleOp code? You drive with the button menus (step 5). Like the AUTO page, **your code is never saved or sent anywhere** – it's gone when the page closes.
 4. **Choose its Driver controller (gamepad1)**, and an **Operator controller (gamepad2)** if your team uses one. No controller? Choose **Keyboard** (W A S D drive, J / L turn, Q intake, Space launch).
-5. **No TeleOp code uploaded?** Set your buttons under **Driver buttons** and **Operator buttons** – one menu for each PS5 button (✕ ○ □ △, L1 R1 L2 R2, D-pad, L3 R3, Create, Options, touchpad) and one for which stick drives. Match them to your TeleOp code; hover over a button to see its FTC name, like `gamepad1.right_trigger`.
-6. **Check Robot build and timing.** It starts from your AUTO card in the same browser: what it handles, preloads, intake and flower times, flywheel spin-up, launch time, flywheel RPM and angle, shooter and turret, drive motors, wheels and weight. If your robot needs its flower bar down to pull POLLEN from a flower, set that here too.
+5. **No TeleOp code uploaded? The card uses the Sample TeleOp.** The robot runs the button setup on its card – the same controls as **SampleTeleOp.java**, a real FTC TeleOp the simulator writes for you. Press **View sample code** to read it or **Download SampleTeleOp.java** to put it on your robot (change the device names to match your configuration and tune the constants at the top); change a button on the card and the code changes with it. Upload it back, or your own official TeleOp, to run it as code. When you upload your own TeleOp, the simulator reads its buttons into the menus, and **In TeleOp → Use the button menus instead** lets you change every button and servo setting by hand.
+
+   **Start from a sample button setup.** Pick one under **Button setup**, then change any button you like under **Driver buttons** and **Operator buttons** (the picker then says *Custom*):
+
+   | Button (PlayStation / Xbox) | **Sample – one controller** (gamepad1) | **Sample – two controllers** |
+   |---|---|---|
+   | Left stick / right stick | Drive / turn | Driver: drive / turn |
+   | L1 / LB | Intake on/off | Driver: intake on/off · Operator: turret to its left preset |
+   | D-pad ▼ | – | Operator: flywheel off |
+   | ○ / B | Intake reverse (hold) | Driver: intake reverse · Operator: place NECTAR in flower |
+   | L2 / LT | Slow mode (hold) – about half speed | Driver: slow mode · Operator: turret to its right preset |
+   | ✕ / A | Flower bar down/up (servo) | Driver: flower bar down/up |
+   | △ / Y | Flywheel on/off | Operator: flywheel on/off |
+   | R2 / RT | Transfer (hold) – kicks elements up into the flywheel | Operator: transfer (hold) |
+   | R1 / RB | Place NECTAR in flower | Operator: transfer one (tap) |
+   | D-pad ◀ / ▶ | Turret left / right (hold) | Operator: turret left / right (hold) |
+   | D-pad ▲ | Turret straight ahead | Operator: turret straight ahead |
+   | □ / X | Place POLLEN in flower | Operator: place POLLEN in flower |
+   | Create / Back, Options / Start | Field-centric on/off, reset heading | Driver: same |
+
+   With two controllers the driver has the driving, the intake and the flower bar, and the operator has the transfer, flywheel and turret – choose an **Operator controller** for it. Hover over a button to see its FTC name, like `gamepad1.right_trigger`.
+6. **Servo controls** (when you're not running TeleOp code): the turret – how far it turns, how fast its servo swings (also how fast the hold buttons turn it), and where the **Turret left** and **Turret right** buttons send it; the flower bar servo's time to go down or up and whether it must be down to pull from a flower; and the transfer – how long it takes to kick all 4 up and launch them, and the flywheel spin-up time.
+7. **Check Robot build and timing.** It starts from your AUTO card in the same browser: what it handles, preloads, intake and flower times, flywheel RPM and angle, shooter type, drive motors, wheels and weight, and the **Slow mode speed** (0.5 = half speed).
 
 ### Play
 
@@ -230,13 +251,16 @@ In between, the percentage slides between those numbers. Change any of these und
 |---|---|
 | Intake on/off, Intake (hold) | Picks up POLLEN (and your own NECTAR, if your robot handles it) from the floor at your card's intake speed. Driven into the front of a flower, it pulls POLLEN out of the bottom. Never more than 4 (G407); opponent NECTAR is pushed away, not picked up (G408). |
 | Intake reverse (hold) | Spits out what the robot holds, one at a time. |
-| Flywheel on/off | Spins up for your card's spin-up time. |
+| Flywheel on/off, Flywheel (hold) | Spins up for your card's spin-up time. |
+| Transfer (hold) | Kicks what the robot holds up into the flywheel one at a time, at your card's transfer time – only once the flywheel is on and at speed. Let go to stop. |
+| Transfer one (tap) | Kicks a single element up into the flywheel. |
+| Flywheel + transfer (hold) | One button: spins the flywheel up, then transfers and launches while you hold it; letting go stops both. |
 | Launch volley | Starts the flywheel if it's off, waits until it's at speed, then launches **everything** the robot holds over your card's launch time – it can't be stopped once started. Each shot goes toward the up cell it's aimed at; it scores only if the robot is in the launch area in front of that cell, far enough away, with enough flywheel RPM for the distance, and is aimed within a few degrees. Shots while driving miss more. |
 | Place POLLEN / Place NECTAR in flower | Face a flower, close up, and drop one into its top. You can also launch into a flower's top by aiming the shooter at it. |
-| Turret presets / Turret left or right (hold) | Turns the turret at your card's swing speed. Or set **Turret aiming** to auto-aim at your up cell. |
+| Turret presets / Turret left or right (hold) | Turns the turret at your card's servo swing speed; the presets go where you set them in **Servo controls**. Or set **Turret aiming** to auto-aim at your up cell. |
 | Flower bar down/up | Moves the bar in your card's time. |
 | Field-centric on/off, Reset heading | Field-centric: stick forward drives away from your drivers' wall. **Reset heading** makes "forward" the way the robot faces now, like resetting the IMU. |
-| Slow mode | Drives at the **Slow mode speed** on your card. |
+| Slow mode | Drives at the **Slow mode speed** on your card – 0.5 (about half speed) to start. |
 
 The **Live controller** panel lights up each button and stick as you press them, next to what that button does. Button choices are remembered in this browser; code is not.
 
