@@ -7,7 +7,7 @@ Test your 2026–27 **BIOBUZZ** autonomous before you get to the field. Upload y
 ### ▶ Full match simulator: **https://woodjame.github.io/Biobuzz-auto-simulation/match.html**
 ### ▶ Records: **https://woodjame.github.io/Biobuzz-auto-simulation/records.html**
 
-The three pages link to each other at the top. **AUTO** runs your autonomous by itself. **TeleOp** is 2:00 of driver control, starting from a typical end-of-AUTO field. **Full match** runs everyone's AUTO code, the transition, then TeleOp. The TeleOp and full match pages share their robot cards, controllers and settings in your browser.
+The three pages link to each other at the top. **AUTO** runs your autonomous by itself. **TeleOp** is 2:00 of driver control, starting from a typical end-of-AUTO field with both alliances at 0 points – drive with your own controller and buttons or your own TeleOp code, aim with the shooting path, and play **online** against another alliance from different laptops. **Full match** runs everyone's AUTO code, the transition, then TeleOp. The TeleOp and full match pages share their robot cards, controllers and settings in your browser.
 
 It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to install and no account needed. The 3-D view needs an internet connection.
 
@@ -15,7 +15,7 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 > **Your language.** Pick a language from the globe menu at the top of any simulator page and the whole page (instructions, robot cards, match events) switches to it. In Chrome on a computer this uses Chrome's built-in translator: it runs on your computer, so nothing is sent anywhere. The first time, Chrome downloads that language (a minute or two). In Safari, Firefox or on a phone, use your browser's own *Translate this page*. The labels drawn on the field itself stay in English. To read this guide in another language, use your browser's translate button on this page.
 
-> **One-time check-in.** The first time you open the simulator on a computer, it asks two questions: your team number and whether you're a student, mentor, coach, parent or other. It's sent once to Largo Robotics so we know which teams use the simulator – no names or emails – and you won't be asked again on that computer.
+> **One-time check-in.** The first time you open the simulator on a computer, it asks two questions: your team number and whether you're a student, mentor, coach, parent or other – no names or emails – and you won't be asked again on that computer. Your answer is sent to Largo Robotics so we know which teams use the simulator, and on each later day you open the AUTO, TeleOp or Full match page, one more visit is counted with the same answer (at most once a day).
 
 > **Usage counting.** To see how many teams use the simulator, these pages count visits (with the country and region they come from, using GoatCounter, without cookies) and the team numbers typed onto robot cards, code uploads and match runs. Your code, names and anything personal are never sent.
 
@@ -74,6 +74,8 @@ Under the card's second fold-out, **Error**, set how much your robot's position 
 Most teams only need the camera and the servos – the other defaults are typical robots. The only robot settings that keep a run off Top AUTO: a flower pull under 0.75 s, a garden pickup under 0.5 s, launching all 4 in under 0.6 s, or a changed accuracy. Everything else can be set to match your robot. The match itself (the human player, ranking-point thresholds, the random seed), the field layout (parking zones, flowers, gardens) and the AprilTag IDs under each cell run in the background with the BIOBUZZ manual's values and can't be changed.
 
 The hive's tip rules are under **Tip rules** in the **Hives** panel.
+
+Each number is a **slider**: drag it, use the arrow keys, or click the number to type an exact value. Short choices (camera, shooter, drive motor RPM, wheel size…) are **tiles** – tap the one that matches your robot.
 
 These numbers (not your code) are remembered in your browser, so you only enter them once per computer.
 
@@ -314,6 +316,8 @@ The **TeleOp simulator** has a built-in **Play online** button. Up to 4 laptops 
 2. You now see the host's field. Drive with your own controller. The host starts the match; when it ends, everyone gets the results.
 3. **Leave online match** puts your robot cards back the way they were.
 
+**Your own view.** Each player chooses their own view on their own laptop – 2-D (from the audience or either drivers' wall) or any 3-D camera, including **Ride along** with your robot – plus their own driving mode and aim path. It doesn't change what anyone else sees.
+
 **Room chat.** While you're in a room, a **Room chat** box appears on the right. Type a message and press Enter, or tap a quick message (*Ready!*, *I'll defend*, *Going to park*, *GG*…). Choose **Everyone** or **My alliance** next to the box – alliance messages only go to your partner. Chat is text only (no voice), goes only to the laptops in your room, and **isn't saved**. The host can **Remove** a player from the room (in the Play online box).
 
 **Your code stays on your laptop.** Your TeleOp runs only in your own browser; just what it tells the robot to do (drive power, intake, flywheel speed, launches, turret, flower bar) goes to the host. Your button setup and robot card (team number, speeds, timing) are shared so the host can run your robot.
@@ -355,6 +359,7 @@ There are two boards, both fed by the same score sheet:
 - Each team (or pair of teams) shows its **best** score in each category; ties go to whoever got there first. Your other runs count towards your number of runs and your average.
 - New scores show up within about 5 minutes (the boards refresh every 2 minutes).
 - AUTO scores come from your code, so they repeat exactly. TeleOp scores come from a driver, so they're on the honor system – please play fair. Largo Robotics may remove any score.
+- TeleOp scores recorded before October 28, 2026 included 36 free AUTO points (TeleOp now starts both alliances at 0), so the Records page leaves them off. Online matches aren't recorded.
 
 ## Running with your alliance partner
 
