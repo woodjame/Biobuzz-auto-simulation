@@ -305,6 +305,8 @@ The **TeleOp simulator** has a built-in **Play online** button. Up to 4 laptops 
 2. You now see the host's field. Drive with your own controller. The host starts the match; when it ends, everyone gets the results.
 3. **Leave online match** puts your robot cards back the way they were.
 
+**Room chat.** While you're in a room, a **Room chat** box appears on the right. Type a message and press Enter, or tap a quick message (*Ready!*, *I'll defend*, *Going to park*, *GG*…). Choose **Everyone** or **My alliance** next to the box – alliance messages only go to your partner. Chat is text only (no voice), goes only to the laptops in your room, and **isn't saved**. The host can **Remove** a player from the room (in the Play online box).
+
 **Your code stays on your laptop.** Your TeleOp runs only in your own browser; just what it tells the robot to do (drive power, intake, flywheel speed, launches, turret, flower bar) goes to the host. Your button setup and robot card (team number, speeds, timing) are shared so the host can run your robot.
 
 **If it won't connect:** laptops connect directly to each other. Some school networks block that – try a **phone hotspot** or home Wi-Fi, or use Parsec (below). Keep the simulator tab **in front** on every laptop (browsers pause hidden tabs, and a laptop that stops answering for 8 seconds is dropped). Everyone needs the **same version** of the page – if you're told to reload, press **Ctrl+Shift+R** (**⌘+Shift+R** on a Mac). Expect a short delay (usually 50–150 ms, shown next to each player) – about like a slow Bluetooth controller.
