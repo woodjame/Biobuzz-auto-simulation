@@ -172,7 +172,9 @@ The cues are spoken aloud when the browser can; the **Sound** button turns that 
 
 ### Set up each robot card
 
-1. **Connect the controllers.** Plug each PS5 controller in with a USB-C cable, or pair it with Bluetooth, then **press any button on it** – browsers only see a controller after a button is pressed. The **Controllers** panel lists them as *Controller 1* to *Controller 8*, in the order they connect, and each keeps its number while it stays connected.
+**Team number and team name are required.** Every robot card starts blank – type your own team number and team name (the boxes stay orange until you do). A match won't start, and you can't create or join an online match, until every robot in it has both.
+
+1. **Connect the controllers.** Plug in each controller (PlayStation, Xbox, REV or Logitech) with USB, or pair it with Bluetooth, then **press any button on it** – browsers only see a controller after a button is pressed. The **Controllers** panel lists them as *Controller 1* to *Controller 8*, in the order they connect, and each keeps its number while it stays connected.
    - **Up to 4 controllers:** Chrome, Edge or Firefox.
    - **5 to 8 controllers: use Firefox.** Chrome and Edge only ever see 4 controllers – that's a limit built into those browsers, not the simulator.
    - **Plugging in 8:** use a powered USB hub, or a mix of USB and Bluetooth. A computer's Bluetooth usually handles only about 7 devices at once, and fewer smoothly.
@@ -264,7 +266,7 @@ The **TeleOp simulator** has a built-in **Play online** button. Up to 4 laptops 
 **Before you join – set up your own robot card (every player, on their own laptop):**
 1. Open **https://woodjame.github.io/Biobuzz-auto-simulation/teleop.html** in **Chrome, Edge or Firefox**.
 2. Plug in your controller – **PlayStation (PS5/PS4), Xbox, REV or Logitech** – with USB or Bluetooth and **press a button** on it.
-3. On one robot card: type your **team number**, choose your controller as **Driver controller** (and a second one as **Operator controller** if you have an operator on the same laptop).
+3. On one robot card: type your **team number and team name** (both required), choose your controller as **Driver controller** (and a second one as **Operator controller** if you have an operator on the same laptop).
 4. Either set what each button does (**Driver buttons** / **Operator buttons**), or **Upload code** to run your real TeleOp. Set **Robot build and timing** to match your robot. Your card is saved in your browser, so you only do this once.
 5. Drive around in practice to check it feels right.
 
