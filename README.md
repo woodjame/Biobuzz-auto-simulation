@@ -190,15 +190,15 @@ The cues are spoken aloud when the browser can; the **Sound** button turns that 
    |---|---|---|
    | Left stick / right stick | Drive / turn | Driver: drive / turn |
    | L1 / LB | Intake on/off | Driver: intake on/off · Operator: turret to its left preset |
-   | D-pad ▼ | – | Operator: flywheel off |
    | ○ / B | Intake reverse (hold) | Driver: intake reverse · Operator: place NECTAR in flower |
    | L2 / LT | Slow mode (hold) – about half speed | Driver: slow mode · Operator: turret to its right preset |
    | ✕ / A | Flower bar down/up (servo) | Driver: flower bar down/up |
    | △ / Y | Flywheel on/off | Operator: flywheel on/off |
    | R2 / RT | Transfer (hold) – kicks elements up into the flywheel | Operator: transfer (hold) |
    | R1 / RB | Place NECTAR in flower | Operator: transfer one (tap) |
-   | D-pad ◀ / ▶ | Turret left / right (hold) | Operator: turret left / right (hold) |
-   | D-pad ▲ | Turret straight ahead | Operator: turret straight ahead |
+   | D-pad ◀ / ▶ | **Aim** left / right (hold) – turns the turret, or the whole robot for a fixed shooter | Operator: same |
+   | D-pad ▲ / ▼ | **Aim** farther / shorter – flywheel faster / slower | Operator: same |
+   | L3 / R3 (press a stick) | Automatic flywheel speed / turret straight ahead | Operator: same · Share/Back: flywheel off |
    | □ / X | Place POLLEN in flower | Operator: place POLLEN in flower |
    | Create / Back, Options / Start | Field-centric on/off, reset heading | Driver: same |
 
@@ -245,6 +245,12 @@ In between, the percentage slides between those numbers. Change any of these und
 
 **Pins (G421):** pushing an opponent into a wall, the hive frame, a flower or another robot so it can't move is a PIN. A count appears over the pinned robot, and after 3 s it's a **MAJOR FOUL**, plus another every 3 s it goes on. A count ends once the robots have been 2 ft apart, or either has moved 2 ft, for 3 s. Very hard hits are noted in the event log (repeated high-speed ramming that causes damage is a foul, G419).
 
+### Aiming your shots
+- **The aim path:** while a robot holds POLLEN or NECTAR, a dashed line shows exactly where a launch would go right now – on the 2-D field and in the 3-D view. **Green** = it would go in (unless it's missed or pushed), **orange** = it wouldn't, **grey** = the flywheel is off. Turn it off with **Aim path: off** under the field.
+- **Robot status** (right side) says what to fix: *aim 12° more to the left*, *move into the launch zone in front of the cell*, *falls short – needs about 2,300 RPM*, *sails over*…, and shows the flywheel speed.
+- **Aim with the D-pad** (in the sample setups): ◀ / ▶ turn the turret – or, for a fixed shooter, turn the whole robot slowly. ▲ / ▼ make the flywheel faster (farther) or slower (shorter); the first press switches the flywheel to **manual speed**, starting from the speed it needs right now. **L3** (press the left stick) goes back to **automatic speed for distance**. Set how much each press changes (RPM) and how fast a fixed shooter turns under **Servo controls → Aiming**.
+- Running your own TeleOp code? The aim path uses your code's turret, flywheel speed and hood, so you can check your aiming code too.
+
 ### What each button menu job does (without TeleOp code)
 
 | Job | In the simulator |
@@ -257,6 +263,7 @@ In between, the percentage slides between those numbers. Change any of these und
 | Flywheel + transfer (hold) | One button: spins the flywheel up, then transfers and launches while you hold it; letting go stops both. |
 | Launch volley | Starts the flywheel if it's off, waits until it's at speed, then launches **everything** the robot holds over your card's launch time – it can't be stopped once started. Each shot goes toward the up cell it's aimed at; it scores only if the robot is in the launch area in front of that cell, far enough away, with enough flywheel RPM for the distance, and is aimed within a few degrees. Shots while driving miss more. |
 | Place POLLEN / Place NECTAR in flower | Face a flower, close up, and drop one into its top. You can also launch into a flower's top by aiming the shooter at it. |
+| Aim left / right (hold), Aim farther / shorter, Aim: automatic flywheel speed | See *Aiming your shots* above. |
 | Turret presets / Turret left or right (hold) | Turns the turret at your card's servo swing speed; the presets go where you set them in **Servo controls**. Or set **Turret aiming** to auto-aim at your up cell. |
 | Flower bar down/up | Moves the bar in your card's time. |
 | Field-centric on/off, Reset heading | Field-centric: stick forward drives away from your drivers' wall. **Reset heading** makes "forward" the way the robot faces now, like resetting the IMU. |
