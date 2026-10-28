@@ -101,7 +101,7 @@ td.dt,td.rn{color:var(--muted);font-size:14px;white-space:nowrap}
 </main>
 <script>
 const CSV='https://docs.google.com/spreadsheets/d/e/2PACX-1vRgDqNVAOTDWdbdhuhn4JkCsQXRfHqGSr6Xik9CVIR8YXo7AfObhZYg_KhZ_TUCqhOzLd86maBBfk4i/pub?gid=831210487&single=true&output=csv';
-const VER='bbsim1',MAX={auto:300,tele:900};
+const VER={auto:'bbsim1',tele:'bbsim2'},MAX={auto:300,tele:900};   // TeleOp rows before bbsim2 included free AUTO points – not shown
 const $=s=>document.querySelector(s);const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const view={mode:'auto',size:'solo',bot:'all'};let RUNS=[];
 function parseCsv(txt){const rows=[];let row=[],f='',q=false;for(let k=0;k<txt.length;k++){const ch=txt[k];
@@ -111,8 +111,8 @@ function parseCsv(txt){const rows=[];let row=[],f='',q=false;for(let k=0;k<txt.l
 /** One sheet row -> a run, or null if it doesn't count. Details: bbsim1|alliance|tips N[|mode|solo/duo|robots]|ok or no: why */
 function toRun(w,c){const team=(w[c.team]||'').trim(),score=+((w[c.score]||'').trim()),d=(w[c.det]||'').trim();
   if(!/^\d{1,6}( \+ \d{1,6})?$/.test(team)||!Number.isInteger(score)||score<=0)return null;
-  if(c.det>=0&&d){const p=d.split('|');if(p[0]!==VER)return null;if(/\|no:/.test(d))return null;
-    const mode=p[3]==='tele'?'tele':'auto';if(score>MAX[mode])return null;
+  if(c.det>=0&&d){const p=d.split('|');if(/\|no:/.test(d))return null;
+    const mode=p[3]==='tele'?'tele':'auto';if(p[0]!==VER[mode])return null;if(score>MAX[mode])return null;
     const size=(p[4]==='solo'||p[4]==='duo')?p[4]:(team.includes('+')?'duo':'solo');
     return{team,score,mode,size,robots:(p[3]==='auto'||p[3]==='tele')?(p[5]||''):'',when:w[0]||''};}
   return{team,score,mode:'auto',size:team.includes('+')?'duo':'solo',robots:'',when:w[0]||''};}
