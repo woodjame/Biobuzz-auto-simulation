@@ -19,9 +19,7 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 > **Usage counting.** To see how many teams use the simulator, these pages count visits (with the country and region they come from, using GoatCounter, without cookies) and the team numbers typed onto robot cards, code uploads and match runs. Your code, names and anything personal are never sent.
 
-> **AUTO scores and Top AUTO.** Every AUTO you play through to 0:00 on the AUTO page is recorded (team numbers, the score, a fingerprint of your code – never the code itself). The best 3 are shown on the field under the Red and Blue scores when you play in full screen, and at the top of the page otherwise. A score counts for Top AUTO if every robot on the alliance runs its team's own uploaded code with a team number, the game settings are the standard ones, no robot crosses onto the other alliance's side (G402, a MAJOR FOUL – warnings like bumping the hive frame don't count), and the robot card times are realistic (flower pull 0.75 s or more, garden pickup 0.5 s or more, launching all 4 in 0.6 s or more, and accuracy left at the standard value). After each run the page says whether it counted, and why not if it didn't.
-
-> **Records.** The [Records page](https://woodjame.github.io/Biobuzz-auto-simulation/records.html) ranks the best scores from every team: **AUTO** or **TeleOp**, **Solo** (one robot) or **Duo** (two robots on one alliance), and by robot (turret, fixed shooter, Limelight, webcam, no camera). Type your team number to see your team's best, average and number of runs in each. AUTO scores are sent when you play an AUTO to 0:00; TeleOp scores when you play **Start 2:00 TeleOp** to the end with one robot, or two on the same alliance, and no opponents.
+> **Leaderboards.** Every AUTO you play to 0:00, and every solo or duo TeleOp you play to the end, can go on the **Top AUTO** board and the **[Records page](https://woodjame.github.io/Biobuzz-auto-simulation/records.html)**. See **[How the leaderboards work](#how-the-leaderboards-work)** below.
 
 > **Feedback.** Tell us what worked, what didn't and what you'd like next: click **Feedback** at the top of any simulator page, or use https://forms.gle/zr3jQuYYXK26dmqx7. It takes a minute and helps us improve the simulator for every team.
 
@@ -158,7 +156,7 @@ Change your code in your own project, click **Upload** again, check the line und
 
 ---
 
-## Full match simulator – your AUTO, then TeleOp with PS5 controllers
+## Full match simulator – your AUTO, then TeleOp with your own controllers
 
 Open the **Full match simulator** link above for AUTO + TeleOp, or the **TeleOp simulator** for TeleOp alone – everything below works the same on both, except that the TeleOp page has no AUTO and its start button is **Start 2:00 TeleOp**. Up to four teams play a whole match together on one computer – one robot card per team, and up to **8 controllers** (a driver and an operator for each team):
 
@@ -252,6 +250,72 @@ The **Live controller** panel lights up each button and stick as you press them,
 The simulator is a practice tool: launch accuracy, intake speeds and robot contact are estimates, and referees make the real calls.
 
 ---
+
+## Play TeleOp with friends
+
+### On one computer
+Up to four teams can play a full match or TeleOp on one computer, each with a driver and an operator controller (8 controllers in all). Plug in each controller (PlayStation, Xbox, REV or Logitech) (or pair it by Bluetooth), **press a button on it**, then choose it on a robot card as **Driver controller** or **Operator controller**. Chrome and Edge only see 4 controllers – use **Firefox** for more. No controller? Choose **Keyboard** for one driver.
+
+### Online – each driver on their own laptop
+The **TeleOp simulator** has a built-in **Play online** button. Up to 4 laptops play one 2:00 TeleOp match – you and a teammate against another alliance – and **each driver uses their own controller, their own button setup and their own TeleOp code**, exactly as they practice alone.
+
+**Before you join – set up your own robot card (every player, on their own laptop):**
+1. Open **https://woodjame.github.io/Biobuzz-auto-simulation/teleop.html** in **Chrome, Edge or Firefox**.
+2. Plug in your controller – **PlayStation (PS5/PS4), Xbox, REV or Logitech** – with USB or Bluetooth and **press a button** on it.
+3. On one robot card: type your **team number**, choose your controller as **Driver controller** (and a second one as **Operator controller** if you have an operator on the same laptop).
+4. Either set what each button does (**Driver buttons** / **Operator buttons**), or **Upload code** to run your real TeleOp. Set **Robot build and timing** to match your robot. Your card is saved in your browser, so you only do this once.
+5. Drive around in practice to check it feels right.
+
+**The host (one laptop – the one with the best internet):**
+1. Turn on your own robot card(s). Leave every other robot **off** – those spots are open for online players.
+2. Press **Play online → Create a room**. You get a 6-letter **room code** – send it (or **Copy invite link**) to your teammate and the other alliance.
+3. Watch the list fill in. Everyone can practice driving on the same field while you wait.
+4. When everyone is in, close the box and press **Start 2:00 TeleOp**. The host's laptop runs the field, the clock, scoring, fouls and the human players.
+
+**Joining:**
+1. Press **Play online**, type the **room code**, choose **your robot card and where it starts** (Red audience, Red rear, Blue audience or Blue rear), and press **Join**. If that spot is taken you get another one on the same alliance.
+2. You now see the host's field. Drive with your own controller. The host starts the match; when it ends, everyone gets the results.
+3. **Leave online match** puts your robot cards back the way they were.
+
+**Your code stays on your laptop.** Your TeleOp runs only in your own browser; just what it tells the robot to do (drive power, intake, flywheel speed, launches, turret, flower bar) goes to the host. Your button setup and robot card (team number, speeds, timing) are shared so the host can run your robot.
+
+**If it won't connect:** laptops connect directly to each other. Some school networks block that – try a **phone hotspot** or home Wi-Fi, or use Parsec (below). Keep the simulator tab **in front** on every laptop (browsers pause hidden tabs, and a laptop that stops answering for 8 seconds is dropped). Everyone needs the **same version** of the page – if you're told to reload, press **Ctrl+Shift+R** (**⌘+Shift+R** on a Mac). Expect a short delay (usually 50–150 ms, shown next to each player) – about like a slow Bluetooth controller.
+
+### Over the internet with Parsec (the full match, or if online won't connect)
+For a **full match** (AUTO + TeleOp) together, or when laptops can't connect directly, use **Parsec**, a free screen-sharing app made for playing games with friends:
+
+1. **The host** (a Windows computer) installs **Parsec** from parsec.app. In Parsec's **Settings → Host**, turn on **Parsec Virtual USB Gamepads** (it installs a small driver) and restart Parsec.
+2. The host opens the **Full match** or **TeleOp** simulator in **Firefox** (it sees up to 8 controllers; Chrome and Edge see 4), turns on the robot cards, and uploads everyone's code.
+3. **Friends** install Parsec (Windows or Mac), plug in their controllers, and join the host's computer from the host's invite link or friend list.
+4. Each friend's controller shows up on the host as a game controller. **Each friend presses a button**, then the host chooses that controller on the friend's robot card as **Driver controller** (and another for **Operator controller**). Check the **Controllers** panel: each controller's row lights up when its buttons are pressed.
+5. The host presses **Start full match** (or **Start 2:00 TeleOp**). Everyone sees the host's screen and drives their own robot.
+
+With Parsec the host runs everyone's code and button setups, so each team's code has to be uploaded on the host's computer. Parsec's guest controllers appear as Xbox-style controllers, which line up with the PS5 layout (Cross = A, Circle = B, Square = X, Triangle = Y).
+
+**Scores:** online matches, and any TeleOp played with opponents (both alliances), aren't sent to the Records page – only **solo** (one robot) and **duo** (two robots on one alliance, no opponents) TeleOp runs on one computer are.
+
+## How the leaderboards work
+
+There are two boards, both fed by the same score sheet:
+
+- **Top AUTO** – on the AUTO page, next to the score (under the Red and Blue scores in full screen), with the top 10 in the right-hand column. The best AUTO scores, solo and duo together.
+- **[Records page](https://woodjame.github.io/Biobuzz-auto-simulation/records.html)** – the full rankings, like a game's high-score table: **AUTO** or **TeleOp**, **Solo** or **Duo**, filtered by robot (turret, fixed shooter, Limelight, webcam, no camera). Type your team number to see your team's best, average and number of runs in each category.
+
+**What gets recorded**
+- **AUTO:** every AUTO you play through to 0:00 on the AUTO page, one row per alliance that runs a team's own code. One robot on the alliance = **Solo**; two robots = **Duo** (both team numbers are shown, e.g. 18522 + 27426).
+- **TeleOp:** on the **TeleOp simulator**, press **Start 2:00 TeleOp** with one robot (**Solo**) or two robots on the same alliance (**Duo**), no robots on the other alliance, and play to the end. (Practice driving and full matches with opponents aren't recorded.)
+- Only team numbers, the score, the robot type and a fingerprint of the code are sent – never your code. After each run, a message on the field says whether the score counts and, if not, why.
+
+**What counts**
+- Every robot runs its **own team's code** (TeleOp may be driven by hand) and has a **team number**; for AUTO, an **AprilTag camera** is chosen (None is fine).
+- **No robot crosses onto the other alliance's side in AUTO** (G402, a major foul). Warnings such as bumping the hive frame don't stop a score.
+- The **standard hive tip rules** (Tip rules in the Hives panel).
+- Realistic times on the robot card: **flower pull 0.75 s or more**, **garden pickup 0.5 s or more**, **launching all 4 in 0.6 s or more** – and the **accuracy** setting in Advanced customization left at the standard value. Every other robot setting can be changed to match your robot.
+
+**How it's ranked**
+- Each team (or pair of teams) shows its **best** score in each category; ties go to whoever got there first. Your other runs count towards your number of runs and your average.
+- New scores show up within about 5 minutes (the boards refresh every 2 minutes).
+- AUTO scores come from your code, so they repeat exactly. TeleOp scores come from a driver, so they're on the honor system – please play fair. Largo Robotics may remove any score.
 
 ## Running with your alliance partner
 
