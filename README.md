@@ -17,7 +17,7 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 > **One-time check-in.** The first time you open the simulator on a computer, it asks two questions: your team number and whether you're a student, mentor, coach, parent or other – no names or emails – and you won't be asked again on that computer. Your answer is sent to Largo Robotics so we know which teams use the simulator, and on each later day you open the AUTO, TeleOp or Full match page, one more visit is counted with the same answer (at most once a day).
 
-> **Usage counting.** To see how many teams use the simulator, these pages count visits (with the country and region they come from, using GoatCounter, without cookies) and the team numbers typed onto robot cards, code uploads and match runs. Your code, names and anything personal are never sent.
+> **Usage counting.** To see how many teams use the simulator, these pages count visits (with the country and region they come from, using GoatCounter, without cookies) and the team numbers typed onto robot cards, code uploads, match runs and which features are used (3-D view, online play, controller brand, driving mode, browser language, kind of device). If you came from a campaign link (one ending in `?utm_campaign=…`), its name is counted too, for 60 days. Your code, names and anything personal are never sent.
 
 > **Leaderboards.** Every AUTO you play to 0:00, and every solo or duo TeleOp you play to the end, can go on the **Top AUTO** board and the **[Records page](https://woodjame.github.io/Biobuzz-auto-simulation/records.html)**. See **[How the leaderboards work](#how-the-leaderboards-work)** below.
 
