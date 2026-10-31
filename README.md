@@ -13,11 +13,9 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 > **Your code stays private.** The simulator runs entirely in your browser. Your code is never uploaded to a server, never saved, and cleared when you close or reload the page. Other teams using the simulator can't see it.
 
-> **Your language.** Pick a language from the globe menu at the top of any simulator page – or from the same menu on the check-in box and the tour’s welcome card, so you can choose it before anything else – and the whole page switches to it: instructions, robot cards and their menus, match events, the check-in, the guided tour and the Blocks notes. Your code, team names and OpMode names stay as they are. In Chrome on a computer this uses Chrome's built-in translator: it runs on your computer, so nothing is sent anywhere. The first time, Chrome downloads that language (a minute or two). In Safari, Firefox or on a phone, use your browser's own *Translate this page*. The labels drawn on the field itself stay in English. To read this guide in another language, use your browser's translate button on this page.
+> **Your language.** Pick a language from the globe menu at the top of any simulator page and the whole page (instructions, robot cards, match events) switches to it. In Chrome on a computer this uses Chrome's built-in translator: it runs on your computer, so nothing is sent anywhere. The first time, Chrome downloads that language (a minute or two). In Safari, Firefox or on a phone, use your browser's own *Translate this page*. The labels drawn on the field itself stay in English. To read this guide in another language, use your browser's translate button on this page.
 
 > **One-time check-in.** The first time you open the simulator on a computer, it asks two questions: your team number and whether you're a student, mentor, coach, parent or other – no names or emails – and you won't be asked again on that computer. Your answer is sent to Largo Robotics so we know which teams use the simulator, and on each later day you open the AUTO, TeleOp or Full match page, one more visit is counted with the same answer (at most once a day).
-
-> **Guided tour.** Right after the check-in, a one-minute tour offers to show you around – choose **Show me around** or **Skip tour**. It lights up each part of the page in turn: on the AUTO page, your robot card, uploading your code (Java or Blocks), checking what was read, **Open code**, **Translate** and **SimRecorder**; on the TeleOp and Full match pages, your controller, the robot card, the Sample TeleOp, running your own TeleOp code, the views, the Driver Hub and online play. Use **Back** / **Next** (or the arrow keys) and **Esc** to close. Start it again any time with the **Tour** button at the top of the page.
 
 > **Usage counting.** To see how many teams use the simulator, these pages count visits (with the country and region they come from, using GoatCounter, without cookies) and the team numbers typed onto robot cards, code uploads, match runs and which features are used (3-D view, online play, controller brand, driving mode, browser language, kind of device). If you came from a campaign link (one ending in `?utm_campaign=…`), its name is counted too, for 60 days. Your code, names and anything personal are never sent.
 
@@ -83,10 +81,9 @@ These numbers (not your code) are remembered in your browser, so you only enter 
 
 ### Step 3 – Upload your code
 
-1. **Java or Blocks?** Beside **Upload** on your card is a **Java | Blocks** switch. Choose the one your team programs in, so the simulator knows how to read your file.
-2. Click **Upload** on your card (or drag the files onto the card).
-3. Choose your auto's `.java` file – or, in **Blocks** mode, its `.blk` file (in the FTC Blocks editor, use **Download Op Mode**; see *Blocks programs* below).
-4. **Java: if your auto uses other files, select them all at the same time** (Ctrl-click on Windows/Chromebook, ⌘-click on Mac):
+1. Click **Upload** on your card (or drag the files onto the card).
+2. Choose your auto's `.java` file.
+3. **If your auto uses other files, select them all at the same time** (Ctrl-click on Windows/Chromebook, ⌘-click on Mac):
 
 | Your project has… | Select together |
 |---|---|
@@ -95,14 +92,6 @@ These numbers (not your code) are remembered in your browser, so you only enter 
 | Shared routes (helper library cookbook) | The auto **and** `Routes.java` (and `Tunables.java`) |
 | Pedro paths in one file, the routine in another | Both files |
 | Servos created in a hardware class | The auto **and** that hardware class (so the servos show up) |
-
-#### Blocks programs (.blk)
-
-Teams that program in **FTC Blocks** upload the `.blk` file the Blocks editor saves: on the Robot Controller's Blocks page, open your OpMode and click **Download Op Mode** (or select OpModes on the Blocks list and **Download Selected Op Modes**). Set your card's switch to **Blocks** and upload it – one `.blk` file holds the whole OpMode, so there are no helper files to add. (A `.blk` file is recognised in Java mode too, and the switch flips to Blocks.)
-
-The simulator turns your blocks into the same Java OpMode the FTC SDK would run – each device from your configuration (`left_driveAsDcMotor` becomes `hardwareMap.get(DcMotor.class, "left_drive")`), your **runOpMode** and every other function, and your variables – so motors, encoders and **RUN_TO_POSITION**, servos and CR servos, the IMU (yaw, pitch, roll, reset yaw), gamepads, timers, telemetry and your own functions all work the same as Java code. The card shows *Blocks: MyAuto.blk – AUTO, 120 blocks*; press **View as Java** to read the Java it runs. Camera blocks (AprilTag, TensorFlow, VisionPortal) aren't simulated – their detection lists come back empty, and the card says so. Your AUTO vs. TeleOp comes from the OpMode type you chose in the Blocks editor.
-
-**How a Blocks AUTO is shown.** When you upload a Blocks AUTO, the simulator runs it once – INIT, then a 30-second AUTO – on a model of your card's drivetrain (its **drive motor RPM** and **wheel size**, mecanum or two-wheel from your motor names) and records where the robot goes, plus when the intake, flywheel and feeder run. Encoders, **RUN_TO_POSITION**, `sleep`, timers and the IMU all follow that model, and the field walls and the hive stop the robot like the real field. The card says what happened, like *Test run: drove 140 in. in 13.5 s*, and the field replays it. Because the run starts from the card's starting spot and uses its drivetrain numbers, **upload the .blk file again after you change those numbers or move it to another card**. Set your motor directions in your blocks the way your real robot needs them – the simulator trusts that positive power drives each wheel forward.
 
 The simulator reads these code styles directly:
 
@@ -195,7 +184,7 @@ The cues are spoken aloud when the browser can; the **Sound** button turns that 
    - **Plugging in 8:** use a powered USB hub, or a mix of USB and Bluetooth. A computer's Bluetooth usually handles only about 7 devices at once, and fewer smoothly.
    - **Check every controller** before the match: press a button and watch its row light up in the **Controllers** panel, then make sure it's on the right robot card. If a row says "non-standard layout", plug that controller in with USB.
 2. **Turn on the card** for each robot in the match (the slot where it starts).
-3. **Upload code** – set the card's **Java | Blocks** switch to how your team programs, then select your **AUTO and TeleOp files together** (Blocks: their `.blk` files), with every helper file they use (like `Shooter.java`, `Intake.java`, Pedro's `Constants.java`), or drag them onto the card. Files with `@Autonomous` run in AUTO, files with `@TeleOp` run in TeleOp, and helper files go to both. The card shows what was read, like *Pedro Pathing: 10 paths, 3 launches*. No AUTO code? The robot sits still in AUTO. No TeleOp code? You drive with the button menus (step 5). Like the AUTO page, **your code is never saved or sent anywhere** – it's gone when the page closes.
+3. **Upload code** – select your **AUTO and TeleOp files together**, with every helper file they use (like `Shooter.java`, `Intake.java`, Pedro's `Constants.java`), or drag them onto the card. Files with `@Autonomous` run in AUTO, files with `@TeleOp` run in TeleOp, and helper files go to both. The card shows what was read, like *Pedro Pathing: 10 paths, 3 launches*. No AUTO code? The robot sits still in AUTO. No TeleOp code? You drive with the button menus (step 5). Like the AUTO page, **your code is never saved or sent anywhere** – it's gone when the page closes.
 4. **Choose its Driver controller (gamepad1)**, and an **Operator controller (gamepad2)** if your team uses one. No controller? Choose **Keyboard** (W A S D drive, J / L turn, Q intake, Space launch).
 5. **No TeleOp code uploaded? The card uses the Sample TeleOp.** The robot runs the button setup on its card – the same controls as **SampleTeleOp.java**, a real FTC TeleOp the simulator writes for you. Press **View sample code** to read it or **Download SampleTeleOp.java** to put it on your robot (change the device names to match your configuration and tune the constants at the top); change a button on the card and the code changes with it. Upload it back, or your own official TeleOp, to run it as code. When you upload your own TeleOp, the simulator reads its buttons into the menus, and **In TeleOp → Use the button menus instead** lets you change every button and servo setting by hand.
 
@@ -236,7 +225,7 @@ The cues are spoken aloud when the browser can; the **Sound** button turns that 
 
 ### Your TeleOp code
 
-When you upload a TeleOp – a `.java` file, or a Blocks `.blk` file with the card's switch on **Blocks** – the simulator **runs your real code** – your `runOpMode()` or `loop()`, your helper classes, your toggles and state machines – about 50 times a second, like a Control Hub. Your controllers feed `gamepad1` and `gamepad2`, and your motors and servos move the simulated robot. If your code has a bug, you see it here first.
+When you upload a TeleOp, the simulator **runs your real code** – your `runOpMode()` or `loop()`, your helper classes, your toggles and state machines – about 50 times a second, like a Control Hub. Your controllers feed `gamepad1` and `gamepad2`, and your motors and servos move the simulated robot. If your code has a bug, you see it here first.
 
 - **When it runs:** in practice mode it starts right away (**Restart my code** runs INIT and START again). In a match it INITs during the 8 s transition and STARTs when TeleOp begins, then stops at 0:00 – like pressing INIT, ▶ and ■ on the Driver Hub. If your `init()` moves a servo, the event log warns you: that's powered movement during the transition (G403).
 - **Driver Hub panel** (under *Robot status*): your `telemetry` lines, live. If your code throws an exception, it stops just like on the robot, and the panel shows the error with the file and line number.
