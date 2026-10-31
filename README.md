@@ -301,7 +301,7 @@ The **Live controller** panel lights up each button and stick as you press them,
 - **Flowers:** POLLEN or NECTAR go in the top; only POLLEN comes out the bottom (G418). Elements in the scoring part of a flower score **2** each for the alliance whose NECTAR is on top; the alliance with the **bottom** NECTAR gets **5**. NECTAR in a flower before 1:00 is left is a **major foul** (G410, 20 points to the other alliance).
 - **Gardens:** each element in your garden at the end scores **1**. **PARK:** **5** for each robot in its loading zone at the end.
 - **AUTO** points (tips, LEAVE, PARK) carry over from your uploaded code's AUTO.
-- **AUTO shooting zones** stay on each alliance's own side of the field: the zone in front of the up cell stops where the robot would cross the center line, so the red and blue zones never overlap. Contacting an opposing robot on its side in AUTO is a major foul (G402).
+- **Shooting zones** run along the wall behind the up cell (36 in. deep) **from your alliance-wall corner to the hive** – anywhere in that stretch counts – and on past the hive only in the cone in front of the cell. In AUTO the zone stops where the robot would cross the center line, so the red and blue zones never overlap; contacting an opposing robot on its side in AUTO is a major foul (G402). In TeleOp it reaches 3 ft past the hive. (The manual doesn't define a shooting zone – this is the simulator's model of where a shot can reach the cell's opening.)
 - No powered movement in the transition or after 0:00 (G403, G404). Scoring is counted once everything comes to rest.
 - **Ranking points:** SWARM (LEAVE + PARK ≥ 16), POLLINATOR 1 and 2 (4 and 7 tips), WIN 3 / TIE 1.
 
@@ -360,7 +360,7 @@ With Parsec the host runs everyone's code and button setups, so each team's code
 
 There are two boards, both fed by the same score sheet:
 
-- **Top scores band** – across the top of every simulator page: the top 5 **AUTO** and top 5 **TeleOp** scores (best per team or pair, solo and duo together), with a link to all the records. In full screen on the AUTO page, the top 3 AUTO also show under the Red and Blue scores.
+- **Top 10 scores** – a gold-framed card at the top right of every simulator page (above **Servos** on the AUTO page, above the **Live controller** on the TeleOp pages): the top 10 **AUTO** and top 10 **TeleOp** scores (best per team or pair, solo and duo together), with medals for the top 3, your own team outlined in green, and a link to all the records. On a phone they scroll in a band under the page header instead. In full screen on the AUTO page, the top 3 AUTO also show under the Red and Blue scores.
 - **[Records page](https://woodjame.github.io/Biobuzz-auto-simulation/records.html)** – the full rankings, like a game's high-score table: **AUTO** or **TeleOp**, **Solo** or **Duo**, filtered by robot (turret, fixed shooter, Limelight, webcam, no camera). Type your team number to see your team's best, average and number of runs in each category.
 
 **What gets recorded**
