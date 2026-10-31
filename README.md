@@ -17,6 +17,8 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 > **One-time check-in.** The first time you open the simulator on a computer, it asks two questions: your team number and whether you're a student, mentor, coach, parent or other – no names or emails – and you won't be asked again on that computer. Your answer is sent to Largo Robotics so we know which teams use the simulator, and on each later day you open the AUTO, TeleOp or Full match page, one more visit is counted with the same answer (at most once a day).
 
+> **On a phone.** The field comes first, at the top of the screen; scroll down for the robot cards and settings. The robot cards stay hidden until you choose how many robots you're simulating.
+
 > **Guided tour.** Right after the check-in, a one-minute tour offers to show you around – choose **Show me around** or **Skip tour**. It lights up each part of the page in turn: on the AUTO page, choosing how many robots, your robot card, uploading your code, checking what was read, **Open code**, **Translate** and **SimRecorder**; on the TeleOp and Full match pages, choosing how many robots, your controller, the robot card, the Live controller panel where you set your buttons, running your own TeleOp code, the views, the Driver Hub and online play. Use **Back** / **Next** (or the arrow keys) and **Esc** to close. Start it again any time with the **Tour** button at the top of the page.
 
 > **Usage counting.** To see how many teams use the simulator, these pages count visits (with the country and region they come from, using GoatCounter, without cookies) and the team numbers typed onto robot cards, code uploads, match runs and which features are used (3-D view, online play, controller brand, driving mode, browser language, kind of device). If you came from a campaign link (one ending in `?utm_campaign=…`), its name is counted too, for 60 days. Your code, names and anything personal are never sent.
@@ -31,7 +33,7 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 ### Step 1 – Choose how many robots
 
-At the top of the **Robots** panel, choose **how many robots you're simulating: 1, 2, 3 or 4**. The robot cards stay folded away in a drop-down until you choose.
+At the top of the **Robots** panel, choose **how many robots you're simulating: 1, 2, 3 or 4**. The robot cards stay hidden until you choose; then they open in a drop-down below.
 
 - **1 robot:** pick its **starting spot** – only that robot's card is shown, and only it plays.
 - **2 robots:** pick **Both Red**, **Both Blue** or **One of each**.
@@ -193,6 +195,12 @@ The cues are spoken aloud when the browser can; the **Sound** button turns that 
    - **Plugging in 8:** use a powered USB hub, or a mix of USB and Bluetooth. A computer's Bluetooth usually handles only about 7 devices at once, and fewer smoothly.
    - **Check every controller** before the match: press a button and watch its row light up in the **Controllers** panel, then make sure it's on the right robot in the **Live controller** panel. If a row says "non-standard layout", plug that controller in with USB.
 2. **Choose how many robots** at the top of the Robots panel (1–4) – and, for 1 or 2, which starting spots. Only those robots' cards are shown, and only they play.
+   - **AI opponents:** with 1 or 2 robots, set **Other alliance** to an AI team instead of **Empty**, and the empty spots on the other alliance are driven by AI:
+     - **Highly competitive** – quick robots that cycle fast: collect 3, launch from their launch zone into their up cell, repeat, and park with about 12 seconds left.
+     - **Heavy defense** – heavy robots that get in the way: they guard the path between your robot and its launch spot, and back right off rather than pin you (so they don't give away G421 fouls). With only one of you to cover, the second AI robot scores.
+     - **Moderate** – average robots that collect 2, take a moment to line up their shots and park early.
+
+     The AI robots drive in practice and in TeleOp (in a full match they wait out AUTO, because they have no AUTO code). They follow the same rules as everyone else – the same driving, intake, flywheel, turret, aim path, pushing and fouls – because each one is driven through a virtual controller, just like yours. Matches with AI robots have opponents, so they don't go on the Records page. AI robots aren't available in online matches.
 3. **Upload code** – select your **AUTO and TeleOp files together**, with every helper file they use (like `Shooter.java`, `Intake.java`, Pedro's `Constants.java`), or drag them onto the card. Files with `@Autonomous` run in AUTO, files with `@TeleOp` run in TeleOp, and helper files go to both. The card shows what was read, like *Pedro Pathing: 10 paths, 3 launches*. No AUTO code? The robot sits still in AUTO. No TeleOp code? You drive with the button menus (step 5). Like the AUTO page, **your code is never saved or sent anywhere** – it's gone when the page closes.
 4. **In the Live controller panel** (top right), under **Controllers and buttons**, pick the robot, then its **Driver controller (gamepad1)**, and an **Operator controller (gamepad2)** if your team uses one. No controller? Choose **Keyboard** (W A S D drive, J / L turn, Q intake, Space launch).
 5. **No TeleOp code uploaded? The card uses the Sample TeleOp.** The robot runs the button setup in the **Live controller** panel – the same controls as **SampleTeleOp.java**, a real FTC TeleOp the simulator writes for you. Press **View sample code** to read it or **Download SampleTeleOp.java** to put it on your robot (change the device names to match your configuration and tune the constants at the top); change a button in the panel and the code changes with it. Upload it back, or your own official TeleOp, to run it as code. When you upload your own TeleOp, the simulator reads its buttons into the menus, and **In TeleOp → Use the button menus instead** lets you change every button and servo setting by hand.
