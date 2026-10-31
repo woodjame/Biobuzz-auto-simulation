@@ -15,7 +15,7 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 > **Your language.** Pick a language from the globe menu at the top of any simulator page – or from the same menu on the check-in box and the tour’s welcome card, so you can choose it before anything else – and the whole page switches to it: instructions, robot cards and their menus, match events, the check-in and the guided tour. Your code, team names and OpMode names stay as they are. In Chrome on a computer this uses Chrome's built-in translator: it runs on your computer, so nothing is sent anywhere. The first time, Chrome downloads that language (a minute or two). In Safari, Firefox or on a phone, use your browser's own *Translate this page*. The labels drawn on the field itself stay in English. To read this guide in another language, use your browser's translate button on this page.
 
-> **One-time check-in.** The first time you open the simulator on a computer, it asks two questions: your team number and whether you're a student, mentor, coach, parent or other – no names or emails – and you won't be asked again on that computer. Your answer is sent to Largo Robotics so we know which teams use the simulator, and on each later day you open the AUTO, TeleOp or Full match page, one more visit is counted with the same answer (at most once a day).
+> **One-time check-in.** The first time you open the simulator on a computer, it asks two questions – your **team number** (or tick **Not on a team**) and your **role**: Student, Mentor, Coach, Parent or Other. No names or emails, and you won't be asked again on that computer. Your answer is sent to Largo Robotics so we know which teams use the simulator, and on each later day you open the AUTO, TeleOp or Full match page, one more visit is counted with the same answer (at most once a day). Your team is outlined in green on the Top 10 scores. Your robot code is never sent.
 
 > **On a phone.** The field comes first, at the top of the screen; scroll down for the robot cards and settings. The robot cards stay hidden until you choose how many robots you're simulating.
 
@@ -23,7 +23,7 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 > **Usage counting.** To see how many teams use the simulator, these pages count visits (with the country and region they come from, using GoatCounter, without cookies) and the team numbers typed onto robot cards, code uploads, match runs and which features are used (3-D view, online play, controller brand, driving mode, browser language, kind of device). If you came from a campaign link (one ending in `?utm_campaign=…`), its name is counted too, for 60 days. Your code, names and anything personal are never sent.
 
-> **Leaderboards.** Every AUTO you play to 0:00, and every solo or duo TeleOp you play to the end, can go on the **Top AUTO** board and the **[Records page](https://woodjame.github.io/Biobuzz-auto-simulation/records.html)**. See **[How the leaderboards work](#how-the-leaderboards-work)** below.
+> **Leaderboards.** Every AUTO you play to 0:00, every solo or duo TeleOp you play to the end, and every solo or duo full match, can go on that page's **Top 10** card and the **[Records page](https://woodjame.github.io/Biobuzz-auto-simulation/records.html)**. See **[How the leaderboards work](#how-the-leaderboards-work)** below.
 
 > **Feedback.** Tell us what worked, what didn't and what you'd like next: click **Feedback** at the top of any simulator page, or use https://forms.gle/3GBBndVtxXPdDvw2A. It takes a minute and helps us improve the simulator for every team.
 
@@ -83,7 +83,18 @@ Under the card's second fold-out, **Error**, set how much your robot's position 
 
 Most teams only need the camera and the servos – the other defaults are typical robots. The only robot settings that keep a run off Top AUTO: a flower pull under 0.75 s, a garden pickup under 0.5 s, launching all 4 in under 0.6 s, or a changed accuracy. Everything else can be set to match your robot. The match itself (the human player, ranking-point thresholds, the random seed), the field layout (parking zones, flowers, gardens) and the AprilTag IDs under each cell run in the background with the BIOBUZZ manual's values and can't be changed.
 
-The hive's tip rules are the standard ones from the game manual (Table 10-3).
+**Hive tips** – the same in AUTO and TeleOp. A cell tips once **POLLEN + 1.65 × NECTAR ≥ 7.48**. The manual gives the sizes, not the weights: POLLEN ≈ 2.8 in., NECTAR ≈ 3.6 in., both Gopher ResisDent polyethylene balls (manual 9.8). Taking them as hollow balls with the same wall, weight goes with diameter², so one NECTAR weighs (3.6 ÷ 2.8)² ≈ **1.65 POLLEN** (solid balls would make it 2.1 – then 4 NECTAR would tip, which they don't). The threshold comes from the three known tipping loads – **8 POLLEN**, **5 NECTAR**, **3 NECTAR + 3 POLLEN**, each the smallest of its kind: it has to be more than 7 and at most 7.96, and the simulator uses the middle, 7.48. Every smallest tipping load:
+
+| NECTAR in the cell | POLLEN it takes to tip |
+|---|---|
+| 0 | 8 |
+| 1 | 6 |
+| 2 | 5 |
+| 3 | 3 |
+| 4 | 1 |
+| 5 | 0 (5 NECTAR tip it alone) |
+
+Anything heavier tips too, and heavier loads tip faster. Each up cell starts AUTO with 3 NECTAR, so 3 POLLEN – or 1 NECTAR + 1 POLLEN, or 2 more NECTAR – tip it the first time. The hive's hint under each cell shows the quickest way to tip it and the POLLEN-only way. The three known loads are under **Settings → Hive**; change them and every other mix is worked out again (a run with changed tip rules doesn't count for the records).
 
 Each number is a **slider**: drag it, use the arrow keys, or click the number to type an exact value. Short choices (camera, shooter, drive motor RPM, wheel size…) are **tiles** – tap the one that matches your robot.
 
@@ -354,14 +365,14 @@ For a **full match** (AUTO + TeleOp) together, or when laptops can't connect dir
 
 With Parsec the host runs everyone's code and button setups, so each team's code has to be uploaded on the host's computer. Parsec's guest controllers appear as Xbox-style controllers, which line up with the PS5 layout (Cross = A, Circle = B, Square = X, Triangle = Y).
 
-**Scores:** online matches, and any TeleOp played with opponents (both alliances), aren't sent to the Records page – only **solo** (one robot) and **duo** (two robots on one alliance, no opponents) TeleOp runs on one computer are.
+**Scores:** online matches, and any TeleOp played with opponents (both alliances), aren't sent to the Records page – only **solo** (one robot) and **duo** (two robots on one alliance, no opponents or AI robots) runs on one computer are: **Start 2:00 TeleOp** on the TeleOp page goes on the **TeleOp** lists, and **Start full match** on the Full match page goes on the **Full match** lists (AUTO + TeleOp, up to 1200). TeleOp and full-match scores are kept apart by **TeleOp code**: **Sample code** if a robot used the Sample TeleOp (button setup), **Own code** if every robot ran its team's uploaded TeleOp.
 
 ## How the leaderboards work
 
 There are two boards, both fed by the same score sheet:
 
-- **Top 10 scores** – a gold-framed card at the top right of every simulator page (above **Servos** on the AUTO page, above the **Live controller** on the TeleOp pages): the top 10 **AUTO** and top 10 **TeleOp** scores (best per team or pair, solo and duo together), with medals for the top 3, your own team outlined in green, and a link to all the records. On a phone they scroll in a band under the page header instead. In full screen on the AUTO page, the top 3 AUTO also show under the Red and Blue scores.
-- **[Records page](https://woodjame.github.io/Biobuzz-auto-simulation/records.html)** – the full rankings, like a game's high-score table: **AUTO** or **TeleOp**, **Solo** or **Duo**, filtered by robot (turret, fixed shooter, Limelight, webcam, no camera). Type your team number to see your team's best, average and number of runs in each category.
+- **Top 10** – a gold-framed card at the top right of every simulator page, showing only that page's scores (best per team or pair, solo and duo together): the **AUTO** page shows the top 10 AUTO scores (above **Servos**); the **TeleOp** page shows the top 10 TeleOp scores in two lists, **Sample code** and **Own code** (above the **Live controller**); the **Full match** page shows the top 10 full-match scores. Each has with medals for the top 3, your own team outlined in green, and a link to all the records. On a phone they scroll in a band under the page header instead. In full screen on the AUTO page, the top 3 AUTO also show under the Red and Blue scores.
+- **[Records page](https://woodjame.github.io/Biobuzz-auto-simulation/records.html)** – the full rankings, like a game's high-score table: **AUTO**, **TeleOp** or **Full match**, **Solo** or **Duo**, **Sample code** or **Own code** (TeleOp and Full match), filtered by robot (turret, fixed shooter, Limelight, webcam, no camera). Type your team number to see your team's best, average and number of runs in each category.
 
 **What gets recorded**
 - **AUTO:** every AUTO you play through to 0:00 on the AUTO page, one row per alliance that runs a team's own code. One robot on the alliance = **Solo**; two robots = **Duo** (both team numbers are shown, e.g. 18522 + 27426).

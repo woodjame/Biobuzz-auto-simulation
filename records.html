@@ -55,6 +55,7 @@ td.dt,td.rn{color:var(--muted);font-size:14px;white-space:nowrap}
 .stats{display:flex;gap:18px;color:var(--muted);font-size:14px;padding:10px 16px;border-top:1px solid var(--line);flex-wrap:wrap}
 .legal{text-align:center;color:var(--muted);font-size:12.5px;margin:6px 0 24px}
 @media (max-width:640px){td.dt,th.dt,td.rn,th.rn{display:none}td,th{padding:10px 10px}.robot{padding:3px 8px;font-size:13px}}
+[hidden]{display:none!important}
 </style>
 <script data-goatcounter="https://biobuzzsim.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
@@ -68,8 +69,12 @@ td.dt,td.rn{color:var(--muted);font-size:14px;white-space:nowrap}
 <main class="wrap">
   <section class="board" aria-label="High scores">
     <div class="bar">
-      <div class="seg" id="segMode" role="group" aria-label="Period"><button data-v="auto" aria-pressed="true">AUTO</button><button data-v="tele" aria-pressed="false">TeleOp</button></div>
+      <div class="seg" id="segMode" role="group" aria-label="Period"><button data-v="auto" aria-pressed="true">AUTO</button><button data-v="tele" aria-pressed="false">TeleOp</button><button data-v="full" aria-pressed="false">Full match</button></div>
       <div class="seg" id="segSize" role="group" aria-label="Solo or duo"><button data-v="solo" aria-pressed="true">Solo</button><button data-v="duo" aria-pressed="false">Duo</button></div>
+    </div>
+    <div class="bar" id="codeBar" hidden>
+      <span class="lbl">TeleOp code</span>
+      <div class="seg" id="segCode" role="group" aria-label="TeleOp code"><button data-v="all" aria-pressed="true">All</button><button data-v="sample" aria-pressed="false">Sample code</button><button data-v="own" aria-pressed="false">Own code</button></div>
     </div>
     <div class="bar">
       <span class="lbl">Robot</span>
@@ -91,7 +96,8 @@ td.dt,td.rn{color:var(--muted);font-size:14px;white-space:nowrap}
       <h2>How to get on the board</h2>
       <ul>
         <li><b>AUTO:</b> play an AUTO to 0:00 on the AUTO simulator with your team’s own code and team number. One robot is <b>Solo</b>; two on the same alliance is <b>Duo</b>.</li>
-        <li><b>TeleOp:</b> on the TeleOp simulator, press <b>Start 2:00 TeleOp</b> with one robot (Solo) or two on the same alliance (Duo), and play to the end.</li>
+        <li><b>TeleOp:</b> on the TeleOp simulator, press <b>Start 2:00 TeleOp</b> with one robot (Solo) or two on the same alliance (Duo), and play to the end. Scores are split by <b>TeleOp code</b>: <b>Sample code</b> if a robot used the Sample TeleOp (button setup), <b>Own code</b> if every robot ran its team’s uploaded TeleOp.</li>
+        <li><b>Full match:</b> on the Full match simulator, press <b>Start full match</b> (AUTO + TeleOp) with one robot or two on the same alliance and play to the end – no AI robots.</li>
         <li>Standard game settings, realistic robot times (flower pull 0.75 s or more, garden pickup 0.5 s or more, launching all 4 in 0.6 s or more, and accuracy left at the standard value), an AprilTag camera chosen (AUTO), and no major fouls (G402). The simulator tells you after each run if it counted.</li>
         <li>Each team (or pair of teams) shows its best score. The board updates every few minutes. TeleOp scores are on the honor system – please play fair.</li>
       </ul>
@@ -101,9 +107,12 @@ td.dt,td.rn{color:var(--muted);font-size:14px;white-space:nowrap}
 </main>
 <script>
 const CSV='https://docs.google.com/spreadsheets/d/e/2PACX-1vRgDqNVAOTDWdbdhuhn4JkCsQXRfHqGSr6Xik9CVIR8YXo7AfObhZYg_KhZ_TUCqhOzLd86maBBfk4i/pub?gid=831210487&single=true&output=csv';
-const VER={auto:'bbsim1',tele:'bbsim2'},MAX={auto:300,tele:900};   // TeleOp rows before bbsim2 included free AUTO points – not shown
+const VER={auto:'bbsim1',tele:'bbsim2',full:'bbsim2'},MAX={auto:300,tele:900,full:1200};   // TeleOp rows before bbsim2 included free AUTO points – not shown
 const $=s=>document.querySelector(s);const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const view={mode:'auto',size:'solo',bot:'all'};let RUNS=[];
+const view={mode:'auto',size:'solo',bot:'all',code:'all'};
+const MODE_NAME={auto:'AUTO',tele:'TeleOp',full:'Full match'};
+/** TeleOp code type: Details "code:own"/"code:sample", or for older rows the Code column ("manual" = no uploaded code). */
+function codeOf(p,w,c){const f=p.find(x=>/^code:/.test(x));if(f)return f.slice(5)==='own'?'own':'sample';const cd=c.code>=0?(w[c.code]||'').trim():'';if(!cd)return'sample';return cd.split('-').some(x=>x==='manual')?'sample':'own';}let RUNS=[];
 function parseCsv(txt){const rows=[];let row=[],f='',q=false;for(let k=0;k<txt.length;k++){const ch=txt[k];
   if(q){if(ch==='"'){if(txt[k+1]==='"'){f+='"';k++;}else q=false;}else f+=ch;}
   else if(ch==='"')q=true;else if(ch===','){row.push(f);f='';}else if(ch==='\n'||ch==='\r'){if(ch==='\r'&&txt[k+1]==='\n')k++;row.push(f);rows.push(row);row=[];f='';}else f+=ch;}
@@ -112,9 +121,9 @@ function parseCsv(txt){const rows=[];let row=[],f='',q=false;for(let k=0;k<txt.l
 function toRun(w,c){const team=(w[c.team]||'').trim(),score=+((w[c.score]||'').trim()),d=(w[c.det]||'').trim();
   if(!/^\d{1,6}( \+ \d{1,6})?$/.test(team)||!Number.isInteger(score)||score<=0)return null;
   if(c.det>=0&&d){const p=d.split('|');if(/\|no:/.test(d))return null;
-    const mode=p[3]==='tele'?'tele':'auto';if(p[0]!==VER[mode])return null;if(score>MAX[mode])return null;
+    const mode=p[3]==='tele'||p[3]==='full'?p[3]:'auto';if(p[0]!==VER[mode])return null;if(score>MAX[mode])return null;
     const size=(p[4]==='solo'||p[4]==='duo')?p[4]:(team.includes('+')?'duo':'solo');
-    return{team,score,mode,size,robots:(p[3]==='auto'||p[3]==='tele')?(p[5]||''):'',when:w[0]||''};}
+    return{team,score,mode,size,code:mode==='auto'?null:codeOf(p,w,c),robots:(p[3]==='auto'||p[3]==='tele'||p[3]==='full')?(p[5]||''):'',when:w[0]||''};}
   return{team,score,mode:'auto',size:team.includes('+')?'duo':'solo',robots:'',when:w[0]||''};}
 const CAM={limelight:'Limelight 3A',c270:'C270 webcam',c920:'C920 webcam',none:'No camera',nocam:'No camera'};
 const SHOOT={turret:'Turret',front:'Fixed shooter',back:'Fixed shooter'};
@@ -123,11 +132,11 @@ function botMatch(r,b){if(b==='all')return true;if(!r)return false;return r.spli
   return b==='turret'?s==='turret':b==='fixed'?(s==='front'||s==='back'):b==='limelight'?c==='limelight':b==='webcam'?(c==='c270'||c==='c920'):b==='nocam'?(c==='none'||c==='nocam'):false;});}
 function dateOf(s){const t=Date.parse(s);if(!isNaN(t))return new Date(t);const m=/^(\d{1,2})\/(\d{1,2})\/(\d{4})/.exec(s||'');return m?new Date(+m[3],+m[1]-1,+m[2]):null;}
 const fmtDate=s=>{const d=dateOf(s);return d?d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}):''};
-function render(){const runs=RUNS.filter(r=>r.mode===view.mode&&r.size===view.size&&botMatch(r.robots,view.bot));
+function render(){$('#codeBar').hidden=view.mode==='auto';const runs=RUNS.filter(r=>r.mode===view.mode&&r.size===view.size&&botMatch(r.robots,view.bot)&&(view.mode==='auto'||view.code==='all'||r.code===view.code));
   const by=new Map();for(const r of runs){const b=by.get(r.team);if(!b)by.set(r.team,{best:r,n:1});else{b.n++;if(r.score>b.best.score)b.best=r;}}
   const list=[...by.values()].sort((a,b)=>b.best.score-a.best.score||((dateOf(a.best.when)||0)-(dateOf(b.best.when)||0)));
   $('#rows').innerHTML=list.length?list.slice(0,100).map((e,k)=>`<tr class="${k===0?'first':''}"><td class="rk">${k+1}</td><td class="tm">${esc(e.best.team)}${k===0?'<span class="crown">Record</span>':''}</td><td><span class="robot">${esc(robotLabel(e.best.robots))}</span></td><td class="sc">${e.best.score}</td><td class="dt">${esc(fmtDate(e.best.when))}</td><td class="rn">${e.n}</td></tr>`).join('')
-    :`<tr><td colspan="6" class="empty">No ${view.mode==='auto'?'AUTO':'TeleOp'} ${view.size} scores${view.bot!=='all'?' for this robot type':''} yet – be the first.</td></tr>`;
+    :`<tr><td colspan="6" class="empty">No ${MODE_NAME[view.mode]} ${view.size} scores${view.mode!=='auto'&&view.code!=='all'?' with '+(view.code==='own'?'own':'sample')+' code':''}${view.bot!=='all'?' for this robot type':''} yet – be the first.</td></tr>`;
   const teams=new Set(RUNS.flatMap(r=>r.team.split(' + ')));
   $('#stats').innerHTML=`<span>${runs.length} run${runs.length===1?'':'s'} in this list</span><span>${RUNS.length} counted runs in all</span><span>${teams.size} team${teams.size===1?'':'s'}</span>`;
   renderCareer();}
@@ -135,17 +144,17 @@ function renderCareer(){const q=$('#teamQ').value.replace(/[^\d]/g,'');const box
   if(!q){box.innerHTML='<p>Type a team number to see its best scores, runs and average in every category.</p>';return;}
   const mine=RUNS.filter(r=>r.team.split(' + ').includes(q));
   if(!mine.length){box.innerHTML=`<p>No counted runs for team ${esc(q)} yet.</p>`;return;}
-  const cats=[['auto','solo','AUTO solo'],['auto','duo','AUTO duo'],['tele','solo','TeleOp solo'],['tele','duo','TeleOp duo']];
+  const cats=[['auto','solo','AUTO solo'],['auto','duo','AUTO duo'],['tele','solo','TeleOp solo'],['tele','duo','TeleOp duo'],['full','solo','Full match solo'],['full','duo','Full match duo']];
   box.innerHTML='<div class="career"><span class="h">Category</span><span class="h">Best</span><span class="h">Average</span><span class="h">Runs</span>'+cats.map(([m,s,l])=>{const r=mine.filter(x=>x.mode===m&&x.size===s);if(!r.length)return`<b>${l}</b><span>–</span><span>–</span><span>0</span>`;
     const best=Math.max(...r.map(x=>x.score)),avg=r.reduce((a,x)=>a+x.score,0)/r.length;return`<b>${l}</b><span>${best}</span><span>${avg.toFixed(1)}</span><span>${r.length}</span>`;}).join('')+'</div>';}
 async function load(){try{const res=await fetch(CSV,{cache:'no-store'});if(!res.ok)throw new Error(res.status);const rows=parseCsv(await res.text());
     const head=(rows.shift()||[]).map(h=>h.trim().toLowerCase());const col=(n,d)=>head.indexOf(n)>=0?head.indexOf(n):d;
-    const c={team:col('team',1),score:col('score',2),det:col('details',head.length>4?4:-1)};
+    const ci=head.findIndex(h=>/code/.test(h));const c={team:col('team',1),score:col('score',2),det:col('details',head.length>4?4:-1),code:ci>=0?ci:(head.length>4?3:-1)};
     RUNS=rows.map(w=>toRun(w,c)).filter(Boolean);render();}
   catch(e){$('#rows').innerHTML='<tr><td colspan="6" class="empty">The records couldn’t load right now. Try again in a minute.</td></tr>';}}
-for(const[id,key]of[['#segMode','mode'],['#segSize','size'],['#segBot','bot']])$(id).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;view[key]=b.dataset.v;$(id).querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();});
+for(const[id,key]of[['#segMode','mode'],['#segSize','size'],['#segBot','bot'],['#segCode','code']])$(id).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;view[key]=b.dataset.v;$(id).querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();});
 $('#teamQ').addEventListener('input',()=>{$('#teamQ').value=$('#teamQ').value.replace(/[^\d]/g,'');renderCareer();});
-try{const u=new URL(location.href);if(u.searchParams.get('mode')==='tele'){$('#segMode [data-v="tele"]').click();}}catch(e){}
+try{const u=new URL(location.href);const m=u.searchParams.get('mode'),cd=u.searchParams.get('code');if(m==='tele'||m==='full')$('#segMode [data-v="'+m+'"]').click();if(cd==='own'||cd==='sample')$('#segCode [data-v="'+cd+'"]').click();}catch(e){}
 load();setInterval(()=>{if(!document.hidden)load();},120000);
 </script>
 </body>
