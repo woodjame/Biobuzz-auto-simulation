@@ -13,9 +13,11 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 > **Your code stays private.** The simulator runs entirely in your browser. Your code is never uploaded to a server, never saved, and cleared when you close or reload the page. Other teams using the simulator can't see it.
 
-> **Your language.** Pick a language from the globe menu at the top of any simulator page and the whole page (instructions, robot cards, match events) switches to it. In Chrome on a computer this uses Chrome's built-in translator: it runs on your computer, so nothing is sent anywhere. The first time, Chrome downloads that language (a minute or two). In Safari, Firefox or on a phone, use your browser's own *Translate this page*. The labels drawn on the field itself stay in English. To read this guide in another language, use your browser's translate button on this page.
+> **Your language.** Pick a language from the globe menu at the top of any simulator page – or from the same menu on the check-in box and the tour’s welcome card, so you can choose it before anything else – and the whole page switches to it: instructions, robot cards and their menus, match events, the check-in and the guided tour. Your code, team names and OpMode names stay as they are. In Chrome on a computer this uses Chrome's built-in translator: it runs on your computer, so nothing is sent anywhere. The first time, Chrome downloads that language (a minute or two). In Safari, Firefox or on a phone, use your browser's own *Translate this page*. The labels drawn on the field itself stay in English. To read this guide in another language, use your browser's translate button on this page.
 
 > **One-time check-in.** The first time you open the simulator on a computer, it asks two questions: your team number and whether you're a student, mentor, coach, parent or other – no names or emails – and you won't be asked again on that computer. Your answer is sent to Largo Robotics so we know which teams use the simulator, and on each later day you open the AUTO, TeleOp or Full match page, one more visit is counted with the same answer (at most once a day).
+
+> **Guided tour.** Right after the check-in, a one-minute tour offers to show you around – choose **Show me around** or **Skip tour**. It lights up each part of the page in turn: on the AUTO page, choosing how many robots, your robot card, uploading your code, checking what was read, **Open code**, **Translate** and **SimRecorder**; on the TeleOp and Full match pages, choosing how many robots, your controller, the robot card, the Live controller panel where you set your buttons, running your own TeleOp code, the views, the Driver Hub and online play. Use **Back** / **Next** (or the arrow keys) and **Esc** to close. Start it again any time with the **Tour** button at the top of the page.
 
 > **Usage counting.** To see how many teams use the simulator, these pages count visits (with the country and region they come from, using GoatCounter, without cookies) and the team numbers typed onto robot cards, code uploads, match runs and which features are used (3-D view, online play, controller brand, driving mode, browser language, kind of device). If you came from a campaign link (one ending in `?utm_campaign=…`), its name is counted too, for 60 days. Your code, names and anything personal are never sent.
 
@@ -27,9 +29,15 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 ## Step-by-step
 
-### Step 1 – Choose your robot card
+### Step 1 – Choose how many robots
 
-The **Robots** panel on the left has four cards. They start empty. Pick the one that matches where your robot starts:
+At the top of the **Robots** panel, choose **how many robots you're simulating: 1, 2, 3 or 4**. The robot cards stay folded away in a drop-down until you choose.
+
+- **1 robot:** pick its **starting spot** – only that robot's card is shown, and only it plays.
+- **2 robots:** pick **Both Red**, **Both Blue** or **One of each**.
+- **3 robots:** both Red robots and Blue audience. **4 robots:** all four.
+
+You can change the number any time; robots you don't choose are left out of the match. Each card is named for where its robot starts:
 
 | Card | Your robot starts… |
 |---|---|
@@ -73,7 +81,7 @@ Under the card's second fold-out, **Error**, set how much your robot's position 
 
 Most teams only need the camera and the servos – the other defaults are typical robots. The only robot settings that keep a run off Top AUTO: a flower pull under 0.75 s, a garden pickup under 0.5 s, launching all 4 in under 0.6 s, or a changed accuracy. Everything else can be set to match your robot. The match itself (the human player, ranking-point thresholds, the random seed), the field layout (parking zones, flowers, gardens) and the AprilTag IDs under each cell run in the background with the BIOBUZZ manual's values and can't be changed.
 
-The hive's tip rules are under **Tip rules** in the **Hives** panel.
+The hive's tip rules are the standard ones from the game manual (Table 10-3).
 
 Each number is a **slider**: drag it, use the arrow keys, or click the number to type an exact value. Short choices (camera, shooter, drive motor RPM, wheel size…) are **tiles** – tap the one that matches your robot.
 
@@ -92,6 +100,7 @@ These numbers (not your code) are remembered in your browser, so you only enter 
 | Shared routes (helper library cookbook) | The auto **and** `Routes.java` (and `Tunables.java`) |
 | Pedro paths in one file, the routine in another | Both files |
 | Servos created in a hardware class | The auto **and** that hardware class (so the servos show up) |
+
 
 The simulator reads these code styles directly:
 
@@ -132,10 +141,10 @@ The simulator finds servos created with `hardwareMap.get(Servo.class, "name")`, 
 
 ### Step 6 – Run the match
 
-1. Press **Play (▶)** or the **Space bar**. The match goes full screen, with the clock and both scores in the top-left corner.
+1. The match waits for you – nothing moves until you press **Play (▶)** or the **Space bar**. Then it goes full screen, with the clock and both scores in the top-left corner.
 2. Move the mouse to bring back the play bar. Press **Esc** to leave full screen.
 3. Use the speed buttons: **4×** to check a whole match quickly, **¼×** to study one moment. Drag the timeline to jump anywhere.
-4. Switch between **Top view**, **Broadcast view** and **3-D view**. In 3-D, use the camera buttons or **Ride along** to follow your robot.
+4. The field opens in the **3-D view** – use the camera buttons or **Ride along** to follow your robot. Switch to **Top view** or **Broadcast view** any time. (If a computer can't show 3-D, it opens in Top view.)
 
 ### Step 7 – Read the results
 
@@ -148,7 +157,7 @@ Scroll to **Match events** after every run:
 | **Scoring** | Every element into the hive, tips, LEAVE and PARK. |
 | **All** | Everything, with times. Click any event to jump the replay to that moment. |
 
-Also watch the right side of the screen: **Hives** (what's in each cell and which is up), **Camera view** (what your AprilTag camera sees), **Servos** (a live dial for each servo on the robot you pick) and **Auto score** (including ranking point progress).
+Also watch the right side of the screen: **Servos** (a live dial for each servo on the robot you pick) and, once the AUTO has played to the end, **Auto score** (including ranking point progress). The hives and your AprilTag camera still work exactly the same behind the scenes – their panels just aren't shown – and every tip and camera read is listed under **Match events**.
 
 ### Step 8 – Fix and re-run
 
@@ -182,13 +191,13 @@ The cues are spoken aloud when the browser can; the **Sound** button turns that 
    - **Up to 4 controllers:** Chrome, Edge or Firefox.
    - **5 to 8 controllers: use Firefox.** Chrome and Edge only ever see 4 controllers – that's a limit built into those browsers, not the simulator.
    - **Plugging in 8:** use a powered USB hub, or a mix of USB and Bluetooth. A computer's Bluetooth usually handles only about 7 devices at once, and fewer smoothly.
-   - **Check every controller** before the match: press a button and watch its row light up in the **Controllers** panel, then make sure it's on the right robot card. If a row says "non-standard layout", plug that controller in with USB.
-2. **Turn on the card** for each robot in the match (the slot where it starts).
+   - **Check every controller** before the match: press a button and watch its row light up in the **Controllers** panel, then make sure it's on the right robot in the **Live controller** panel. If a row says "non-standard layout", plug that controller in with USB.
+2. **Choose how many robots** at the top of the Robots panel (1–4) – and, for 1 or 2, which starting spots. Only those robots' cards are shown, and only they play.
 3. **Upload code** – select your **AUTO and TeleOp files together**, with every helper file they use (like `Shooter.java`, `Intake.java`, Pedro's `Constants.java`), or drag them onto the card. Files with `@Autonomous` run in AUTO, files with `@TeleOp` run in TeleOp, and helper files go to both. The card shows what was read, like *Pedro Pathing: 10 paths, 3 launches*. No AUTO code? The robot sits still in AUTO. No TeleOp code? You drive with the button menus (step 5). Like the AUTO page, **your code is never saved or sent anywhere** – it's gone when the page closes.
-4. **Choose its Driver controller (gamepad1)**, and an **Operator controller (gamepad2)** if your team uses one. No controller? Choose **Keyboard** (W A S D drive, J / L turn, Q intake, Space launch).
-5. **No TeleOp code uploaded? The card uses the Sample TeleOp.** The robot runs the button setup on its card – the same controls as **SampleTeleOp.java**, a real FTC TeleOp the simulator writes for you. Press **View sample code** to read it or **Download SampleTeleOp.java** to put it on your robot (change the device names to match your configuration and tune the constants at the top); change a button on the card and the code changes with it. Upload it back, or your own official TeleOp, to run it as code. When you upload your own TeleOp, the simulator reads its buttons into the menus, and **In TeleOp → Use the button menus instead** lets you change every button and servo setting by hand.
+4. **In the Live controller panel** (top right), under **Controllers and buttons**, pick the robot, then its **Driver controller (gamepad1)**, and an **Operator controller (gamepad2)** if your team uses one. No controller? Choose **Keyboard** (W A S D drive, J / L turn, Q intake, Space launch).
+5. **No TeleOp code uploaded? The card uses the Sample TeleOp.** The robot runs the button setup in the **Live controller** panel – the same controls as **SampleTeleOp.java**, a real FTC TeleOp the simulator writes for you. Press **View sample code** to read it or **Download SampleTeleOp.java** to put it on your robot (change the device names to match your configuration and tune the constants at the top); change a button in the panel and the code changes with it. Upload it back, or your own official TeleOp, to run it as code. When you upload your own TeleOp, the simulator reads its buttons into the menus, and **In TeleOp → Use the button menus instead** lets you change every button and servo setting by hand.
 
-   **Start from a sample button setup.** Pick one under **Button setup**, then change any button you like under **Driver buttons** and **Operator buttons** (the picker then says *Custom*):
+   **Start from a sample button setup.** In the **Live controller** panel, pick one under **Button setup**, then change any button you like under **Driver buttons** and **Operator buttons** (the picker then says *Custom*). The live controller picture above it shows what each button does and lights up as you press:
 
    | Button (PlayStation / Xbox) | **Sample – one controller** (gamepad1) | **Sample – two controllers** |
    |---|---|---|
@@ -221,7 +230,7 @@ The cues are spoken aloud when the browser can; the **Sound** button turns that 
 - Before a match the field is in **practice** mode: drive around with the game elements, no clock.
 - **3-D view:** press **3-D view** under the field (on the TeleOp and Full match pages) to watch in 3-D, like the AUTO simulator. Pick a camera at the top of the field – **Audience**, **Red drivers** or **Blue drivers** (from behind that alliance's wall), **Overhead**, **Hive close-up**, or **Ride along** with the robot you choose – or drag to orbit, right-drag to pan and scroll to zoom. It works in online matches too, and the page remembers your choice. **2-D view** switches back.
 - **View from** turns the field so your drivers' wall is at the bottom. **Full screen** keeps the clock and both scores in the corner.
-- The **Score** total counts only what's been scored so far: AUTO, TeleOp hive tips and fouls. Like the real field (manual 10.5), what's left in the up cell, FLOWERS, the bottom-NECTAR bonus, GARDENS and TeleOp PARK are scored at **0:00**, once everything is at rest – the panel shows them in grey ("at 0:00") until then. Gardens count every POLLEN and NECTAR in them at the end, including the 4 POLLEN staged there. At the end, a **results** window shows every scoring line and the ranking points.
+- During the match the live score is in the header; the full **Score** breakdown appears on the right only when the match ends. The total counts only what's been scored so far: AUTO, TeleOp hive tips and fouls. Like the real field (manual 10.5), what's left in the up cell, FLOWERS, the bottom-NECTAR bonus, GARDENS and TeleOp PARK are scored at **0:00**, once everything is at rest. Gardens count every POLLEN and NECTAR in them at the end, including the 4 POLLEN staged there. At the end, a **results** window shows every scoring line and the ranking points.
 
 ### Your TeleOp code
 
@@ -301,12 +310,12 @@ The **TeleOp simulator** has a built-in **Play online** button. Up to 4 laptops 
 **Before you join – set up your own robot card (every player, on their own laptop):**
 1. Open **https://woodjame.github.io/Biobuzz-auto-simulation/teleop.html** in **Chrome, Edge or Firefox**.
 2. Plug in your controller – **PlayStation (PS5/PS4), Xbox, REV or Logitech** – with USB or Bluetooth and **press a button** on it.
-3. On one robot card: type your **team number and team name** (both required), choose your controller as **Driver controller** (and a second one as **Operator controller** if you have an operator on the same laptop).
-4. Either set what each button does (**Driver buttons** / **Operator buttons**), or **Upload code** to run your real TeleOp. Set **Robot build and timing** to match your robot. Your card is saved in your browser, so you only do this once.
+3. Choose **1 robot** and your starting spot, then type your **team number and team name** (both required) on its card. In the **Live controller** panel, choose your controller as **Driver controller** (and a second one as **Operator controller** if you have an operator on the same laptop).
+4. Either set what each button does in the **Live controller** panel (**Driver buttons** / **Operator buttons**), or **Upload code** on the card to run your real TeleOp. Set **Robot build and timing** to match your robot. Your card is saved in your browser, so you only do this once.
 5. Drive around in practice to check it feels right.
 
 **The host (one laptop – the one with the best internet):**
-1. Turn on your own robot card(s). Leave every other robot **off** – those spots are open for online players.
+1. Choose how many robots are yours on this laptop (usually 1) and their spots. Every other spot stays open for online players.
 2. Press **Play online → Create a room**. You get a 6-letter **room code** – send it (or **Copy invite link**) to your teammate and the other alliance.
 3. Watch the list fill in. Everyone can practice driving on the same field while you wait.
 4. When everyone is in, close the box and press **Start 2:00 TeleOp**. The host's laptop runs the field, the clock, scoring, fouls and the human players.
@@ -341,7 +350,7 @@ With Parsec the host runs everyone's code and button setups, so each team's code
 
 There are two boards, both fed by the same score sheet:
 
-- **Top AUTO** – on the AUTO page, next to the score (under the Red and Blue scores in full screen), with the top 10 in the right-hand column. The best AUTO scores, solo and duo together.
+- **Top scores band** – across the top of every simulator page: the top 5 **AUTO** and top 5 **TeleOp** scores (best per team or pair, solo and duo together), with a link to all the records. In full screen on the AUTO page, the top 3 AUTO also show under the Red and Blue scores.
 - **[Records page](https://woodjame.github.io/Biobuzz-auto-simulation/records.html)** – the full rankings, like a game's high-score table: **AUTO** or **TeleOp**, **Solo** or **Duo**, filtered by robot (turret, fixed shooter, Limelight, webcam, no camera). Type your team number to see your team's best, average and number of runs in each category.
 
 **What gets recorded**
@@ -352,7 +361,7 @@ There are two boards, both fed by the same score sheet:
 **What counts**
 - Every robot runs its **own team's code** (TeleOp may be driven by hand) and has a **team number**; for AUTO, an **AprilTag camera** is chosen (None is fine).
 - **No robot crosses onto the other alliance's side in AUTO** (G402, a major foul). Warnings such as bumping the hive frame don't stop a score.
-- The **standard hive tip rules** (Tip rules in the Hives panel).
+- The **standard hive tip rules**.
 - Realistic times on the robot card: **flower pull 0.75 s or more**, **garden pickup 0.5 s or more**, **launching all 4 in 0.6 s or more** – and the **accuracy** setting in Advanced customization left at the standard value. Every other robot setting can be changed to match your robot.
 
 **How it's ranked**
@@ -579,7 +588,7 @@ Upload that whole file – the simulator finds the recorded rows inside it and r
 | A servo isn't listed | Upload the file where it's created with `hardwareMap.get(...)` along with your auto. |
 | A servo spins when it should hold (or the reverse) | Check its **Mode** on the card matches how you programmed the servo, and that your code uses `setPosition` for standard servos and `setPower` for continuous ones. |
 | Robot sits at a flower and pulls nothing | Holding 4 already (the G407 limit), the flower bar isn't down yet, or the intake is off. Check **Match events → Servos**. |
-| 3-D view is blank | It needs internet. School networks sometimes block it; Top view works offline. |
+| 3-D view is blank, or the page opens in Top view | 3-D needs internet. School networks sometimes block it; Top view works offline. |
 | Start fresh | **Open code → Clear** on a card, and set any changed numbers back on the card. |
 
 ---
