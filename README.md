@@ -196,9 +196,9 @@ The cues are spoken aloud when the browser can; the **Sound** button turns that 
 
 ### Set up each robot card
 
-**Driving mode** sits right under the team number: **Robot-centric** (the default) or **Field-centric**. Tap to switch; the **Create/Back** button also switches during a match.
+**Driving mode** sits right under the team number: **Robot-centric** (the default) or **Field-centric**. Tap to switch. In the sample button setups the **Create** (Share/Back) button also switches it during a match. When it does, the card changes too and **ROBOT-CENTRIC** or **FIELD-CENTRIC** shows over the robot for 3 seconds. If your robot suddenly drives the "wrong" way after turning around, check this first.
 
-- **Robot-centric:** the robot moves relative to the way it faces. Pushing the left stick up always drives toward the robot's front – its intake. If the robot turns 180° so it faces your drivers, stick up drives it toward you. Stick right slides toward the robot's right side, and the right stick pushed right turns it clockwise.
+- **Robot-centric:** drives like an RC car, from the driver's seat: the robot moves relative to the way it faces. Pushing the left stick up always drives toward the robot's front – its intake. If the robot turns 180° so it faces your drivers, stick up drives it toward you. Stick right slides toward the robot's right side, and the right stick pushed right turns it clockwise.
 - **Field-centric:** stick up always drives the way the robot's intake faced at its starting spot (like a real robot whose IMU is zeroed when the match starts), whichever way it faces now. **Reset heading** makes the way it faces now "up".
 
 A robot pushed into a wall, a corner, the hive frame or a flower can always drive back out – only moves that would push it in deeper are stopped.
