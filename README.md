@@ -199,7 +199,9 @@ The cues are spoken aloud when the browser can; the **Sound** button turns that 
 **Driving mode** sits right under the team number: **Robot-centric** (the default) or **Field-centric**. Tap to switch; the **Create/Back** button also switches during a match.
 
 - **Robot-centric:** the robot moves relative to the way it faces. Pushing the left stick up always drives toward the robot's front – its intake. If the robot turns 180° so it faces your drivers, stick up drives it toward you. Stick right slides toward the robot's right side, and the right stick pushed right turns it clockwise.
-- **Field-centric:** stick up always drives the same way across the field, whichever way the robot faces. **Reset heading** sets which way that is.
+- **Field-centric:** stick up always drives the way the robot's intake faced at its starting spot (like a real robot whose IMU is zeroed when the match starts), whichever way it faces now. **Reset heading** makes the way it faces now "up".
+
+A robot pushed into a wall, a corner, the hive frame or a flower can always drive back out – only moves that would push it in deeper are stopped.
 
 **Team number and team name are required.** Every robot card starts blank – type your own team number and team name (the boxes stay orange until you do). A match won't start, and you can't create or join an online match, until every robot in it has both.
 
@@ -303,7 +305,7 @@ In between, the percentage slides between those numbers. Change any of these und
 | Aim left / right (hold), Aim farther / shorter, Aim: automatic flywheel speed | See *Aiming your shots* above. |
 | Turret presets / Turret left or right (hold) | Turns the turret at your card's servo swing speed; the presets go where you set them in **Servo controls**. Or set **Turret aiming** to auto-aim at your up cell. |
 | Flower bar down/up | Moves the bar in your card's time. |
-| Field-centric on/off, Reset heading | Driving starts **robot-centric** (change it with **Driving mode** at the top of the card). Field-centric: stick forward drives away from your drivers' wall. **Reset heading** makes "forward" the way the robot faces now, like resetting the IMU. |
+| Field-centric on/off, Reset heading | Driving starts **robot-centric** (change it with **Driving mode** at the top of the card). Field-centric: stick forward drives the way the robot's intake faced at its starting spot. **Reset heading** makes "forward" the way the robot faces now, like resetting the IMU. |
 | Slow mode | Drives at the **Slow mode speed** on your card – 0.5 (about half speed) to start. |
 
 The **Live controllers** panel lights up each button and stick as you press them, next to what that button does. Button choices are remembered in this browser; code is not.
