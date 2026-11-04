@@ -245,6 +245,15 @@ A robot pushed into a wall, a corner, the hive frame or a flower can always driv
 6. **Servo controls** (when you're not running TeleOp code): the turret – how far it turns, how fast its servo swings (also how fast the hold buttons turn it), and where the **Turret left** and **Turret right** buttons send it; the flower bar servo's time to go down or up and whether it must be down to pull from a flower; and the transfer – how long it takes to kick all 4 up and launch them, and the flywheel spin-up time.
 7. **Check Robot build and timing.** It starts from your AUTO card in the same browser: what it handles, preloads, intake and flower times, flywheel RPM and angle, shooter type, drive motors, wheels and weight, and the **Slow mode speed** (0.5 = half speed).
 
+### Physics (beta)
+- **Physics (beta)** (button under the field on the TeleOp pages, a checkbox under the field on the AUTO page): POLLEN and NECTAR roll, bounce off each other, the walls, the hive frame and the flowers, and robots push them.
+  - **Launches are real balls.** They leave your shooter at your flywheel's speed and angle, plus the robot's own motion, so shooting while driving moves the shot. A shot goes in only if it actually flies into the cell's opening or drops into a flower's top.
+  - **Shots aim at the middle of the cell's opening.** From close in, a slow flywheel can fall short and clip the cell's bottom edge. That's real: move back, raise the angle or spin faster.
+  - **The hives are real seesaws.** Balls stay in the cell, ride along when it turns and fall out when it tips. A hive tips when its up cell's load reaches the manual's tipping load (8 POLLEN, 5 NECTAR, 3 NECTAR + 3 POLLEN and so on). Each ball counts by its weight and by how far out from the axle it sits.
+  - The hive frame is its real bars, so balls can roll under it.
+  - **Records:** runs with Physics (beta) on don't go on the leaderboards or the Records page while it's in beta.
+- **Human player NECTAR** (physics on or off): the human player tosses each NECTAR over the wall. It drops into the loading zone, bounces and rolls on out of it like a real thrown ball.
+
 ### Play
 
 - **Start full match** runs everyone's AUTO, then the transition, then TeleOp. **Skip ▸▸** jumps ahead to the next period. **TeleOp only (2:00)** (and the TeleOp page's **Start 2:00 TeleOp**) skips AUTO. **Both alliances start at 0 points**, on a field that looks like it does after a typical AUTO:
