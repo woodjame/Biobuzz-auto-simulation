@@ -81,7 +81,7 @@ Below them the card says which AprilTag camera the robot uses. Everything else i
 
 Under the card's second fold-out, **Error**, set how much your robot's position tracking drifts: *odometry pod error* for pods, or *drive-encoder error forward/strafing* and *Control Hub IMU drift* for drive encoders.
 
-Most teams only need the camera and the servos – the other defaults are typical robots. The only robot settings that keep a run off Top AUTO: a flower pull under 0.75 s, a garden pickup under 0.5 s, launching all 4 in under 0.6 s, or a changed accuracy. Everything else can be set to match your robot. The match itself (the human player, ranking-point thresholds, the random seed), the field layout (parking zones, flowers, gardens) and the AprilTag IDs under each cell run in the background with the BIOBUZZ manual's values and can't be changed.
+Most teams only need the camera and the servos – the other defaults are typical robots. **Every robot setting can be set to match your robot and still count for Top AUTO** – timings, accuracy, drivetrain, camera, shooter and error. The match itself (the human player, ranking-point thresholds, the random seed), the field layout (parking zones, flowers, gardens) and the AprilTag IDs under each cell run in the background with the BIOBUZZ manual's values and can't be changed.
 
 **Hive tips** – the same in AUTO and TeleOp. A cell tips once **POLLEN + 1.65 × NECTAR ≥ 7.48**. The manual gives the sizes, not the weights: POLLEN ≈ 2.8 in., NECTAR ≈ 3.6 in., both Gopher ResisDent polyethylene balls (manual 9.8). Taking them as hollow balls with the same wall, weight goes with diameter², so one NECTAR weighs (3.6 ÷ 2.8)² ≈ **1.65 POLLEN** (solid balls would make it 2.1 – then 4 NECTAR would tip, which they don't). The threshold comes from the three known tipping loads – **8 POLLEN**, **5 NECTAR**, **3 NECTAR + 3 POLLEN**, each the smallest of its kind: it has to be more than 7 and at most 7.96, and the simulator uses the middle, 7.48. Every smallest tipping load:
 
@@ -245,14 +245,13 @@ A robot pushed into a wall, a corner, the hive frame or a flower can always driv
 6. **Servo controls** (when you're not running TeleOp code): the turret – how far it turns, how fast its servo swings (also how fast the hold buttons turn it), and where the **Turret left** and **Turret right** buttons send it; the flower bar servo's time to go down or up and whether it must be down to pull from a flower; and the transfer – how long it takes to kick all 4 up and launch them, and the flywheel spin-up time.
 7. **Check Robot build and timing.** It starts from your AUTO card in the same browser: what it handles, preloads, intake and flower times, flywheel RPM and angle, shooter type, drive motors, wheels and weight, and the **Slow mode speed** (0.5 = half speed).
 
-### Physics (beta)
-- **Physics (beta)** (button under the field on the TeleOp pages, a checkbox under the field on the AUTO page): POLLEN and NECTAR roll, bounce off each other, the walls, the hive frame and the flowers, and robots push them.
+### Real physics
+POLLEN and NECTAR roll, bounce off each other, the walls, the hive frame and the flowers, and robots push them.
   - **Launches are real balls.** They leave your shooter at your flywheel's speed and angle, plus the robot's own motion, so shooting while driving moves the shot. A shot goes in only if it actually flies into the cell's opening or drops into a flower's top.
   - **Shots aim at the middle of the cell's opening.** From close in, a slow flywheel can fall short and clip the cell's bottom edge. That's real: move back, raise the angle or spin faster.
   - **The hives are real seesaws.** Balls stay in the cell, ride along when it turns and fall out when it tips. A hive tips when its up cell's load reaches the manual's tipping load (8 POLLEN, 5 NECTAR, 3 NECTAR + 3 POLLEN and so on). Each ball counts by its weight and by how far out from the axle it sits.
   - The hive frame is its real bars, so balls can roll under it.
-  - **Records:** runs with Physics (beta) on don't go on the leaderboards or the Records page while it's in beta.
-- **Human player NECTAR** (physics on or off): the human player tosses each NECTAR over the wall. It drops into the loading zone, bounces and rolls on out of it like a real thrown ball.
+- **Human player NECTAR:** the human player tosses each NECTAR over the wall. It drops into the loading zone, bounces and rolls on out of it like a real thrown ball.
 
 ### Play
 
@@ -383,6 +382,8 @@ With Parsec the host runs everyone's code and button setups, so each team's code
 
 ## How the leaderboards work
 
+**Fresh start (November 4, 2026):** every board restarted when real physics became the way the simulator works, so all scores are set under the same physics.
+
 There are two boards, both fed by the same score sheet:
 
 - **Top 10** – a gold-framed card at the top right of every simulator page, showing only that page's scores (best per team or pair, solo and duo together): the **AUTO** page shows the top 10 AUTO scores (above **Servos**); the **TeleOp** page shows the top 10 TeleOp scores in two lists, **Sample code** and **Own code** (above the **Live controllers**); the **Full match** page shows the top 10 full-match scores. Each has with medals for the top 3, your own team outlined in green, and a link to all the records. On a phone they scroll in a band under the page header instead. In full screen on the AUTO page, the top 3 AUTO also show under the Red and Blue scores.
@@ -394,10 +395,11 @@ There are two boards, both fed by the same score sheet:
 - Only team numbers, the score, the robot type and a fingerprint of the code are sent – never your code. After each run, a message on the field says whether the score counts and, if not, why.
 
 **What counts**
-- Every robot runs its **own team's code** (TeleOp may be driven by hand) and has a **team number**; for AUTO, an **AprilTag camera** is chosen (None is fine).
+- Every robot has a **team number**. **AUTO** (and the AUTO part of a full match) runs the team's **own code**; **TeleOp** can use the Sample TeleOp or the team's own code; for AUTO, an **AprilTag camera** is chosen (None is fine).
 - **No robot crosses onto the other alliance's side in AUTO** (G402, a major foul). Warnings such as bumping the hive frame don't stop a score.
 - The **standard hive tip rules**.
-- Realistic times on the robot card: **flower pull 0.75 s or more**, **garden pickup 0.5 s or more**, **launching all 4 in 0.6 s or more** – and the **accuracy** setting in Advanced customization left at the standard value. Every other robot setting can be changed to match your robot.
+- **AUTO:** your team's **own AUTO code** (not sample code). Every robot setting – timings, accuracy, drivetrain, camera, shooter, error – can be set to whatever your robot really does. Only the game itself (the hive tip rules and the field layout) must stay standard.
+- **TeleOp and full match:** the same freedom – set every robot setting to match your robot. **TeleOp** can be the **Sample TeleOp** (button setup) or your own uploaded TeleOp code. A **full match** needs your team's **own AUTO code**.
 
 **How it's ranked**
 - Each team (or pair of teams) shows its **best** score in each category; ties go to whoever got there first. Your other runs count towards your number of runs and your average.
