@@ -165,20 +165,36 @@ Write it anywhere in your code; your robot ignores comments. Useful ones:
 | `// @sim vision-shoot` | Your robot launches automatically when the Limelight sees an up cell. |
 | `// @sim fullspeed 55` / `// @sim track 14` | Timed or encoder SDK autos: your robot's top speed (in./s) and wheel spacing (in.). |
 
-### 3. Use Translate
+### 3. Use Translate – teach the simulator your own code
 
-For code built on your own classes, a command framework, or calls like `robot.driveToGoal()`:
+The simulator **reads** your code; it doesn't run it. When your auto calls **your own methods** – `robot.driveToGoal()`, `scoreSequence()`, a command framework – it can't see inside them. **Translate** is where you tell it what each call does on the field.
 
-1. Click **Translate** on the robot card. The top line says how much is already understood.
-2. Answer only what's listed:
-   - **Needs your answer:** a drive with no target point (type `x y heading`), or an action the simulator doesn't recognize.
+**Use it when** the line under your card is orange, the card says *No route found* or *No drives were found*, or a drive or launch is missing when you press Play. The **Translate your code** button turns **gold** when it's probably needed.
+
+1. Click **Translate your code** on the robot card. A short guide sits at the top, and a line says how much is already understood.
+2. Answer the calls under each heading:
+   - **Needs your answer:** a drive with no target point, or an action the simulator doesn't recognize. Answer all of these.
    - **Check these guesses:** the simulator guessed from the names. Correct any that are wrong.
    - **Might be part of the route:** only shown when no drives were found at all. If one of these drives or scores, say what it does.
-3. Pick whether the points you type are **Pedro corner inches (0–144)** or **field-center inches**.
-4. Tick **Use my answers**. Your answers are added to everything the simulator already reads, right where those calls are in your code.
-5. Check **What the simulator will run** at the bottom of the window.
+3. For each call, choose **What it does on the field** and fill in **Details** (it often guesses the kind already – then you only type the numbers):
 
-Everything already understood is folded away under **Show more**. You only need to open it if something is missing.
+| Choose | Details |
+|---|---|
+| Drive to a point / Curve to a point | `x y heading` – where it **ends**, heading in degrees |
+| Turn to a heading | degrees |
+| Follow one of its Pedro paths | the path's name in your code |
+| Wait | seconds |
+| Launch some | how many |
+| Spin up the shooter, Launch everything held, Intake on / off | nothing |
+| Several steps | sim-script steps, one per line or split with `;` – `move x y heading`, `face heading`, `turn degrees`, `forward`/`back`/`strafe inches`, `wait seconds`, `spinup`, `shoot` / `shoot 2`, `intake on` / `intake off` |
+| Not part of the route | nothing (ignored) |
+
+   Use **Repeats** (1–20) for a call inside a loop.
+4. Pick whether the points you type are **Pedro corner inches (0–144)** – origin in the audience-side red corner, +x toward the blue wall, +y toward the rear wall – or **field-center inches (–72 to 72)**. Headings: 0° faces the blue wall, 90° the rear wall.
+5. Tick **Use my answers**. Your answers are added to everything the simulator already reads, right where those calls are in your code. The card's button reads **Translate ✓**.
+6. Check **What the simulator will run** at the bottom of the window, then press Play.
+
+Answers are per robot card and, like your code, are cleared when the page reloads – keep a note of them. Everything already understood is folded away under **Show more**. The README has a worked example under **Translate – teach the simulator your own code**.
 
 ### 4. Record a log on the real robot (most accurate)
 

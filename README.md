@@ -21,6 +21,8 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 > **Guided tour.** Right after the check-in, a one-minute tour offers to show you around – choose **Show me around** or **Skip tour**. It lights up each part of the page in turn: on the AUTO page, choosing how many robots, your robot card, uploading your code, checking what was read, **Open code**, **Translate** and **SimRecorder**; on the TeleOp and Full match pages, choosing how many robots, your controller, the robot card, the Live controllers panel where you set your buttons, running your own TeleOp code, the views, the Driver Hub and online play. Use **Back** / **Next** (or the arrow keys) and **Esc** to close. Start it again any time with the **Tour** button at the top of the page.
 
+> **Code built on your own classes? Use Translate.** The simulator *reads* your code – it doesn't run it. If your auto calls your own methods, like `robot.driveToGoal()` or `shooter.fireAll()`, it can't see inside them. Click **Translate your code** on the robot card (it turns **gold** when it's probably needed), say what each call does, and tick **Use my answers**. It takes about two minutes – see **[Translate – teach the simulator your own code](#translate--teach-the-simulator-your-own-code)**.
+
 > **Usage counting.** To see how many teams use the simulator, these pages count visits (with the country and region they come from, using GoatCounter, without cookies) and the team numbers typed onto robot cards, code uploads, match runs and which features are used (3-D view, online play, controller brand, driving mode, browser language, kind of device). If you came from a campaign link (one ending in `?utm_campaign=…`), its name is counted too, for 60 days. Your code, names and anything personal are never sent.
 
 > **Leaderboards.** Every AUTO you play to 0:00, every solo or duo TeleOp you play to the end, and every solo or duo full match, can go on that page's **Top 10** card and the **[Records page](https://woodjame.github.io/Biobuzz-auto-simulation/records.html)**. See **[How the leaderboards work](#how-the-leaderboards-work)** below.
@@ -130,7 +132,8 @@ The simulator reads these code styles directly:
 1. **Read the line under your card.** It says what was found, for example
    *"Pedro Pathing: 6 paths, 3 launches, 2 servos – done at 27.8 s"*.
    - Green = read fine. Orange = there are notes to read.
-   - *"No route found"* means the drives are inside your own classes – see **If your code isn't fully understood** below.
+   - *"No route found"* means the drives are inside your own classes – use **[Translate](#translate--teach-the-simulator-your-own-code)**.
+   - Orange because of calls to your own methods? The card says *"Some of this code wasn't understood"* and the **Translate your code** button turns gold – see **[Translate](#translate--teach-the-simulator-your-own-code)**.
 2. **Click Open code.** The bottom of that window lists **What the simulator will run**, step by step. Click a step to highlight the line of your code it came from. Any notes are listed there too.
 
 ### Step 5 – Set up your servos
@@ -158,6 +161,11 @@ The simulator finds servos created with `hardwareMap.get(Servo.class, "name")`, 
 2. Move the mouse to bring back the play bar. Press **Esc** to leave full screen.
 3. Use the speed buttons: **4×** to check a whole match quickly, **¼×** to study one moment. Drag the timeline to jump anywhere.
 4. The field opens in the **3-D view** – use the camera buttons or **Ride along** to follow your robot. Switch to **Top view** or **Broadcast view** any time. (If a computer can't show 3-D, it opens in Top view.)
+5. **Start anywhere:** at **0:00**, in the top or 3-D view, **drag a robot** to a new starting spot and **scroll** over it to turn it (Shift = finer). The AUTO runs again from there. On the card, **What the code knows** picks how your code reacts:
+   - **Code starts here** – as if you changed `startPose` to this spot; every path still goes to the same places on the field.
+   - **Moved, code didn't** – your code still thinks it's at its old `startPose`, so the whole route shifts and turns with the robot (what odometry would do).
+
+   The card shows the `new Pose(...)` line to paste into your code, checks the spot against **G304** (your side, touching the wall, off the flowers, out of the loading zone), and has **Back to the code's start**. A moved start counts on the leaderboard only if it's legal.
 
 ### Step 7 – Read the results
 
@@ -177,6 +185,80 @@ Also watch the right side of the screen: **Servos** (a live dial for each servo 
 Change your code in your own project, click **Upload** again, check the line under the card, and press Play at 4×. Change one thing at a time.
 
 **Fair comparisons:** misses are random but repeat the same way every run, so when you change one thing in your code, the difference you see comes from your change.
+
+---
+
+## Translate – teach the simulator your own code
+
+**What it is.** The simulator never runs your code – it *reads* it and works out the route: every drive, turn, wait, launch and intake. Pedro Pathing, Road Runner, SDK-style autos and the FTC helper library are read automatically. But when your auto calls **your own methods** – `robot.driveToGoal()`, `shooter.fireAll()`, `scoreSequence()`, a command framework – the simulator can't see what's inside them. **Translate** is a short questionnaire where you tell it what each of those calls does on the field. Your answers are slotted in exactly where those calls are in your code, alongside everything it already reads.
+
+**When to use it** – any of these:
+- The line under your card is **orange**, and the card says *"Some of this code wasn't understood"* (the **Translate your code** button turns **gold**).
+- The card says *"No route found"* or *"No drives were found in this code"*.
+- You press Play and a drive, a launch or the intake is **missing**, or the robot just sits there.
+
+### How to use it, step by step
+
+1. **Upload your code first** (Step 3), then click **Translate your code** on that robot's card. The window opens with a short guide at the top, and a line that says how much is already understood – for example *"The simulator already reads 0 drive steps and 2 actions from this code. 2 calls need an answer, 1 guess to check."*
+2. **Work down the list.** Calls are grouped:
+   - **Needs your answer** – the simulator can't work these out: drives with no target point, actions with names it doesn't know. Answer every one.
+   - **Check these guesses** – it guessed from the names (e.g. `intake.collect()` → *Intake on*). Fix any that are wrong.
+   - **Might be part of the route** – only shown when no drives were found at all. If one of these drives or scores, say what it does.
+   - **Show more** – calls already handled or unrelated (telemetry, timers, setup). You rarely need to open this.
+3. **For each call, choose *What it does on the field*** and fill in **Details**:
+
+| Choose | Details to type | Example |
+|---|---|---|
+| Drive to a point | `x y heading` – where the drive **ends**; heading in degrees (optional) | `60 30 90` |
+| Curve to a point | `x y heading` – a smooth curve that ends facing that heading | `40 100 0` |
+| Turn to a heading | heading in degrees | `270` |
+| Follow one of its Pedro paths | the path's name in your code | `scorePreload` |
+| Wait | seconds | `0.75` |
+| Spin up the shooter | – | |
+| Launch everything held | – | |
+| Launch some | how many | `2` |
+| Intake on / Intake off | – | |
+| Several steps (sim script) | one step per line (or separated by `;`) – see below | `move -12 44 270; shoot` |
+| Not part of the route | – (ignored) | |
+
+   **Repeats** (1–20): use it when the call sits in a loop – e.g. `for (int k = 0; k < 3; k++) shooter.fireOne();` → *Launch some* `1`, Repeats `3`.
+
+4. **Pick the units of the numbers you type** in **Points I type are in**:
+   - **Pedro corner inches (0–144)** – origin in the **audience-side red corner**, +x toward the **blue** wall, +y toward the **rear** wall. Use this if your code uses Pedro poses like `new Pose(60.5, 8.75, …)`.
+   - **Field-center inches (–72 to 72)** – origin in the middle of the field (Road Runner style), same directions.
+   - Headings are degrees in both: **0° faces the blue wall, 90° the rear wall, 180° the red wall, 270° the audience**.
+5. **Tick *Use my answers*.** Nothing changes until you do. The card's button then reads **Translate ✓**.
+6. **Check *What the simulator will run*** at the bottom of the window – it lists every step in order – then close it and press **Play**. Wrong? Open Translate again and change an answer; it re-runs immediately.
+
+**A worked example.** Your auto does:
+
+```java
+static final Pose GARDEN = new Pose(24, 20, Math.toRadians(180));
+...
+robot.driveToGoal();      // your own method – drives to the shooting spot
+shooter.fireAll();        // launches everything
+intake.collect();         // intake on
+robot.driveTo(GARDEN);    // your own method – drives to GARDEN
+pause(750);
+```
+
+The simulator already reads `shooter.fireAll()` and `intake.collect()` from their names (they're under **Show more**), so the window asks only about the rest. It often guesses the kind of call already – then you just type the numbers:
+
+| Group | Call in your code | What it does on the field | Details |
+|---|---|---|---|
+| Needs your answer | `robot.driveToGoal()` | Drive to a point (guessed) | `60 30 90` |
+| Needs your answer | `robot.driveTo(GARDEN)` | Drive to a point (guessed) | `24 20 180` |
+| Check these guesses | `pause(750)` | Wait (guessed) | `0.75` – already filled in; just check it |
+
+With **Points I type are in** set to **Pedro corner inches**, tick **Use my answers**: the route becomes *drive to (60, 30) → launch → intake on → drive to (24, 20) → wait 0.75 s*.
+
+**Sim script steps** (for *Several steps*): `move x y [heading]`, `spline x y heading`, `face heading`, `turn degrees`, `forward inches`, `back inches`, `strafe inches` (+ = left), `wait seconds`, `spinup`, `shoot` or `shoot 2`, `intake on`, `intake off`.
+
+**Good to know**
+- Translate is **per robot card** – each robot has its own answers.
+- Answers are **not saved**: like your code, they're cleared when the page reloads. Keep a note of them (a screenshot works).
+- For a single call, a comment in your code does the same job and stays with your code: `// @sim shoot`, `// @sim intake on`, `// @sim wait 1.5`, `// @sim start -11.5 -63.25 90`. Your robot ignores comments.
+- If your robot makes decisions with sensors while it runs, Translate can only describe one version of the route. For the exact route your robot drove, **[record a log](#record-your-real-robot-most-accurate)** instead.
 
 ---
 
@@ -451,12 +533,7 @@ Try these in order – each takes a little more effort than the last.
 | `// @sim vision-shoot` | Your robot launches automatically whenever its AprilTag camera sees an up cell (choose the camera on the card). |
 | `// @sim fullspeed 55` / `// @sim track 14` | Timed or encoder SDK autos: top speed (in./s) and wheel spacing (in.). |
 
-**3. Use Translate** for code built on your own classes or a command framework (e.g. `robot.driveToGoal()`):
-
-1. Click **Translate** on your card.
-2. Answer only what's listed – type `x y heading` for a drive, or pick what an action does.
-3. Choose whether your points are **Corner 0–144 (Pedro)** or **Field center** inches.
-4. Tick **Use my answers**, then check **What the simulator will run**.
+**3. Use Translate** for code built on your own classes or a command framework (e.g. `robot.driveToGoal()`): click **Translate your code** on the card, say what each call does, tick **Use my answers** – full steps in **[Translate – teach the simulator your own code](#translate--teach-the-simulator-your-own-code)**.
 
 **4. Record a log on your real robot** (most accurate). The simulator replays exactly where your robot went – see **[Record your real robot](#record-your-real-robot-most-accurate)** below.
 
