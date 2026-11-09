@@ -35,11 +35,10 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 ### Step 1 – Choose how many robots
 
-At the top of the **Robots** panel, choose **how many robots you're simulating: 1, 2, 3 or 4**. The robot cards stay hidden until you choose; then they open in a drop-down below.
+At the top of the **Robots** panel, choose **how many robots you're simulating: 1 or 2** (the AUTO page runs at most 2 robots; the TeleOp and Full match pages still allow up to 4). The robot cards stay hidden until you choose; then they open in a drop-down below. Until you choose, the two Red robots stand on the field.
 
 - **1 robot:** pick its **starting spot** – only that robot's card is shown, and only it plays.
 - **2 robots:** pick **Both Red**, **Both Blue** or **One of each**.
-- **3 robots:** both Red robots and Blue audience. **4 robots:** all four.
 
 You can change the number any time; robots you don't choose are left out of the match. Each card is named for where its robot starts:
 
@@ -51,6 +50,17 @@ You can change the number any time; robots you don't choose are left out of the 
 | **Blue rear** | Blue alliance, on the rear (far) side |
 
 The card decides your alliance. If your code mirrors for blue using `red()`, `isRed()` or `RED`, the simulator answers that from the card, so a blue card gets your blue poses automatically.
+
+### Step 1½ – Place your robot (before or after uploading code)
+
+Your robot is on the field **as soon as you choose it – you don't need code first.** At **0:00**, in the **top view** or **3-D view**:
+
+- **Move it:** drag the robot to where you'll set it on the real field. It snaps against the wall.
+- **Turn it:** use the **start bar** on the field (↺ / ↻ turn 15°, or **Face Rear / Audience / Red / Blue**), press **Q** or **E** (Shift = 5°), or scroll over the robot. The robot stays against the wall it was touching.
+- **Or type it:** the **Starting spot** box on the robot card has **x**, **y** and **Facing** boxes and the same turn buttons, plus the `new Pose(…)` line to paste into your code.
+- The card checks the spot is **legal** (G304: on your side, touching the wall, off the FLOWERS, out of the loading zone).
+
+When you upload code afterward, **the robot starts where you placed it** and your code runs from there, as if its `startPose` were that spot. To use the start pose written in your code instead, click **Back to the code's start** on the card.
 
 ### Step 2 – Enter your team and robot
 
@@ -161,7 +171,7 @@ The simulator finds servos created with `hardwareMap.get(Servo.class, "name")`, 
 2. Move the mouse to bring back the play bar. Press **Esc** to leave full screen.
 3. Use the speed buttons: **4×** to check a whole match quickly, **¼×** to study one moment. Drag the timeline to jump anywhere.
 4. The field opens in the **3-D view** – use the camera buttons or **Ride along** to follow your robot. Switch to **Top view** or **Broadcast view** any time. (If a computer can't show 3-D, it opens in Top view.)
-5. **Start anywhere:** at **0:00**, in the top or 3-D view, **drag a robot** to a new starting spot and **scroll** over it to turn it (Shift = finer). The AUTO runs again from there. On the card, **What the code knows** picks how your code reacts:
+5. **Start anywhere:** at **0:00**, in the top or 3-D view, **drag a robot** to a new starting spot and turn it with the **start bar** on the field, **Q** / **E**, or by scrolling over it (Shift = finer). The AUTO runs again from there. On the card, **What the code knows** picks how your code reacts:
    - **Code starts here** – as if you changed `startPose` to this spot; every path still goes to the same places on the field.
    - **Moved, code didn't** – your code still thinks it's at its old `startPose`, so the whole route shifts and turns with the robot (what odometry would do).
 
