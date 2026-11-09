@@ -58,6 +58,46 @@ td.dt,td.rn{color:var(--muted);font-size:14px;white-space:nowrap}
 [hidden]{display:none!important}
 </style>
 <script data-goatcounter="https://biobuzzsim.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<!--GA-START--><script async src="https://www.googletagmanager.com/gtag/js?id=G-V6M5J06BJY"></script>
+<script>(function(){
+  var ID='G-V6M5J06BJY';
+  window.BB_GA=true;
+  window.dataLayer=window.dataLayer||[];
+  window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};
+  var path=location.pathname.toLowerCase();
+  var page=/teleop/.test(path)?'teleop':/match/.test(path)?'match':/records/.test(path)?'records':'auto';
+  function team(){try{var r=JSON.parse(localStorage.getItem('bbsim.checkin')||'null');if(!r||!r.team)return'unknown';
+    var t=String(r.team).trim();return /^\d{1,6}$/.test(t)?t:'none';}catch(e){return'unknown';}}
+  var tm=team();
+  gtag('js',new Date());
+  gtag('set','user_properties',{team_number:tm});
+  gtag('config',ID,{allow_google_signals:false,allow_ad_personalization_signals:false,sim_page:page});
+
+  /* activity: any input in the last 2 minutes */
+  var last=Date.now(),bump=function(){last=Date.now();};
+  ['pointerdown','pointermove','keydown','wheel','touchstart'].forEach(function(ev){
+    window.addEventListener(ev,bump,{capture:true,passive:true});});
+  function padActive(){try{var g=navigator.getGamepads?navigator.getGamepads():[];
+    for(var i=0;i<g.length;i++){var p=g[i];if(!p)continue;
+      for(var b=0;b<p.buttons.length;b++)if(p.buttons[b]&&p.buttons[b].pressed)return true;
+      for(var a=0;a<p.axes.length;a++)if(Math.abs(p.axes[a])>0.25)return true;}}catch(e){}return false;}
+
+  /* seconds carried over from the last page on this computer */
+  var sec=0;try{sec=Math.min(59,Math.max(0,parseInt(localStorage.getItem('bbsim.gaSec')||'0',10)||0));}catch(e){}
+  function keep(){try{localStorage.setItem('bbsim.gaSec',String(sec));}catch(e){}}
+  setInterval(function(){
+    if(padActive())bump();
+    if(document.visibilityState!=='visible'||!document.hasFocus()||Date.now()-last>120000)return;
+    sec++;
+    if(sec>=60){sec-=60;var t=team();
+      if(t!==tm){tm=t;gtag('set','user_properties',{team_number:tm});}
+      gtag('event','practice_minute',{team:tm,sim_page:page,value:1});}
+    if(sec%10===0)keep();
+  },1000);
+  window.addEventListener('pagehide',keep);
+  document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')keep();});
+})();
+</script><!--GA-END-->
 </head>
 <body>
 <header class="top">
