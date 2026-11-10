@@ -10,7 +10,7 @@ Your code never leaves your computer and is never saved: the simulator runs enti
 
 ## The 5-minute start
 
-1. **Pick your slot.** The **Robots** panel has four robot cards: *Red audience*, *Red rear*, *Blue audience* and *Blue rear*. They start empty. Choose the one that matches where your robot starts.
+1. **Choose how many robots** at the top left of the page: **1** or **2** (the AUTO page runs at most 2). For 1 robot, pick its starting spot – *Red audience*, *Red rear*, *Blue audience* or *Blue rear* – the one that matches where your robot starts. For 2, pick *Both Red*, *Both Blue* or *One of each*. The first robot's card is on the left; a second robot's card is on the right, under **Top 10 AUTO scores**. Cards start empty.
 2. **Type your team number and name** on that card.
 3. **Click Upload** on the card and choose your auto's `.java` file. If your auto uses other files from your project, select them all at once (see *Which files to upload* below).
 4. **Read the line under the card.** It says what the simulator understood, for example *"Pedro Pathing: 6 paths, 3 launches, 2 servos – done at 27.8 s"*. If it says *No route found* or shows notes, see *When your code isn't fully understood* below.
@@ -23,15 +23,16 @@ Your code never leaves your computer and is never saved: the simulator runs enti
 
 | Area | What it's for |
 |---|---|
-| **Robots** | One card per robot: team, code, and how the robot is built. Untick a card to leave that robot out. |
-| **Game & robot settings** | Field and game numbers (tip thresholds, camera height and angle, random seed). Your robot's own timings, like flywheel spin-up, are on its robot card. Most teams never need to change these. |
+| **Robots** | Choose 1 or 2 robots at the top left. One card per robot – the first on the left, the second on the right under **Top 10 AUTO scores**: team, code, and how the robot is built. |
+| **Game & robot settings** | The hive tip rules. The match itself – the human player, the random seed and the field layout – runs in the background with the BIOBUZZ manual's values. Your robot's own numbers, like flywheel spin-up and camera height, are on its robot card. Most teams never need to change these. |
 | **Top view / Broadcast view / 3-D view** | Switch views. In 3-D, use the camera buttons (*Audience*, *Red side*, *Blue side*, *Overhead*, *Hive close-up*) or **Ride along** on any robot. |
 | **Planned paths / Trails / Shooting zones / Coordinates** | Overlays. Turn on **Shooting zones** to see where launches are legal, and **Coordinates** to read positions off the field. |
 | **Speed (¼× to 4×)** and the timeline | Use 4× to check a whole match quickly, or ¼× to study one moment. Drag the timeline to jump anywhere. |
-| **Hives** and **Limelight view** | Each hive cell's contents and which side is up, plus what your Limelight would see at that moment. |
-| **Servos** | A live dial for each servo on the robot you pick: where it is, where it's headed and how long it has to go, or how fast it's spinning. |
-| **Auto score** | Points for each alliance, including the tip, leave and park bonuses. |
-| **Match events** | Everything that happened, with times: **All**, **Scoring**, **Rules** or **Servos**. Check **Rules** and **Servos** after every run. |
+| **Top 10 AUTO scores** | Top right: the best AUTO scores from every team using the simulator, with a link to the Records page. |
+| **Hives** and **camera** | Worked out behind the scenes – every tip and every AprilTag camera read is listed under **Match events**. |
+| **Servos** (under the field) | A live dial for each servo on the robot you pick: where it is, where it's headed and how long it has to go, or how fast it's spinning. |
+| **Auto score** (right side, once the AUTO ends) | Points for each alliance, including the tip, leave and park bonuses. |
+| **Match events** (under the field, next to Servos) | Everything that happened, with times: **All**, **Scoring**, **Rules** or **Servos**. Check **Rules** and **Servos** after every run. |
 
 **Keyboard:** **Space** plays and pauses. **← / →** step a frame. **Home** jumps to the start and **End** to the finish. **F11** puts the match in full screen and **Esc** leaves it.
 
@@ -98,7 +99,7 @@ Calls inside helper methods (like `lowerBar()`), Road Runner `InstantAction`s an
 - **`setPower` that's already full speed:** the SDK sends 600–2400 µs for −1…+1, but continuous servos reach full speed sooner (goBILDA Speed/Super Speed at 1000–2000 µs, goBILDA Torque at 900–2100 µs, Axon at 1050–1950 µs). On a goBILDA Speed, `setPower(0.6)` is already full speed.
 - **Still moving when the robot drives off:** just so you know how long the move really takes.
 
-The speeds are the makers' no-load ratings. A real bar or gate slows a servo down, so the simulator runs them at 85% of rated speed; change **Servo speed under load** in Game & robot settings if you've timed yours.
+The speeds are the makers' no-load ratings. A real bar or gate slows a servo down, so the simulator runs them at 85% of rated speed; change **Servo speed under load** on the robot card (**Advanced customization → Drivetrain and robot**) if you've timed yours.
 
 ---
 
@@ -232,7 +233,7 @@ This is where the simulator helps most: checking that two autos don't get in eac
    
    The slot decides the alliance, so mirrored code turns into the right poses automatically.
 2. **Fill in both robot cards.** Their timing matters as much as yours.
-3. **Untick the other alliance's robots** if you only want to study your alliance. Or leave them on, to see the whole field.
+3. **Choose 2 robots → Both Red or Both Blue** at the top left. The AUTO page runs at most 2 robots, so that's your whole alliance.
 4. **Press Play**, then check **Match events → Rules**.
 
 ### What to look for and how to fix it
@@ -252,7 +253,7 @@ Agree on the plan with your partner using what the simulator shows, then change 
 ## Work efficiently
 
 - **One change at a time:** change your code, re-upload, check the card line, press Play at 4×, check **Rules**. If something looks off, scrub the timeline to that moment at ¼×.
-- **Test for luck:** change **Random seed** in Game & robot settings and re-run a few times. Misses are random, so a plan that only works on one seed isn't reliable.
+- **Fair comparisons:** misses are random but repeat the same way every run, so when you change one thing in your code, the difference you see comes from your change.
 - **Ride along** on your robot in the 3-D view to see what its Limelight sees and when.
 - **Coordinates overlay:** turn it on to read positions off the field grid when planning new waypoints.
 - **Your code is not saved.** It lives only in the open page; reloading or closing the page clears it and every robot card goes back to empty (your browser asks first if you have code loaded). Translate answers are cleared too. Keep your code files in your team's project as always, and re-upload them each session. **What is saved, in this browser only:** game settings, the field layout, and each robot card's hardware numbers and team name - so you don't have to re-enter your robot every time. Use **Restore defaults** in Game & robot settings to clear those on a shared computer.

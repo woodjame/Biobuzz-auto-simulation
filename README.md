@@ -35,7 +35,9 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 ### Step 1 – Choose how many robots
 
-At the top of the **Robots** panel, choose **how many robots you're simulating: 1 or 2** (the AUTO page runs at most 2 robots; the TeleOp and Full match pages still allow up to 4). The robot cards stay hidden until you choose; then they open in a drop-down below. Until you choose, the two Red robots stand on the field.
+At the top left of the AUTO page, choose **how many robots you're simulating: 1 or 2** (the AUTO page runs at most 2 robots; the TeleOp and Full match pages still allow up to 4, at the top of their **Robots** panel). The robot cards stay hidden until you choose. Until you choose, the two Red robots stand on the field.
+
+On the AUTO page, the first robot's card is on the **left**. With 2 robots, the second card is on the **right**, just under the **Top 10 AUTO scores**.
 
 - **1 robot:** pick its **starting spot** – only that robot's card is shown, and only it plays.
 - **2 robots:** pick **Both Red**, **Both Blue** or **One of each**.
@@ -180,7 +182,7 @@ The simulator finds servos created with `hardwareMap.get(Servo.class, "name")`, 
 
 ### Step 7 – Read the results
 
-Scroll to **Match events** after every run:
+Read **Match events** – under the field, next to **Servos** – after every run:
 
 | Filter | Look for |
 |---|---|
@@ -189,7 +191,7 @@ Scroll to **Match events** after every run:
 | **Scoring** | Every element into the hive, tips, LEAVE and PARK. |
 | **All** | Everything, with times. Click any event to jump the replay to that moment. |
 
-Also watch the right side of the screen: **Servos** (a live dial for each servo on the robot you pick) and, once the AUTO has played to the end, **Auto score** (including ranking point progress). The hives and your AprilTag camera still work exactly the same behind the scenes – their panels just aren't shown – and every tip and camera read is listed under **Match events**.
+Also watch **Servos**, under the field next to Match events (a live dial for each servo on the robot you pick), and, once the AUTO has played to the end, **Auto score** on the right (including ranking point progress). The hives and your AprilTag camera still work exactly the same behind the scenes – their panels just aren't shown – and every tip and camera read is listed under **Match events**.
 
 ### Step 8 – Fix and re-run
 
@@ -479,7 +481,7 @@ With Parsec the host runs everyone's code and button setups, so each team's code
 
 There are two boards, both fed by the same score sheet:
 
-- **Top 10** – a gold-framed card at the top right of every simulator page, showing only that page's scores (best per team or pair, solo and duo together): the **AUTO** page shows the top 10 AUTO scores (above **Servos**); the **TeleOp** page shows the top 10 TeleOp scores in two lists, **Sample code** and **Own code** (above the **Live controllers**); the **Full match** page shows the top 10 full-match scores. Each has with medals for the top 3, your own team outlined in green, and a link to all the records. On a phone they scroll in a band under the page header instead. In full screen on the AUTO page, the top 3 AUTO also show under the Red and Blue scores.
+- **Top 10** – a gold-framed card at the top right of every simulator page, showing only that page's scores (best per team or pair, solo and duo together): the **AUTO** page shows the top 10 AUTO scores (above the second robot card); the **TeleOp** page shows the top 10 TeleOp scores in two lists, **Sample code** and **Own code** (above the **Live controllers**); the **Full match** page shows the top 10 full-match scores. Each has with medals for the top 3, your own team outlined in green, and a link to all the records. On a phone they scroll in a band under the page header instead. In full screen on the AUTO page, the top 3 AUTO also show under the Red and Blue scores.
 - **[Records page](https://woodjame.github.io/Biobuzz-auto-simulation/records.html)** – the full rankings, like a game's high-score table: **AUTO**, **TeleOp** or **Full match**, **Solo** or **Duo**, **Sample code** or **Own code** (TeleOp and Full match), filtered by robot (turret, fixed shooter, Limelight, webcam, no camera). Type your team number to see your team's best, average and number of runs in each category.
 
 **What gets recorded**
@@ -507,7 +509,7 @@ This is where the simulator helps most – making sure two autos don't get in ea
 1. Ask your partner for their auto files (they stay private – the simulator only runs on your computer).
 2. Upload yours to one card and theirs to the matching card **on the same alliance**: one *audience* card and one *rear* card.
 3. Fill in **both** robot cards – their timing matters as much as yours.
-4. Turn off the other alliance's cards with the switch at the top of each card if you only want your alliance.
+4. Choose **2 robots → Both Red** (or **Both Blue**) at the top left – the AUTO page runs at most 2 robots, so that's your whole alliance.
 5. Press Play and check **Match events → Rules**.
 
 **Partner has no code yet?** Click **Open code** on their card and type a simple stand-in (field-center inches, heading in degrees), then click **Run this code**:
@@ -721,7 +723,7 @@ Upload that whole file – the simulator finds the recorded rows inside it and r
 ## What the results mean – and what they don't
 
 - **Modeled:** paths and timing, the hive and tipping, flower and garden pickups, servo travel and spin speeds, launch zones, collisions, the main AUTO rules (including the 4-element limit, G407), and scoring.
-- **Approximate:** launch accuracy (random misses), drivetrain speed (from your card's numbers), servo speed under load (85% of the maker's rating – change **Servo speed under load** in settings if you've timed yours), and timed SDK moves.
+- **Approximate:** launch accuracy (random misses), drivetrain speed (from your card's numbers), servo speed under load (85% of the maker's rating – change **Servo speed under load** on the robot card if you've timed yours), and timed SDK moves.
 - **Read, not run:** the simulator reads your code instead of running it. When your robot makes a decision while running (like a sensor choosing a branch), it follows the first branch written – the notes tell you where. A robot log avoids this.
 - **Rules:** the simulator flags likely problems, but the referees and the current BIOBUZZ Competition Manual have the final word.
 
