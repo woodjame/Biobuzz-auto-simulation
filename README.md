@@ -35,7 +35,7 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 ### Step 1 – Choose how many robots
 
-At the top of the **Robots** panel, choose **how many robots you're simulating: 1 or 2** (the AUTO page runs at most 2 robots; the TeleOp and Full match pages still allow up to 4). The robot cards stay hidden until you choose; then they open in a drop-down below. Until you choose, the two Red robots stand on the field.
+On the right, under the **Top 10 AUTO scores**, choose **how many robots you're simulating: 1 or 2** (the AUTO page runs at most 2 robots; the TeleOp and Full match pages still allow up to 4, at the top of their Robots panel). The robot cards stay hidden until you choose; then they open in a drop-down below. Until you choose, the two Red robots stand on the field.
 
 - **1 robot:** pick its **starting spot** – only that robot's card is shown, and only it plays.
 - **2 robots:** pick **Both Red**, **Both Blue** or **One of each**.
@@ -180,7 +180,7 @@ The simulator finds servos created with `hardwareMap.get(Servo.class, "name")`, 
 
 ### Step 7 – Read the results
 
-Scroll to **Match events** after every run:
+After every run, press **AUTO history** under the field (it lights up when the run ends):
 
 | Filter | Look for |
 |---|---|
@@ -514,7 +514,7 @@ This is where the simulator helps most – making sure two autos don't get in ea
 2. Upload yours to one card and theirs to the matching card **on the same alliance**: one *audience* card and one *rear* card.
 3. Fill in **both** robot cards – their timing matters as much as yours.
 4. Turn off the other alliance's cards with the switch at the top of each card if you only want your alliance.
-5. Press Play and check **Match events → Rules**.
+5. Press Play and check **AUTO history → Rules**.
 
 **Partner has no code yet?** Click **Open code** on their card and type a simple stand-in (field-center inches, heading in degrees), then click **Run this code**:
 
@@ -718,7 +718,7 @@ Upload that whole file – the simulator finds the recorded rows inside it and r
 | A launch or intake doesn't happen | Add `// @sim shoot` or `// @sim intake on` there, or use **Translate**. If a servo launches or runs the intake, set its **Job** on the card. |
 | A servo isn't listed | Upload the file where it's created with `hardwareMap.get(...)` along with your auto. |
 | A servo spins when it should hold (or the reverse) | Check its **Mode** on the card matches how you programmed the servo, and that your code uses `setPosition` for standard servos and `setPower` for continuous ones. |
-| Robot sits at a flower and pulls nothing | Holding 4 already (the G407 limit), the flower bar isn't down yet, or the intake is off. Check **Match events → Servos**. |
+| Robot sits at a flower and pulls nothing | Holding 4 already (the G407 limit), the flower bar isn't down yet, or the intake is off. Check **AUTO history → Servos**. |
 | 3-D view is blank, or the page opens in Top view | 3-D needs internet. School networks sometimes block it; Top view works offline. |
 | Start fresh | **Open code → Clear** on a card, and set any changed numbers back on the card. |
 
