@@ -65,7 +65,7 @@ td.dt,td.rn{color:var(--muted);font-size:14px;white-space:nowrap}
   window.dataLayer=window.dataLayer||[];
   window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};
   var path=location.pathname.toLowerCase();
-  var page=/teleop/.test(path)?'teleop':/match/.test(path)?'match':/records/.test(path)?'records':'auto';
+  var page=window.BB_TOURNEY?'tournament':/teleop/.test(path)?'teleop':/match/.test(path)?'match':/records/.test(path)?'records':'auto';
   function team(){try{var r=JSON.parse(localStorage.getItem('bbsim.checkin')||'null');if(!r||!r.team)return'unknown';
     var t=String(r.team).trim();return /^\d{1,6}$/.test(t)?t:'none';}catch(e){return'unknown';}}
   var tm=team();

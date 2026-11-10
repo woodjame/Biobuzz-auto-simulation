@@ -35,9 +35,7 @@ It runs in Chrome, Edge, Firefox or Safari on a laptop or Chromebook. Nothing to
 
 ### Step 1 – Choose how many robots
 
-At the top left of the AUTO page, choose **how many robots you're simulating: 1 or 2** (the AUTO page runs at most 2 robots; the TeleOp and Full match pages still allow up to 4, at the top of their **Robots** panel). The robot cards stay hidden until you choose. Until you choose, the two Red robots stand on the field.
-
-On the AUTO page, the first robot's card is on the **left**. With 2 robots, the second card is on the **right**, just under the **Top 10 AUTO scores**.
+At the top of the **Robots** panel, choose **how many robots you're simulating: 1 or 2** (the AUTO page runs at most 2 robots; the TeleOp and Full match pages still allow up to 4). The robot cards stay hidden until you choose; then they open in a drop-down below. Until you choose, the two Red robots stand on the field.
 
 - **1 robot:** pick its **starting spot** – only that robot's card is shown, and only it plays.
 - **2 robots:** pick **Both Red**, **Both Blue** or **One of each**.
@@ -182,7 +180,7 @@ The simulator finds servos created with `hardwareMap.get(Servo.class, "name")`, 
 
 ### Step 7 – Read the results
 
-Read **Match events** – under the field, next to **Servos** – after every run:
+Scroll to **Match events** after every run:
 
 | Filter | Look for |
 |---|---|
@@ -191,11 +189,13 @@ Read **Match events** – under the field, next to **Servos** – after every ru
 | **Scoring** | Every element into the hive, tips, LEAVE and PARK. |
 | **All** | Everything, with times. Click any event to jump the replay to that moment. |
 
-Also watch **Servos**, under the field next to Match events (a live dial for each servo on the robot you pick), and, once the AUTO has played to the end, **Auto score** on the right (including ranking point progress). The hives and your AprilTag camera still work exactly the same behind the scenes – their panels just aren't shown – and every tip and camera read is listed under **Match events**.
+Also watch the right side of the screen: **Servos** (a live dial for each servo on the robot you pick) and, once the AUTO has played to the end, **Auto score** (including ranking point progress). The hives and your AprilTag camera still work exactly the same behind the scenes – their panels just aren't shown – and every tip and camera read is listed under **Match events**.
 
-### Step 8 – Fix and re-run
+### Step 8 – Fix and re-run – right in the simulator
 
-Change your code in your own project, click **Upload** again, check the line under the card, and press Play at 4×. Change one thing at a time.
+Click **Open code** on the card: each uploaded file has its own **tab**. Change your code there and press **Run this code** – the steps list and the run update at once (click a step to jump to its line, even in another file). Change one thing at a time, and press Play at 4×.
+
+**Take it to your robot:** **Download this file**, or **Download all (.zip)** for every file. Unzip it and copy the `.java` files into `TeamCode/src/main/java/org/firstinspires/ftc/teamcode/` in Android Studio (replace the old ones – keep each file's `package` line), then build and run on the robot. A changed tab shows **●**; **Undo my changes to this file** goes back to what you uploaded. Your code is never saved or sent – reloading the page clears it, so download what you want to keep. (You can still change code in your own project and **Upload** again.)
 
 **Fair comparisons:** misses are random but repeat the same way every run, so when you change one thing in your code, the difference you see comes from your change.
 
@@ -366,7 +366,8 @@ POLLEN and NECTAR roll, bounce off each other, the walls, the hive frame and the
 When you upload a TeleOp, the simulator **runs your real code** – your `runOpMode()` or `loop()`, your helper classes, your toggles and state machines – about 50 times a second, like a Control Hub. Your controllers feed `gamepad1` and `gamepad2`, and your motors and servos move the simulated robot. If your code has a bug, you see it here first.
 
 - **When it runs:** in practice mode it starts right away (**Restart my code** runs INIT and START again). In a match it INITs during the 8 s transition and STARTs when TeleOp begins, then stops at 0:00 – like pressing INIT, ▶ and ■ on the Driver Hub. If your `init()` moves a servo, the event log warns you: that's powered movement during the transition (G403).
-- **Driver Hub panel** (under *Robot status*): your `telemetry` lines, live. If your code throws an exception, it stops just like on the robot, and the panel shows the error with the file and line number.
+- **Edit code** (on the card, next to **Upload code**): your files in tabs – AUTO and TeleOp on the Full match page – or, before you upload anything, the **Sample TeleOp** for the card's buttons. Change anything and press **Run with my changes** (or Ctrl+Enter): the files are read again just like an upload, and any error shows with its **file and line**. When it works, **Download all (.zip)** and copy the `.java` files into `TeamCode/src/main/java/org/firstinspires/ftc/teamcode/` in Android Studio, then build it onto your robot. Nothing is saved or sent – download what you want to keep.
+- If your code throws an exception, it stops just like on the robot, and the event log shows the error with the file and line number.
 - **Your robot's hardware:** every device your code asks `hardwareMap` for is listed on the card with its **job** – Drive FL/FR/BL/BR, Intake, Channel, Feeder, Flywheel, Turret, Flower bar, Kicker, Gate, Hood. Jobs are guessed from the names; change any that are wrong.
   - **Launching:** a **Feeder** launches while it runs forward; a **Kicker** servo launches one element each time it moves; a **Gate** servo launches while it's open and the channel or intake runs. With none of those, the **Channel** feeds the flywheel.
   - **Flywheel:** it spins at the speed your code commands (`setVelocity` or `setPower`), up to your card's max RPM, taking your card's spin-up time. Shots use that real speed: if it's too slow or too fast for the distance, the event log says the shot fell short or sailed over, and what RPM it needed.
@@ -383,13 +384,12 @@ Robots push each other. A heavier robot pushes harder (lower drive RPM helps a l
 - **75%** when it is much heavier than the defender (40% or more);
 - **10%** when it is much lighter.
 
-In between, the percentage slides between those numbers. Change any of these under **Defense rules** in the right column. Robots touching an opponent get an orange outline.
+In between, the percentage slides between those numbers. Robots touching an opponent get an orange outline.
 
 **Pins (G421):** pushing an opponent into a wall, the hive frame, a flower or another robot so it can't move is a PIN. A count appears over the pinned robot, and after 3 s it's a **MAJOR FOUL**, plus another every 3 s it goes on. A count ends once the robots have been 2 ft apart, or either has moved 2 ft, for 3 s. Very hard hits are noted in the event log (repeated high-speed ramming that causes damage is a foul, G419).
 
 ### Aiming your shots
 - **The aim path:** while a robot holds POLLEN or NECTAR, a dashed line shows exactly where a launch would go right now – on the 2-D field and in the 3-D view. **Green** = it would go in (unless it's missed or pushed), **orange** = it wouldn't, **grey** = the flywheel is off. Turn it off with **Aim path: off** under the field.
-- **Robot status** (right side) says what to fix: *aim 12° more to the left*, *move into the launch zone in front of the cell*, *falls short – needs about 2,300 RPM*, *sails over*…, and shows the flywheel speed.
 - **Aim with the D-pad** (in the sample setups): ◀ / ▶ turn the turret – or, for a fixed shooter, turn the whole robot slowly. ▲ / ▼ make the flywheel faster (farther) or slower (shorter); the first press switches the flywheel to **manual speed**, starting from the speed it needs right now. **L3** (press the left stick) goes back to **automatic speed for distance**. Set how much each press changes (RPM) and how fast a fixed shooter turns under **Servo controls → Aiming**.
 - Running your own TeleOp code? The aim path uses your code's turret, flywheel speed and hood, so you can check your aiming code too.
 
@@ -462,6 +462,10 @@ The **TeleOp simulator** has a built-in **Play online** button. Up to 4 laptops 
 
 **If it won't connect:** laptops connect directly to each other. Some school networks block that – try a **phone hotspot** or home Wi-Fi, or use Parsec (below). Keep the simulator tab **in front** on every laptop (browsers pause hidden tabs, and a laptop that stops answering for 8 seconds is dropped). Everyone needs the **same version** of the page – if you're told to reload, press **Ctrl+Shift+R** (**⌘+Shift+R** on a Mac). Expect a short delay (usually 50–150 ms, shown next to each player) – about like a slow Bluetooth controller.
 
+### Virtual tournaments
+
+Virtual tournaments have their own site: **https://woodjame.github.io/Biobuzz-tournament/**. Alliances of 2 teams play online in a bracket – full matches (AUTO + TeleOp) or TeleOp only. A director's laptop runs the field, every team drives from its own laptop with its own controller and code, an MC can call the play-by-play on the stream, and anyone can watch (there's a broadcast screen for streaming). The steps for directors, teams and watchers are in that site's README.
+
 ### Over the internet with Parsec (the full match, or if online won't connect)
 For a **full match** (AUTO + TeleOp) together, or when laptops can't connect directly, use **Parsec**, a free screen-sharing app made for playing games with friends:
 
@@ -481,7 +485,7 @@ With Parsec the host runs everyone's code and button setups, so each team's code
 
 There are two boards, both fed by the same score sheet:
 
-- **Top 10** – a gold-framed card at the top right of every simulator page, showing only that page's scores (best per team or pair, solo and duo together): the **AUTO** page shows the top 10 AUTO scores (above the second robot card); the **TeleOp** page shows the top 10 TeleOp scores in two lists, **Sample code** and **Own code** (above the **Live controllers**); the **Full match** page shows the top 10 full-match scores. Each has with medals for the top 3, your own team outlined in green, and a link to all the records. On a phone they scroll in a band under the page header instead. In full screen on the AUTO page, the top 3 AUTO also show under the Red and Blue scores.
+- **Top 10** – a gold-framed card at the top right of every simulator page, showing only that page's scores (best per team or pair, solo and duo together): the **AUTO** page shows the top 10 AUTO scores (above **Servos**); the **TeleOp** page shows the top 10 TeleOp scores in two lists, **Sample code** and **Own code** (above the **Live controllers**); the **Full match** page shows the top 10 full-match scores. Each has with medals for the top 3, your own team outlined in green, and a link to all the records. On a phone they scroll in a band under the page header instead. In full screen on the AUTO page, the top 3 AUTO also show under the Red and Blue scores.
 - **[Records page](https://woodjame.github.io/Biobuzz-auto-simulation/records.html)** – the full rankings, like a game's high-score table: **AUTO**, **TeleOp** or **Full match**, **Solo** or **Duo**, **Sample code** or **Own code** (TeleOp and Full match), filtered by robot (turret, fixed shooter, Limelight, webcam, no camera). Type your team number to see your team's best, average and number of runs in each category.
 
 **What gets recorded**
@@ -509,7 +513,7 @@ This is where the simulator helps most – making sure two autos don't get in ea
 1. Ask your partner for their auto files (they stay private – the simulator only runs on your computer).
 2. Upload yours to one card and theirs to the matching card **on the same alliance**: one *audience* card and one *rear* card.
 3. Fill in **both** robot cards – their timing matters as much as yours.
-4. Choose **2 robots → Both Red** (or **Both Blue**) at the top left – the AUTO page runs at most 2 robots, so that's your whole alliance.
+4. Turn off the other alliance's cards with the switch at the top of each card if you only want your alliance.
 5. Press Play and check **Match events → Rules**.
 
 **Partner has no code yet?** Click **Open code** on their card and type a simple stand-in (field-center inches, heading in degrees), then click **Run this code**:
@@ -723,7 +727,7 @@ Upload that whole file – the simulator finds the recorded rows inside it and r
 ## What the results mean – and what they don't
 
 - **Modeled:** paths and timing, the hive and tipping, flower and garden pickups, servo travel and spin speeds, launch zones, collisions, the main AUTO rules (including the 4-element limit, G407), and scoring.
-- **Approximate:** launch accuracy (random misses), drivetrain speed (from your card's numbers), servo speed under load (85% of the maker's rating – change **Servo speed under load** on the robot card if you've timed yours), and timed SDK moves.
+- **Approximate:** launch accuracy (random misses), drivetrain speed (from your card's numbers), servo speed under load (85% of the maker's rating – change **Servo speed under load** in settings if you've timed yours), and timed SDK moves.
 - **Read, not run:** the simulator reads your code instead of running it. When your robot makes a decision while running (like a sensor choosing a branch), it follows the first branch written – the notes tell you where. A robot log avoids this.
 - **Rules:** the simulator flags likely problems, but the referees and the current BIOBUZZ Competition Manual have the final word.
 
