@@ -81,14 +81,14 @@ The card shows the basics:
 | **Seconds to launch all 4 into the hive** | From the first launch to the last. |
 | **Seconds for the flywheel to reach speed** | Time it from a stopped flywheel to launching speed. Launches wait this long after your code first spins the flywheel up. |
 
-Below them the card says which AprilTag camera the robot uses. Everything else is under **Advanced customization** (click it to open), in groups:
+If the robot launches, the card also shows its **Shooter** – *Turret* (aims itself toward the hive), *Fixed – faces front* or *Fixed – faces back* (turn the robot to aim) – and the **Flywheel position**: tap where the shooter sits on the robot on the 3 × 3 grid (F-LEFT … B-RIGHT; ▲ is the front). Below them the card says which AprilTag camera the robot uses. Everything else is under **Advanced customization** (click it to open), in groups:
 
 | Group | What's in it |
 |---|---|
-| **AprilTag recognition** (required) | **Camera** – *Limelight 3A*, *Logitech C270 webcam*, *Logitech C920 webcam* or *None*. There's no default: until you choose, the robot has no camera and its scores don't count for Top AUTO (Advanced customization opens by itself until you do). The Limelight updates fastest; the C270 sees farthest but narrowest; the C920 sees widest but not as far; webcams run on the Control Hub, so they update about half as often. Then where the camera is: lens height, tilt, how far in front of the robot's center, and (turret robots) whether it's on the turret. |
+| **AprilTag recognition** (required) | **Camera** – *Limelight 3A*, *Logitech C270 webcam*, *Logitech C920 webcam* or *None*. There's no default: until you choose, the robot has no camera and its scores don't count for Top AUTO (Advanced customization opens by itself until you do). The Limelight updates fastest; the C270 sees farthest but narrowest; the C920 sees widest but not as far; webcams run on the Control Hub, so they update about half as often. Then where the camera is (these rows only show once you choose a camera – with *None* they're hidden): lens height, tilt, how far in front of the robot's center, and (turret robots) whether it's on the turret. |
 | **Robot size and weight** | Robot footprint (18 in. max) and weight. Heavier robots speed up more slowly. |
 | **Drivetrain and robot** | Localization (*Odometry pods + Pinpoint* with both pod offsets, or *Drive encoders + Hub IMU*), drive motor RPM, mecanum wheel, intake camera, where the 4 preloaded POLLEN start, elements it can hold, acceleration, turn rate, drive efficiency, drive power without an intake camera, and servo speed under load. **Copy Pedro Constants** gives you a Pedro `Constants.java` with these numbers. |
-| **Flywheel shooter** | Turret or fixed shooter (and turret rotation), flywheel RPM, launch angle, whether the flywheel adjusts for distance, accuracy, flywheel wheel diameter, and ball speed compared with the rim speed. |
+| **Flywheel shooter** | Turret rotation (turret shooters), flywheel RPM, launch angle, whether the flywheel adjusts for distance, accuracy, flywheel wheel diameter, and ball speed compared with the rim speed. |
 | **Shooting position** | Closest shot to the hive, the shooting cone, and how deep and wide the shooting zone is. They start at the BIOBUZZ field's values. |
 | **Servos** | Your servo model, the mode you programmed it to, and its job. |
 
