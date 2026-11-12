@@ -203,6 +203,22 @@ A changed tab shows **●**; **Undo my changes to this file** goes back to what 
 
 **Fair comparisons:** misses are random but repeat the same way every run, so when you change one thing in your code, the difference you see comes from your change.
 
+### Draw a path (Pedro Pathing 3)
+
+If your AUTO uses **Pedro Pathing 3** (`PoseFactory`, `line(...)`, `sequential(follow(follower, …))`), or the robot has no code yet, the card shows **✏️ Draw a path**. Press it, and a panel opens under the field:
+
+1. **Click the field** where the robot should drive – each click adds a point (hold **Shift** for straight 15° angles). Drag a point to move it; **right-click** a point (or press **Delete**) to remove it.
+2. **Curves:** drag the **◆** in the middle of a line to bend it (or pick **Curve** in the panel). Double-click the ◆ to make it straight again.
+3. **Heading** for each point: **Face the way it drives** (`tangent()`, tick **Drive backward** to back up), **Keep its heading** (`constant()`), or **Turn to…** an angle (`linear()` – drag the yellow handle or type the degrees).
+4. **At this point:** add **Intake on**, **Intake off**, **Launch all** or **Wait** – they happen when the robot gets there, in order.
+5. **▶ Try it** runs the AUTO with your drawing. **✓ Add to my code** keeps it; **Cancel** puts your code back exactly as it was.
+
+What it writes:
+- **Your own Pedro 3 code:** a `drawnPath()` command added to your routine – at the end, or just before a final `park…()` call – and a block at the end of the class with the poses (`drawnDeg.of(x, y, heading)`, Pedro inches and degrees) and the moves. The path starts where your AUTO ends. For intake and launching it reuses your own calls when the simulator recognizes them (e.g. your `volley(...)`); otherwise it adds small `…Drawn()` methods with **TODO** lines for you to fill in.
+- **No code or the sample code:** a new **DrawnAuto.java** OpMode (Pedro Pathing 3 + Ivy) starting from where the robot is placed. Check the `Constants` import matches your project.
+
+The drawn points are **exact field spots for that robot's alliance** – they are not mirrored for the other side. Draw again any time: the panel brings back your drawing and replaces the old block. Then **Export code** as above.
+
 ---
 
 ## Translate – teach the simulator your own code
