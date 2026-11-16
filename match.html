@@ -75,6 +75,35 @@
   <div class="clock" translate="no"><span class="phase" id="phase">PRACTICE</span><span class="time" id="ctime">2:00</span></div>
   <div class="topright"><label class="langpick" translate="no" title="Language"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><select id="langSel" aria-label="Language"><option value="en">English</option></select></label><a class="fbbtn" id="fbBtn" href="#" target="_blank" rel="noopener" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a><span class="pill" id="padPill">No controller</span><div class="chip red"><span>Red</span><b id="sRed">0</b></div><div class="chip blue"><span>Blue</span><b id="sBlue">0</b></div></div>
 </header>
+<!--CALLOUT-START--><style>.ttc{position:relative;margin:12px auto 0;max-width:1400px;width:calc(100% - 24px);display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+ padding:12px 44px 12px 14px;border-radius:12px;color:#fff;background:linear-gradient(100deg,#13284B 0%,#1d3f78 55%,#7a1f3a 100%);
+ box-shadow:0 2px 10px rgba(10,20,40,.18);border:1px solid rgba(242,182,48,.55)}
+.ttc .ttc-ic{font-size:30px;line-height:1;flex:none}
+.ttc .ttc-tx{flex:1 1 300px;min-width:0}
+.ttc .ttc-k{display:inline-block;font:700 11px/1 'Barlow Condensed','Arial Narrow',sans-serif;letter-spacing:.08em;text-transform:uppercase;
+ background:#F2B630;color:#13213A;padding:4px 7px;border-radius:999px;margin-right:6px;vertical-align:2px}
+.ttc h2{display:inline;margin:0;font:700 19px/1.2 'Barlow Condensed','Arial Narrow',sans-serif;letter-spacing:.01em}
+.ttc p{margin:4px 0 0;font-size:14px;color:#dbe4f5}
+.ttc p b{color:#fff}
+.ttc .ttc-go{flex:none;display:inline-flex;align-items:center;gap:6px;background:#F2B630;color:#13213A;font-weight:700;text-decoration:none;
+ padding:9px 16px;border-radius:999px;white-space:nowrap;transition:transform .15s,box-shadow .15s}
+.ttc .ttc-go:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(242,182,48,.45)}
+.ttc .ttc-x{position:absolute;top:6px;right:6px;width:30px;height:30px;border:0;border-radius:50%;background:transparent;color:#cfd9ee;font-size:20px;line-height:1;cursor:pointer}
+.ttc .ttc-x:hover{background:rgba(255,255,255,.12);color:#fff}
+@media (max-width:640px){.ttc{padding:12px 40px 12px 12px;gap:10px}.ttc .ttc-ic{display:none}.ttc h2{font-size:17px}.ttc .ttc-go{width:100%;justify-content:center}}
+@media print{.ttc{display:none}}</style><aside class="ttc" id="tourneyCallout" aria-label="BIOBUZZ Virtual Tournament sign-up" hidden>
+ <div class="ttc-ic" aria-hidden="true">🏆</div>
+ <div class="ttc-tx"><span class="ttc-k">Coming soon</span><h2>BIOBUZZ Virtual Tournament</h2>
+ <p>Bring your <b>own code</b> and controllers and play alliances from anywhere. Round robin, then a double-elimination bracket, <b>live-streamed</b>.</p></div>
+ <a class="ttc-go" href="https://docs.google.com/forms/d/e/1FAIpQLSchDJ3WGlFiDCXQxNLOQKbu36fkwDOgCmL4CP2TXkHw2aKqRQ/viewform" target="_blank" rel="noopener">I'm interested <span aria-hidden="true">&rarr;</span></a>
+ <button class="ttc-x" type="button" aria-label="Hide for now" title="Hide for now">&times;</button>
+</aside><script>(function(){var K='bbsim.ttcHide',el=document.getElementById('tourneyCallout');if(!el)return;
+var now=Date.now(),h=0;try{h=+localStorage.getItem(K)||0}catch(e){}
+if(h&&now-h<14*864e5)return;el.hidden=false;
+function ev(n){try{if(window.gtag)gtag('event',n,{page_mode:window.PAGE_MODE||'records'})}catch(e){}}
+el.querySelector('.ttc-go').addEventListener('click',function(){ev('tourney_interest_click')});
+el.querySelector('.ttc-x').addEventListener('click',function(){el.hidden=true;ev('tourney_callout_hide');try{localStorage.setItem(K,String(now))}catch(e){}});})();</script><!--CALLOUT-END-->
+
 <div id="langStatus" role="status" translate="no" hidden></div>
 <dialog id="dlgLang" aria-labelledby="langTitle" style="max-width:min(520px,92vw);border:none;border-radius:12px;padding:20px 22px;color:#13213A">
   <h2 id="langTitle" style="margin:0 0 8px;font-size:20px">Translate into <span id="langWant" translate="no"></span></h2>
