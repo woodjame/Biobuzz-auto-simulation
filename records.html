@@ -158,6 +158,8 @@ el.querySelector('.ttc-x').addEventListener('click',function(){el.hidden=true;ev
     <div class="bar" id="codeBar" hidden>
       <span class="lbl">TeleOp code</span>
       <div class="seg" id="segCode" role="group" aria-label="TeleOp code"><button data-v="all" aria-pressed="true">All</button><button data-v="sample" aria-pressed="false">Sample code</button><button data-v="own" aria-pressed="false">Own code</button></div>
+      <span class="lbl">Driven with</span>
+      <div class="seg" id="segInput" role="group" aria-label="Driven with"><button data-v="all" aria-pressed="true">All</button><button data-v="pad" aria-pressed="false">Controller</button><button data-v="kb" aria-pressed="false">Keyboard</button></div>
     </div>
     <div class="bar">
       <span class="lbl">Robot</span>
@@ -193,7 +195,9 @@ el.querySelector('.ttc-x').addEventListener('click',function(){el.hidden=true;ev
 const CSV='https://docs.google.com/spreadsheets/d/e/2PACX-1vRgDqNVAOTDWdbdhuhn4JkCsQXRfHqGSr6Xik9CVIR8YXo7AfObhZYg_KhZ_TUCqhOzLd86maBBfk4i/pub?gid=831210487&single=true&output=csv';
 const VER={auto:'bbsim3',tele:'bbsim4',full:'bbsim4'},MAX={auto:300,tele:900,full:1200};   // TeleOp rows before bbsim2 included free AUTO points – not shown
 const $=s=>document.querySelector(s);const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const view={mode:'auto',size:'solo',bot:'all',code:'all'};
+const view={mode:'auto',size:'solo',bot:'all',code:'all',inp:'all'};
+/** How the robots were driven: Details "in:kb" (keyboard) or "in:pad" (controllers); older rows are controller runs. */
+const inOf=p=>{const f=p.find(x=>/^in:/.test(x));return f&&f.slice(3)==='kb'?'kb':'pad';};
 const MODE_NAME={auto:'AUTO',tele:'TeleOp',full:'Full match'};
 /** TeleOp code type: Details "code:own"/"code:sample", or for older rows the Code column ("manual" = no uploaded code). */
 function codeOf(p,w,c){const f=p.find(x=>/^code:/.test(x));if(f)return f.slice(5)==='own'?'own':'sample';const cd=c.code>=0?(w[c.code]||'').trim():'';if(!cd)return'sample';return cd.split('-').some(x=>x==='manual')?'sample':'own';}let RUNS=[];
@@ -207,7 +211,7 @@ function toRun(w,c){const team=(w[c.team]||'').trim(),score=+((w[c.score]||'').t
   if(c.det>=0&&d){const p=d.split('|');if(/\|no:/.test(d))return null;
     const mode=p[3]==='tele'||p[3]==='full'?p[3]:'auto';if(p[0]!==VER[mode])return null;if(score>MAX[mode])return null;
     const size=(p[4]==='solo'||p[4]==='duo')?p[4]:(team.includes('+')?'duo':'solo');
-    return{team,score,mode,size,code:mode==='auto'?null:codeOf(p,w,c),robots:(p[3]==='auto'||p[3]==='tele'||p[3]==='full')?(p[5]||''):'',when:w[0]||''};}
+    return{team,score,mode,size,code:mode==='auto'?null:codeOf(p,w,c),inp:mode==='auto'?null:inOf(p),robots:(p[3]==='auto'||p[3]==='tele'||p[3]==='full')?(p[5]||''):'',when:w[0]||''};}
   return null;}   // rows without details are from before the physics-era boards
 const CAM={limelight:'Limelight 3A',c270:'C270 webcam',c920:'C920 webcam',none:'No camera',nocam:'No camera'};
 const SHOOT={turret:'Turret',front:'Fixed shooter',back:'Fixed shooter'};
@@ -216,11 +220,11 @@ function botMatch(r,b){if(b==='all')return true;if(!r)return false;return r.spli
   return b==='turret'?s==='turret':b==='fixed'?(s==='front'||s==='back'):b==='limelight'?c==='limelight':b==='webcam'?(c==='c270'||c==='c920'):b==='nocam'?(c==='none'||c==='nocam'):false;});}
 function dateOf(s){const t=Date.parse(s);if(!isNaN(t))return new Date(t);const m=/^(\d{1,2})\/(\d{1,2})\/(\d{4})/.exec(s||'');return m?new Date(+m[3],+m[1]-1,+m[2]):null;}
 const fmtDate=s=>{const d=dateOf(s);return d?d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}):''};
-function render(){$('#codeBar').hidden=view.mode==='auto';const runs=RUNS.filter(r=>r.mode===view.mode&&r.size===view.size&&botMatch(r.robots,view.bot)&&(view.mode==='auto'||view.code==='all'||r.code===view.code));
+function render(){$('#codeBar').hidden=view.mode==='auto';const runs=RUNS.filter(r=>r.mode===view.mode&&r.size===view.size&&botMatch(r.robots,view.bot)&&(view.mode==='auto'||view.code==='all'||r.code===view.code)&&(view.mode==='auto'||view.inp==='all'||r.inp===view.inp));
   const by=new Map();for(const r of runs){const b=by.get(r.team);if(!b)by.set(r.team,{best:r,n:1});else{b.n++;if(r.score>b.best.score)b.best=r;}}
   const list=[...by.values()].sort((a,b)=>b.best.score-a.best.score||((dateOf(a.best.when)||0)-(dateOf(b.best.when)||0)));
   $('#rows').innerHTML=list.length?list.slice(0,100).map((e,k)=>`<tr class="${k===0?'first':''}"><td class="rk">${k+1}</td><td class="tm">${esc(e.best.team)}${k===0?'<span class="crown">Record</span>':''}</td><td><span class="robot">${esc(robotLabel(e.best.robots))}</span></td><td class="sc">${e.best.score}</td><td class="dt">${esc(fmtDate(e.best.when))}</td><td class="rn">${e.n}</td></tr>`).join('')
-    :`<tr><td colspan="6" class="empty">No ${MODE_NAME[view.mode]} ${view.size} scores${view.mode!=='auto'&&view.code!=='all'?' with '+(view.code==='own'?'own':'sample')+' code':''}${view.bot!=='all'?' for this robot type':''} yet – be the first.</td></tr>`;
+    :`<tr><td colspan="6" class="empty">No ${MODE_NAME[view.mode]} ${view.size} scores${view.mode!=='auto'&&view.code!=='all'?' with '+(view.code==='own'?'own':'sample')+' code':''}${view.mode!=='auto'&&view.inp!=='all'?' driven with '+(view.inp==='kb'?'the keyboard':'controllers'):''}${view.bot!=='all'?' for this robot type':''} yet – be the first.</td></tr>`;
   const teams=new Set(RUNS.flatMap(r=>r.team.split(' + ')));
   $('#stats').innerHTML=`<span>${runs.length} run${runs.length===1?'':'s'} in this list</span><span>${RUNS.length} counted runs in all</span><span>${teams.size} team${teams.size===1?'':'s'}</span>`;
   renderCareer();}
@@ -236,9 +240,9 @@ async function load(){try{const res=await fetch(CSV,{cache:'no-store'});if(!res.
     const ci=head.findIndex(h=>/code/.test(h));const c={team:col('team',1),score:col('score',2),det:col('details',head.length>4?4:-1),code:ci>=0?ci:(head.length>4?3:-1)};
     RUNS=rows.map(w=>toRun(w,c)).filter(Boolean);render();}
   catch(e){$('#rows').innerHTML='<tr><td colspan="6" class="empty">The records couldn’t load right now. Try again in a minute.</td></tr>';}}
-for(const[id,key]of[['#segMode','mode'],['#segSize','size'],['#segBot','bot'],['#segCode','code']])$(id).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;view[key]=b.dataset.v;$(id).querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();});
+for(const[id,key]of[['#segMode','mode'],['#segSize','size'],['#segBot','bot'],['#segCode','code'],['#segInput','inp']])$(id).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;view[key]=b.dataset.v;$(id).querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();});
 $('#teamQ').addEventListener('input',()=>{$('#teamQ').value=$('#teamQ').value.replace(/[^\d]/g,'');renderCareer();});
-try{const u=new URL(location.href);const m=u.searchParams.get('mode'),cd=u.searchParams.get('code');if(m==='tele'||m==='full')$('#segMode [data-v="'+m+'"]').click();if(cd==='own'||cd==='sample')$('#segCode [data-v="'+cd+'"]').click();}catch(e){}
+try{const u=new URL(location.href);const m=u.searchParams.get('mode'),cd=u.searchParams.get('code'),ip=u.searchParams.get('input');if(ip==='kb'||ip==='pad')setTimeout(()=>$('#segInput [data-v="'+ip+'"]').click(),0);if(m==='tele'||m==='full')$('#segMode [data-v="'+m+'"]').click();if(cd==='own'||cd==='sample')$('#segCode [data-v="'+cd+'"]').click();}catch(e){}
 load();setInterval(()=>{if(!document.hidden)load();},120000);
 </script>
 </body>
